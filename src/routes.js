@@ -2,7 +2,7 @@ export const routes = {
     admin: '/admin',
     adminProduct: '/admin/products/:id',
     home: '/',
-    prouct: 'products/:id',
+    product: '/products/:id',
     cart: '/cart',
     cartCheckout: '/cart/checkout',
     about: '/about',

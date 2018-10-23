@@ -5,5 +5,5 @@ export const productPropTypes = T.shape({
     title: T.string.isRequired,
     description: T.string.isRequired,
     image: T.string.isRequired,
-    price: T.string.isRequired,
+    price: T.number.isRequired,
 }).isRequired;

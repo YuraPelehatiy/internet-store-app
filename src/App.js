@@ -4,7 +4,6 @@ import { Link, Route } from 'react-router-dom';
 import AdminPage from './pages/admin/admin';
 import HomePage from './pages/home/home';
 import { routes } from './routes';
-
 import { products } from './products';
 
 const getProducts = async() => products;
@@ -16,11 +15,15 @@ class App extends Component {
 
     this.state = {
       products: [],
-      loading: true
+      loading: true,
+      openModalAddProduct: false
     };
 
     this.updateProduct = this.updateProduct.bind(this);
     this.removeProduct = this.removeProduct.bind(this);
+    this.addProduct = this.addProduct.bind(this);
+    this.onOpenModal = this.onOpenModal.bind(this);
+    this.onCloseModal = this.onCloseModal.bind(this);
   }
 
   async componentDidMount(){
@@ -32,6 +35,7 @@ class App extends Component {
     this.setState({
       products: this.state.products.map(oldProduct => {
         if(oldProduct.id === newProduct.id){
+          newProduct.price = Number(newProduct.price);
           return newProduct;
         }
         return oldProduct;
@@ -40,13 +44,31 @@ class App extends Component {
   }
 
   removeProduct(id){
-    let products = [...this.state.products]
+    let products = [...this.state.products];
     let index = products.findIndex(product => product.id === id);
     if(index === -1){
       return;
     }
     products.splice(index, 1);
-    this.setState({ products })
+    this.setState({ products });
+  }
+
+  addProduct(newProduct){
+    let products = [...this.state.products];
+    
+    newProduct.price = Number(newProduct.price);
+    newProduct.id = Math.floor(Math.random() * 1000)
+
+    products.push(newProduct);
+    this.setState({ products });
+  }
+
+  onOpenModal(){
+    this.setState({ openModalAddProduct: true })
+  }
+
+  onCloseModal(){
+    this.setState({ openModalAddProduct: false })
   }
 
   render() {
@@ -59,8 +81,7 @@ class App extends Component {
         <Link to={routes.home}>Home</Link>
         /
         <Link to={routes.admin}>Admin</Link>
-        <Route 
-          exact 
+        <Route  
           path={routes.home} 
           render = {
             renderProps => 
@@ -79,6 +100,10 @@ class App extends Component {
                 productList={this.state.products} 
                 updateProduct={this.updateProduct} 
                 removeProduct={this.removeProduct}
+                addProduct={this.addProduct}
+                onOpenModal={this.onOpenModal}
+                onCloseModal={this.onCloseModal}
+                showModalAddProduct={this.state.openModalAddProduct}
               />
           } 
         />

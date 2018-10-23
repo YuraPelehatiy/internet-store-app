@@ -1,30 +1,21 @@
 import React from 'react';
 import { productPropTypes } from '../../schemes/product';
 
-const ProductComponent = ({ id, title, description, image, price, onSubmitUpdate, onChangeField, handleOnRemove }) => (
-    <form onSubmit = {onSubmitUpdate}>
+const ProductComponent = ({ id, title, description, image, price }) => (
+    <div>
         <div>
-            <input type="text" name="title" value={title} onChange={onChangeField('title')}/>
-        </div>
-        <div>
-            <textarea type="text" name="description" value={description} onChange={onChangeField('description')}/>
+            Title: {title}
         </div>
         <div>
             <img src={image} alt={title}/>
         </div>
         <div>
-            <input type="text" name="image" value={image} onChange={onChangeField('image')}/>
+            Description: {description}
         </div>
         <div>
-            <input type="text" name="price" value={price} onChange={onChangeField('price')}/>
+            Price: {price}
         </div>
-        <div>
-            <button type="submit">Update</button>
-        </div>
-        <div>
-            <button onClick = {() => handleOnRemove(id)}>Remove</button>
-        </div>
-    </form>
+    </div>
 )
 
 ProductComponent.propTypes = productPropTypes;

@@ -9,15 +9,8 @@ import ProductContainer from '../../components/Product/ProductContainer';
 const HomePage = ({ match, productList }) => (
     <div>
         <Switch>
-            <Route 
-                exact 
-                path={match.path} 
-                render={() => productList.map(({id, title, image}) => <ProductLink key={id} id={id} title={title} image={image}/>)}
-            />
-            <Route 
-                path={routes.prouct}
-                render={renderProps => <ProductContainer productList={productList} {...renderProps}/>}
-            />
+            <Route exact path={match.path} render={() => productList.map(({id, title, image, price}) => <ProductLink key={id} id={id} title={title} image={image} price={price}/>)}/>
+            <Route path={routes.product} render={renderProps => <ProductContainer productList={productList} {...renderProps}/>} />
         </Switch>
     </div>
 );

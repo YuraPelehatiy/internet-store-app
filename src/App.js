@@ -4,7 +4,7 @@ import { Link, Route } from 'react-router-dom';
 import AdminPage from './pages/admin/admin';
 import HomePage from './pages/home/home';
 import { routes } from './routes';
-import { products } from './products';
+import { products } from './data/products';
 
 const getProducts = async() => products;
 

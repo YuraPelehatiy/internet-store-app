@@ -59,6 +59,7 @@ class ModalAddProductContainer extends React.Component {
 
 ModalAddProductContainer.propTypes = {
     productList: T.arrayOf(productPropTypes),
+    addProduct: T.func.isRequired
 };
 
 export default ModalAddProductContainer;

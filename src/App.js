@@ -16,14 +16,11 @@ class App extends Component {
     this.state = {
       products: [],
       loading: true,
-      openModalAddProduct: false
     };
 
     this.updateProduct = this.updateProduct.bind(this);
     this.removeProduct = this.removeProduct.bind(this);
     this.addProduct = this.addProduct.bind(this);
-    this.onOpenModal = this.onOpenModal.bind(this);
-    this.onCloseModal = this.onCloseModal.bind(this);
   }
 
   async componentDidMount(){
@@ -63,14 +60,6 @@ class App extends Component {
     this.setState({ products });
   }
 
-  onOpenModal(){
-    this.setState({ openModalAddProduct: true })
-  }
-
-  onCloseModal(){
-    this.setState({ openModalAddProduct: false })
-  }
-
   render() {
     if(this.state.loading){
       return <h1>Loading...</h1>
@@ -101,9 +90,6 @@ class App extends Component {
                 updateProduct={this.updateProduct} 
                 removeProduct={this.removeProduct}
                 addProduct={this.addProduct}
-                onOpenModal={this.onOpenModal}
-                onCloseModal={this.onCloseModal}
-                showModalAddProduct={this.state.openModalAddProduct}
               />
           } 
         />

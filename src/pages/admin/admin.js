@@ -7,10 +7,9 @@ import { routes } from '../../routes';
 import ProductContainerAdmin from '../../components/ProductAdmin/ProductContainerAdmin';
 import ModalAddProductContainer from '../../components/ModalAddProduct/ModalAddProductContainer';
 
-const AdminPage = ({ productList, match, updateProduct, removeProduct, addProduct, onOpenModal, onCloseModal, showModalAddProduct }) => (
+const AdminPage = ({ productList, match, updateProduct, removeProduct, addProduct}) => (
     <div>
-        <button onClick={onOpenModal}>Add new product</button>
-        <ModalAddProductContainer addProduct={addProduct} onCloseModal={onCloseModal} showModalStatus={showModalAddProduct}/>
+        <ModalAddProductContainer addProduct={addProduct}/>
         <Switch>
             <Route exact path={match.path} render = {() => productList.map(({id, title}) => <ProductLinkAdmin key={id} id={id} title={title}/>)}/>
             <Route path={routes.adminProduct} render = {(props) => <ProductContainerAdmin {...props} productList={productList} updateProduct={updateProduct} removeProduct={removeProduct}/>}/>
@@ -24,7 +23,6 @@ AdminPage.propTypes = {
     updateProduct: T.func.isRequired,
     removeProduct: T.func.isRequired,
     addProduct: T.func.isRequired,
-    showModalAddProduct: T.bool.isRequired
 }
 
 export default AdminPage;

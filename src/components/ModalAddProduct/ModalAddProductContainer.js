@@ -11,17 +11,20 @@ class ModalAddProductContainer extends React.Component {
             title: '',
             description: '',
             image: '',
-            price: ''
+            price: '',
+            openModal: false
         };
 
         this.onSubmitAdd = this.onSubmitAdd.bind(this);
         this.onChangeField = this.onChangeField.bind(this);
+        this.onOpenModal = this.onOpenModal.bind(this);
+        this.onCloseModal = this.onCloseModal.bind(this);
     }
 
     onSubmitAdd(e){
         e.preventDefault();
         this.props.addProduct(this.state);
-        this.props.onCloseModal()    
+        this.onCloseModal();
     }
 
     onChangeField(name){ 
@@ -32,14 +35,23 @@ class ModalAddProductContainer extends React.Component {
         }
     }
 
+    onOpenModal(){
+        this.setState({ openModal: true })
+    }
+
+    onCloseModal(){
+        this.setState({ openModal: false })
+    }
+
     render(){
         return(
             <ModalAddProductComponent 
                 {...this.state} 
                 onChangeField = {this.onChangeField}
                 onSubmitAdd = {this.onSubmitAdd}
-                onClose = {this.props.onCloseModal}
-                showModalStatus = {this.props.showModalStatus}
+                onClose = {this.onCloseModal}
+                onOpen = {this.onOpenModal}
+                openModal = {this.state.openModal}
             />          
         );
     }

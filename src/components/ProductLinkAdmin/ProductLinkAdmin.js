@@ -4,7 +4,10 @@ import { formatRoute } from 'react-router-named-routes';
 import T from 'prop-types';
 import { routes } from '../../routes';
 
-const ProductLinkAdmin = ({ title, id }) => (
+const ProductLinkAdmin = ({ 
+    title, 
+    id 
+}) => (
     <div>
         <Link to={formatRoute(routes.adminProduct, {id})} >{title}</Link>
     </div>

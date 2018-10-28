@@ -7,14 +7,42 @@ import { routes } from '../../routes';
 import ProductContainerAdmin from '../../components/ProductAdmin/ProductContainerAdmin';
 import ModalAddProductContainer from '../../components/ModalAddProduct/ModalAddProductContainer';
 
-const AdminPage = ({ productList, match, updateProduct, removeProduct, addProduct}) => (
+const AdminPage = ({ 
+    productList, 
+    match, 
+    updateProduct, 
+    removeProduct, 
+    addProduct
+}) => (
     <div>
         <ModalAddProductContainer addProduct={addProduct}/>
         <Switch>
-            <Route exact path={match.path} render = {() => productList.map(({id, title}) => <ProductLinkAdmin key={id} id={id} title={title}/>)}/>
-            <Route path={routes.adminProduct} render = {(props) => <ProductContainerAdmin {...props} productList={productList} updateProduct={updateProduct} removeProduct={removeProduct}/>}/>
+            <Route 
+                exact 
+                path={match.path} 
+                render = {() => (
+                    productList.map(({id, title}) => (
+                        <ProductLinkAdmin 
+                            key={id} 
+                            id={id} 
+                            title={title}
+                        />
+                        )
+                    )
+                )}
+            />
+            <Route 
+                path={routes.adminProduct} 
+                render = {renderProps => (
+                    <ProductContainerAdmin 
+                        {...renderProps} 
+                        productList={productList} 
+                        updateProduct={updateProduct} 
+                        removeProduct={removeProduct}
+                    />
+                )}
+            />
         </Switch>
-
     </div>
 );
 

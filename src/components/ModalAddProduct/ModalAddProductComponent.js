@@ -4,7 +4,17 @@ import T from 'prop-types';
 import Modal from 'react-responsive-modal';
 import s from './ModalAddProduct.module.css';
 
-const ModalAddProductComponent = ({ title, description, image, price, onSubmitAdd, onChangeField, openModal, onClose, onOpen }) => (
+const ModalAddProductComponent = ({ 
+    title, 
+    description, 
+    image, 
+    price, 
+    onSubmitAdd, 
+    onChangeField, 
+    openModal, 
+    onClose, 
+    onOpen 
+}) => (
     <>
         <button onClick={onOpen}>Add new product</button>
         <Modal open={openModal} onClose={onClose} center>

@@ -6,7 +6,11 @@ import HomePage from './pages/home/home';
 import { routes } from './routes';
 import { products } from './data/products';
 
-const getProducts = async() => products;
+const getProducts = async() => new Promise(
+  (resolve) => {
+    setTimeout(() => resolve(products), 1000)
+  }
+);
 
 
 class App extends Component {
@@ -54,7 +58,7 @@ class App extends Component {
     let products = [...this.state.products];
     
     newProduct.price = Number(newProduct.price);
-    newProduct.id = Math.floor(Math.random() * 1000)
+    newProduct.id = Math.floor(Math.random() * 1000);
 
     products.push(newProduct);
     this.setState({ products });
@@ -73,17 +77,18 @@ class App extends Component {
         <Route  
           path={routes.home} 
           render = {
-            renderProps => 
-            <HomePage 
-              {...renderProps}
-              productList={this.state.products}
-            />
+            renderProps => (
+              <HomePage 
+                {...renderProps}
+                productList={this.state.products}
+              />
+            )
           }
         />
         <Route 
           path={routes.admin} 
           render={
-            renderProps => 
+            renderProps => (
               <AdminPage 
                 {...renderProps} 
                 productList={this.state.products} 
@@ -91,7 +96,8 @@ class App extends Component {
                 removeProduct={this.removeProduct}
                 addProduct={this.addProduct}
               />
-          } 
+            )
+          }
         />
 
       </div>

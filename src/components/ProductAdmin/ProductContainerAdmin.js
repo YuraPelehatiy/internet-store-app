@@ -24,8 +24,6 @@ class ProductContainerAdmin extends React.Component {
         this.props.history.push(routes.admin)
     }
 
-    
-
     onChangeField(name){ 
         return (e) => {
             this.setState({

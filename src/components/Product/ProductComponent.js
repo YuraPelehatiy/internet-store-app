@@ -1,7 +1,12 @@
 import React from 'react';
 import { productPropTypes } from '../../schemes/product';
 
-const ProductComponent = ({ id, title, description, image, price }) => (
+const ProductComponent = ({ 
+    title, 
+    description, 
+    image, 
+    price 
+}) => (
     <div>
         <div>
             Title: {title}

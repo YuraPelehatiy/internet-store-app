@@ -2,7 +2,16 @@ import React from 'react';
 import { productPropTypes } from '../../schemes/product';
 import T from 'prop-types';
 
-const ProductComponentAdmin = ({ id, title, description, image, price, onSubmitUpdate, onChangeField, handleOnRemove }) => (
+const ProductComponentAdmin = ({ 
+    id, 
+    title, 
+    description, 
+    image, 
+    price, 
+    onSubmitUpdate, 
+    onChangeField, 
+    handleOnRemove 
+}) => (
     <form onSubmit = {onSubmitUpdate}>
         <div>
             <input type="text" name="title" value={title} onChange={onChangeField('title')}/>

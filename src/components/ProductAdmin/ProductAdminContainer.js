@@ -1,10 +1,10 @@
 import React from 'react';
-import ProductComponentAdmin from './ProductComponentAdmin';
+import ProductAdminComponent from './ProductAdminComponent';
 import { productPropTypes } from '../../schemes/product';
 import T from 'prop-types';
 import { routes } from '../../routes';
 
-class ProductContainerAdmin extends React.Component {
+class ProductAdminContainer extends React.Component {
     constructor(props){
         super(props);
         const { match: { params }, productList } = this.props;
@@ -35,7 +35,7 @@ class ProductContainerAdmin extends React.Component {
 
     render(){
         return(
-            <ProductComponentAdmin 
+            <ProductAdminComponent 
                 {...this.state} 
                 onSubmitUpdate={this.onSubmitUpdate} 
                 handleOnRemove={this.props.removeProduct}
@@ -45,10 +45,10 @@ class ProductContainerAdmin extends React.Component {
     }
 } 
 
-ProductContainerAdmin.propTypes = {
+ProductAdminContainer.propTypes = {
     productList: T.arrayOf(productPropTypes),
     updateProduct: T.func.isRequired,
     removeProduct: T.func.isRequired,
 };
 
-export default ProductContainerAdmin;
+export default ProductAdminContainer;

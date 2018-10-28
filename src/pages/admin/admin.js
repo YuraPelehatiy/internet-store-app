@@ -4,7 +4,7 @@ import { productPropTypes } from '../../schemes/product';
 import ProductLinkAdmin from '../../components/ProductLinkAdmin/ProductLinkAdmin'
 import { Route, Switch } from 'react-router-dom';
 import { routes } from '../../routes';
-import ProductContainerAdmin from '../../components/ProductAdmin/ProductContainerAdmin';
+import ProductAdminContainer from '../../components/ProductAdmin/ProductAdminContainer';
 import ModalAddProductContainer from '../../components/ModalAddProduct/ModalAddProductContainer';
 
 const AdminPage = ({ 
@@ -34,7 +34,7 @@ const AdminPage = ({
             <Route 
                 path={routes.adminProduct} 
                 render = {renderProps => (
-                    <ProductContainerAdmin 
+                    <ProductAdminContainer 
                         {...renderProps} 
                         productList={productList} 
                         updateProduct={updateProduct} 

@@ -2,7 +2,7 @@ import React from 'react';
 import { productPropTypes } from '../../schemes/product';
 import T from 'prop-types';
 
-const ProductComponentAdmin = ({ 
+const ProductAdminComponent = ({ 
     id, 
     title, 
     description, 
@@ -37,11 +37,11 @@ const ProductComponentAdmin = ({
     </form>
 );
 
-ProductComponentAdmin.propTypes = {
+ProductAdminComponent.propTypes = {
     ...productPropTypes,
     onChangeField: T.func.isRequired,
     onSubmitUpdate: T.func.isRequired,
     handleOnRemove: T.func.isRequired
 };
 
-export default ProductComponentAdmin;
+export default ProductAdminComponent;

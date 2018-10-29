@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Desktop.css';
 import { Link, Route } from 'react-router-dom';
-import AdminPage from './pages/admin/admin';
-import HomePage from './pages/home/home';
-import { routes } from './routes';
-import { products } from './data/products';
-
-const getProducts = async() => new Promise(
-  (resolve) => {
-    setTimeout(() => resolve(products), 1000)
-  }
-);
-
+import AdminPage from '../pages/admin/admin';
+import HomePage from '../pages/home/home';
+import { routes } from '../routes';
+import { products } from '../data/products';
 
 class App extends Component {
   constructor(){
@@ -27,10 +20,7 @@ class App extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
-  async componentDidMount(){
-    let products = await getProducts();
-    this.setState({ products, loading: false });
-  }
+  
 
   updateProduct(newProduct){
     this.setState({
@@ -65,15 +55,14 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.loading){
-      return <h1>Loading...</h1>
-    }
-
     return (
       <div className="App">
-        <Link to={routes.home}>Home</Link>
-        /
-        <Link to={routes.admin}>Admin</Link>
+        <div className="Navigation">
+          <Link to={routes.home}>Home</Link>
+          /
+          <Link to={routes.admin}>Admin</Link>
+        </div>
+        
         <Route  
           path={routes.home} 
           render = {
@@ -87,17 +76,7 @@ class App extends Component {
         />
         <Route 
           path={routes.admin} 
-          render={
-            renderProps => (
-              <AdminPage 
-                {...renderProps} 
-                productList={this.state.products} 
-                updateProduct={this.updateProduct} 
-                removeProduct={this.removeProduct}
-                addProduct={this.addProduct}
-              />
-            )
-          }
+          component={AdminPage}
         />
 
       </div>

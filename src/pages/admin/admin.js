@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import { routes } from '../../routes';
 import ProductAdminContainer from '../../components/ProductAdmin/ProductAdminContainer';
 import ModalAddProductContainer from '../../components/ModalAddProduct/ModalAddProductContainer';
+import ProductList from './ProductList/ProductListContainer';
 
 const AdminPage = ({ 
     productList, 
@@ -20,16 +21,7 @@ const AdminPage = ({
             <Route 
                 exact 
                 path={match.path} 
-                render = {() => (
-                    productList.map(({id, title}) => (
-                        <ProductLinkAdmin 
-                            key={id} 
-                            id={id} 
-                            title={title}
-                        />
-                        )
-                    )
-                )}
+                component={ProductList}
             />
             <Route 
                 path={routes.adminProduct} 

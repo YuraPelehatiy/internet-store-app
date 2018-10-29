@@ -6,15 +6,21 @@ import { routes } from '../../routes';
 
 const ProductLinkAdmin = ({ 
     title, 
-    id 
+    id,
+    updateProductModal,
+    removeProduct 
 }) => (
     <div>
-        <Link to={formatRoute(routes.adminProduct, {id})} >{title}</Link>
+        <Link to={formatRoute(routes.adminProduct, {id})} >
+            {title}
+            <button onClick={(e) => updateProductModal(id, e)}>Edit</button>
+            <button onClick={(e) => removeProduct(id, e)}>Remove</button>
+        </Link>
     </div>
 )
 
 ProductLinkAdmin.propTypes = {
-    id: T.number.isRequired,
+    id: T.string.isRequired,
     title: T.string.isRequired
 }
 

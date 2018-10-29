@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { formatRoute } from 'react-router-named-routes';
 import T from 'prop-types';
 import { routes } from '../../routes';
+import s from './ProductLink.module.css'
 
 const ProductLink = ({ 
     title, 
@@ -10,7 +11,7 @@ const ProductLink = ({
     image, 
     price 
 }) => (
-    <div>
+    <div className={s.ProductLink}>
         <Link to={formatRoute(routes.product, {id})}>
             <div>
                 <img src={image} alt={title}/>
@@ -26,7 +27,7 @@ const ProductLink = ({
 )
 
 ProductLink.propTypes = {
-    id: T.number.isRequired,
+    id: T.string.isRequired,
     title: T.string.isRequired,
     image: T.string.isRequired,
     price: T.number.isRequired

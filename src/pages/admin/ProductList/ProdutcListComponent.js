@@ -2,7 +2,9 @@ import React from 'react';
 import ProductLinkAdmin from '../../../components/ProductLinkAdmin/ProductLinkAdmin';
 
 const ProdutcListComponent = ({
-    products
+    products,
+    updateProductModal,
+    removeProduct 
 }) => (
     <div>
         {products.map(({id, title}) => (
@@ -10,6 +12,8 @@ const ProdutcListComponent = ({
                     key={id} 
                     id={id} 
                     title={title}
+                    updateProductModal={updateProductModal}
+                    removeProduct={removeProduct}
                 />
             )
         )}

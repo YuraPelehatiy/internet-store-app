@@ -18,4 +18,16 @@ export const AdminProducts = {
     getProductsById(id){
         return axios.get(`/api/v1/products/${id}`);
     },
+
+    createProduct(body){
+        return axios.post('/api/v1/products', body);
+    },
+
+    updateProductById(id, body){
+        return axios.patch(`/api/v1/products/${id}`, body);
+    },
+
+    removeProductById(id){
+        return axios.delete(`/api/v1/products/${id}`);
+    }
 }

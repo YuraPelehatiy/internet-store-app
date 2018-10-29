@@ -3,7 +3,6 @@ import { productPropTypes } from '../../schemes/product';
 import T from 'prop-types';
 
 const ProductAdminComponent = ({ 
-    id, 
     title, 
     description, 
     image, 
@@ -32,7 +31,7 @@ const ProductAdminComponent = ({
             <button type="submit">Update</button>
         </div>
         <div>
-            <button onClick = {() => handleOnRemove(id)}>Remove</button>
+            <button onClick = {handleOnRemove}>Remove</button>
         </div>
     </form>
 );

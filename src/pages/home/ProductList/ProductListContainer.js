@@ -9,7 +9,6 @@ class ProductListContainer extends React.Component {
         this.state = {
           products: [],
           loading: true,
-          modal: false
         };
     }
 
@@ -22,16 +21,6 @@ class ProductListContainer extends React.Component {
         });
     }
 
-    updateProductModal(id, e){
-        e.preventDefault();
-        
-    }
-
-    async removeProduct(id, e){
-        e.preventDefault();
-        await ProductListContainer.removeDataById(id);
-    }
-
     render(){
         if(this.state.loading){
             return <h1>Loading...</h1>
@@ -41,8 +30,6 @@ class ProductListContainer extends React.Component {
             <ProdutcListComponent
                 {...this.props}
                 {...this.state}
-                updateProductModal = {this.updateProductModal}
-                removeProduct = {this.removeProduct}
             />
         );
     }
@@ -50,18 +37,6 @@ class ProductListContainer extends React.Component {
 
 ProductListContainer.fetchData = () => Promise.all([
     Api.AdminProducts.fetchProducts(),
-])
-
-ProductListContainer.createData = (product) => Promise.all([
-    Api.AdminProducts.createProduct(product),
-])
-
-ProductListContainer.getDataById = (id) => Promise.all([
-    Api.AdminProducts.getProductsById(id),
-])
-
-ProductListContainer.removeDataById = (id) => Promise.all([
-    Api.AdminProducts.removeProductById(id),
 ])
 
 export default ProductListContainer;

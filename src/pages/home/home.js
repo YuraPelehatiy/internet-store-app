@@ -21,6 +21,7 @@ const HomePage = ({
                 path={routes.product} 
                 component={ProductContainer} 
             />
+            <Route render={() => <h2>Page Not Found</h2>}/>
         </Switch>
     </div>
 );

@@ -1,12 +1,13 @@
 import React from 'react';
 import ProductLinkAdmin from '../../../components/ProductLinkAdmin/ProductLinkAdmin';
+import s from './ProductList.module.css';
 
 const ProdutcListComponent = ({
     products,
     updateProductModal,
     removeProduct 
 }) => (
-    <div>
+    <div className={s.ProductListAdmin}>
         {products.map(({id, title}) => (
                 <ProductLinkAdmin 
                     key={id} 

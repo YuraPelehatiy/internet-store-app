@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { formatRoute } from 'react-router-named-routes';
 import T from 'prop-types';
 import { routes } from '../../routes';
+import s from './ProductLinkAdmin.module.css';
 
 const ProductLinkAdmin = ({ 
     title, 
@@ -10,7 +11,7 @@ const ProductLinkAdmin = ({
     updateProductModal,
     removeProduct 
 }) => (
-    <div>
+    <div className={s.ProductLinkAdmin}>
         <Link to={formatRoute(routes.adminProduct, {id})} >
             {title}
             <button onClick={(e) => updateProductModal(id, e)}>Edit</button>

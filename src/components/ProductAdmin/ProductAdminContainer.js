@@ -36,7 +36,6 @@ class ProductAdminContainer extends React.Component {
     async removeProduct(){
         const { id } = this.state;
         await ProductAdminContainer.removeDataById(id);
-        this.props.history.go(-1);
     }
 
     async componentDidMount(){

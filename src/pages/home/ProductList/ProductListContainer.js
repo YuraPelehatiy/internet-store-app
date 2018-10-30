@@ -36,7 +36,7 @@ class ProductListContainer extends React.Component {
 }
 
 ProductListContainer.fetchData = () => Promise.all([
-    Api.AdminProducts.fetchProducts(),
+    Api.UserProducts.fetchProducts(),
 ])
 
 export default ProductListContainer;

@@ -31,3 +31,13 @@ export const AdminProducts = {
         return axios.delete(`/api/v1/products/${id}`);
     }
 }
+
+export const UserProducts = {
+    fetchProducts(){
+        return axios.get(`/api/v1/products`);
+    },
+
+    getProductsById(id){
+        return axios.get(`/api/v1/products/${id}`);
+    },
+}

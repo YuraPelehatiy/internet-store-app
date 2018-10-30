@@ -1,8 +1,5 @@
 import React from 'react';
 import ProductAdminComponent from './ProductAdminComponent';
-/* import { productPropTypes } from '../../schemes/product';
-import T from 'prop-types';
-import { routes } from '../../routes'; */
 import * as Api from '../../api/Api';
 class ProductAdminContainer extends React.Component {
     constructor(props){
@@ -29,22 +26,23 @@ class ProductAdminContainer extends React.Component {
         e.preventDefault();
         const { id, title, description, image, price, } = this.state;
         
-        await ProductAdminContainer.updateDataById(id, {title, description, image, price,});
+        await Api.AdminProducts.updateProductById(id, {title, description, image, price,});
         this.props.history.go(-1);
     }
     
     async removeProduct(){
         const { id } = this.state;
-        await ProductAdminContainer.removeDataById(id);
+        await Api.AdminProducts.removeProductById(id);
     }
 
     async componentDidMount(){
-        let [productData]  = await ProductAdminContainer.getDataById(this.props.match.params.id);
+        let productData  = await Api.AdminProducts.getProductsById(this.props.match.params.id);
         let product = productData.data[0];
-        
-        const {id, title, description, image, price } = product;
 
-        this.setState({ id, title, description, image, price, loading: false });
+        this.setState({ 
+            ...product, 
+            loading: false 
+        });
     }
 
     render(){
@@ -62,23 +60,5 @@ class ProductAdminContainer extends React.Component {
         );
     }
 }
-
-ProductAdminContainer.getDataById = (id) => Promise.all([
-    Api.AdminProducts.getProductsById(id)
-]);
-
-ProductAdminContainer.updateDataById = (id, product) => Promise.all([
-    Api.AdminProducts.updateProductById(id, product)
-]);
-
-ProductAdminContainer.removeDataById = (id) => Promise.all([
-    Api.AdminProducts.removeProductById(id)
-]);
-
-ProductAdminContainer.propTypes = {
-    //productList: T.arrayOf(productPropTypes),
-    //updateProduct: T.func.isRequired,
-    //removeProduct: T.func.isRequired,
-};
 
 export default ProductAdminContainer;

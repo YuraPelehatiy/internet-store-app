@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-modal": "^3.6.1",
     "react-responsive-modal": "^3.4.0",
     "react-router-dom": "^4.3.1",
     "react-router-named-routes": "0.0.23",
@@ -25,5 +27,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:3111",
+  "devDependencies": {
+    "http-proxy": "^1.17.0",
+    "node-http-proxy": "^0.2.3"
+  }
 }

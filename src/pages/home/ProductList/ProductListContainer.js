@@ -13,10 +13,10 @@ class ProductListContainer extends React.Component {
     }
 
     async componentDidMount(){
-        let [ productsData ] = await ProductListContainer.fetchData();
+        let { data: products } = await Api.Products.fetchProducts();
 
         this.setState({ 
-            products: productsData.data, 
+            products, 
             loading: false 
         });
     }
@@ -34,9 +34,5 @@ class ProductListContainer extends React.Component {
         );
     }
 }
-
-ProductListContainer.fetchData = () => Promise.all([
-    Api.UserProducts.fetchProducts(),
-])
 
 export default ProductListContainer;

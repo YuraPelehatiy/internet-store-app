@@ -8,14 +8,14 @@ import s from './ProductLinkAdmin.module.css';
 const ProductLinkAdmin = ({ 
     title, 
     id,
-    updateProductModal,
-    removeProduct 
+    showModalToUpdateProduct,
+    showModalToRemoveProduct
 }) => (
     <div className={s.ProductLinkAdmin}>
         <Link to={formatRoute(routes.adminProduct, {id})} >
             {title}
-            <button onClick={(e) => updateProductModal(id, e)}>Edit</button>
-            <button onClick={(e) => removeProduct(id, e)}>Remove</button>
+            <button onClick={(e) => showModalToUpdateProduct(id, e)}>Edit</button>
+            <button onClick={(e) => showModalToRemoveProduct(id, e)}>Remove</button>
         </Link>
     </div>
 )

@@ -32,7 +32,7 @@ export const AdminProducts = {
     }
 }
 
-export const UserProducts = {
+export const Products = {
     fetchProducts(){
         return axios.get(`/api/v1/products`);
     },

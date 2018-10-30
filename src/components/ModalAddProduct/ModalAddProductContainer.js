@@ -1,8 +1,5 @@
 import React from 'react';
 import ModalAddProductComponent from './ModalAddProductComponent';
-import { productPropTypes } from '../../schemes/product';
-import T from 'prop-types'
-import * as Api from '../../api/Api'
 class ModalAddProductContainer extends React.Component {
     constructor(props){
         super(props);
@@ -29,7 +26,7 @@ class ModalAddProductContainer extends React.Component {
             image: this.state.image,
             price: this.state.price
         }
-        await ModalAddProductContainer.createData(newProduct);
+        this.props.createProduct(newProduct);
         this.onCloseModal();
     }
 
@@ -62,10 +59,6 @@ class ModalAddProductContainer extends React.Component {
         );
     }
 }
-
-ModalAddProductContainer.createData = (product) => Promise.all([
-    Api.AdminProducts.createProduct(product)
-]); 
 
 ModalAddProductContainer.propTypes = {
     //productList: T.arrayOf(productPropTypes),

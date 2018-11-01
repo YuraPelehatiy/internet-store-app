@@ -85,7 +85,7 @@ class ProductListAdminContainer extends React.Component {
     async removeProduct(id){
         let res = await Api.AdminProducts.removeProductById(id);
 
-        if (res.data.success){
+        if (res && res.data && res.data.success){
             let index = this.state.products.findIndex(i => i.id === id);
             
             let products = [...this.state.products];

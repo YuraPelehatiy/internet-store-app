@@ -27,6 +27,14 @@ class ModalAddProductContainer extends React.Component {
             price: this.state.price
         }
         this.props.createProduct(newProduct);
+        
+        this.setState({
+            title: '',
+            description: '',
+            image: '',
+            price: '',
+        });
+
         this.onCloseModal();
     }
 
@@ -59,10 +67,5 @@ class ModalAddProductContainer extends React.Component {
         );
     }
 }
-
-ModalAddProductContainer.propTypes = {
-    //productList: T.arrayOf(productPropTypes),
-    //addProduct: T.func.isRequired
-};
 
 export default ModalAddProductContainer;

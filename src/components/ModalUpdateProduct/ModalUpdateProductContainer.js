@@ -58,9 +58,4 @@ class ModalUpdateProductContainer extends React.Component {
     }
 }
 
-ModalUpdateProductContainer.propTypes = {
-    //productList: T.arrayOf(productPropTypes),
-    //addProduct: T.func.isRequired
-};
-
 export default ModalUpdateProductContainer;

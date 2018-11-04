@@ -4,11 +4,24 @@ import * as productsOperations from '../../../modules/products/productsOperation
 import * as productsSelectors from '../../../modules/products/productsSelectors';
 import * as cartActions from '../../../modules/cart/cartActions';
 import ProdutcListComponent from './ProdutcListComponent';
+import ProductLink from '../../../components/ProductLink/ProductLink';
 
 class ProductListContainer extends React.Component {
     componentDidMount(){
         this.props.fetchProducts()
     }
+
+    renderProductLink = (item, index) => (
+        <ProductLink 
+            key={item.id} 
+            id={item.id} 
+            title={item.title}
+            image={item.image}
+            price={item.price}
+            onActionButtonClick={this.props.addItemToCart}
+            actionButtonTitle="Add to Cart"
+        />
+    )
 
     render(){
         if(this.props.isLoading){
@@ -27,7 +40,7 @@ class ProductListContainer extends React.Component {
         return(
             <ProdutcListComponent
                 products={this.props.products}
-                addItemToCart={this.props.addItemToCart}
+                renderProductLink={this.renderProductLink}
             />
         );
     }

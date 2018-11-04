@@ -4,14 +4,20 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-modal": "^3.6.1",
+    "react-redux": "^5.1.0",
     "react-responsive-modal": "^3.4.0",
     "react-router-dom": "^4.3.1",
     "react-router-named-routes": "0.0.23",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.3",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,7 +36,14 @@
   ],
   "proxy": "http://localhost:3111",
   "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "http-proxy": "^1.17.0",
-    "node-http-proxy": "^0.2.3"
+    "node-http-proxy": "^0.2.3",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-logger": "^3.0.6"
   }
 }

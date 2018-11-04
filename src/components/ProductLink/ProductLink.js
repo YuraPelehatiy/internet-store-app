@@ -9,7 +9,8 @@ const ProductLink = ({
     title, 
     id, 
     image, 
-    price 
+    price,
+    addItemToCart, 
 }) => (
     <div className={s.ProductLink}>
         <Link to={formatRoute(routes.product, {id})}>
@@ -23,6 +24,7 @@ const ProductLink = ({
                 Price: {price}
             </div>
         </Link>
+        <button onClick={() => addItemToCart({id, title, image, price})}>Add to Cart</button>
     </div>
 )
 

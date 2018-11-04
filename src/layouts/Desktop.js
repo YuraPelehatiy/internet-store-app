@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './Desktop.css';
-import { Link, Route, Switch } from 'react-router-dom';
 import { routes } from '../routes';
-import AdminPage from '../pages/admin/admin';
-import HomePage from '../pages/home/home';
-import CartPage from '../pages/cart/cart';
-import CartPageModal from '../pages/cart/CartModal/CartModal';
+import AdminPage from '../pages/Admin/AdminPage';
+import HomePage from '../pages/Home/HomePage';
+import CartPage from '../pages/Cart/CartPage';
+import CartPageModal from '../pages/Cart/CartModal/CartModal';
+import AboutPage from '../pages/About/AboutPage';
+import ContactPage from '../pages/Contact/ContactPage';
+import PrivacyPolicyPage from '../pages/PrivacyPolicy/PrivacyPolicyPage';
+import TermsAndConditionsPage from '../pages/TermsAndConditions/TermsAndConditionsPage';
+import NotFoundPage from '../pages/NotFound/NotFoundPage';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 class App extends Component {
-  constructor(){
-    super();
-
-    this.state = {}
-  }
+  previousLocation = this.props.location;
 
   componentWillUpdate(nextProps){
     let { location } = this.props;
 
-    // set previousLocation if props.location is not modal
+    // Set previousLocation if props.location is not modal
     if (
       nextProps.history.action !== "POP" &&
       (!location.state || !location.state.modal)
@@ -37,12 +40,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="Navigation">
-          <Link className="NavigationLink" to={routes.home}>Home</Link>
-          /
-          <Link className="NavigationLink" to={routes.admin}>Admin</Link>
-          /
-          <Link className="NavigationLink" to={{ pathname: routes.cart, state: {modal: true} }}>Cart</Link>
+          
         </div>
+        <Header/>
         <Switch location={isModal ? this.previousLocation : location}>
           <Route 
             path={routes.admin} 
@@ -53,12 +53,29 @@ class App extends Component {
             component={CartPage}
           />
           <Route  
+            path={routes.about} 
+            component={AboutPage}
+          />
+          <Route  
+            path={routes.contact} 
+            component={ContactPage}
+          />
+          <Route  
+            path={routes.privacypolicy} 
+            component={PrivacyPolicyPage}
+          />
+          <Route  
+            path={routes.termsandconditions} 
+            component={TermsAndConditionsPage}
+          />
+          <Route  
             path={routes.home} 
             component={HomePage}
           />
-          <Route render={() => <h2>Page Not Found</h2>}/>
+          <Route component={NotFoundPage}/>
         </Switch>
         {isModal ? <Route path={routes.cart} component={CartPageModal}/> : null}
+        <Footer/>
       </div>
     );
   }

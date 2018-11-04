@@ -4,6 +4,7 @@ import s from './ProductList.module.css';
 
 const ProdutcListComponent = ({
     products,
+    addItemToCart,
 }) => (
     <div className={s.ProductList}>
         {products.map(({id, title, image, price}) => (
@@ -13,6 +14,7 @@ const ProdutcListComponent = ({
                     title={title}
                     image={image}
                     price={price}
+                    addItemToCart={addItemToCart}
                 />
             )
         )}

@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { routes } from '../../routes';
 import ProductContainer from '../../components/Product/ProductContainer';
 import ProductListContainer from './ProductList/ProductListContainer';
+import NotFoundPage from '../NotFound/NotFoundPage';
 
 const HomePage = ({ 
     match, 
@@ -18,7 +19,7 @@ const HomePage = ({
                 path={routes.product} 
                 component={ProductContainer} 
             />
-            <Route render={() => <h2>Page Not Found</h2>}/>
+            <Route component={NotFoundPage}/>
         </Switch>
     </div>
 );

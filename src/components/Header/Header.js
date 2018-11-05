@@ -12,7 +12,7 @@ const Header = ({ cartItemsCount }) => (
                    <Link to={routes.about}>About Us</Link>
                </li>
                <li className={s.detailsLinksItem}>
-                   <Link to={routes.contact}>Contact Us</Link>
+                   <Link to={routes.contact}>Contact</Link>
                </li>
                <li className={s.detailsLinksItem}>
                    <Link to={routes.privacypolicy}>Privacy Policy</Link>

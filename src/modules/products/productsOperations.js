@@ -15,6 +15,6 @@ export const fetchProducts = () => async (dispatch) => {
             entities
         }));
     } catch (err) {
-        dispatch(actions.fetchProductsEror(err.message));
+        dispatch(actions.fetchProductsError(err.message));
     }
 }

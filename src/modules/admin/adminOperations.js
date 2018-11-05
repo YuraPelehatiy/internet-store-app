@@ -15,6 +15,56 @@ export const fetchProducts = () => async (dispatch) => {
             entities
         }));
     } catch (err) {
-        dispatch(actions.fetchProductsEror(err.message));
+        dispatch(actions.fetchProductsError(err.message));
+    }
+}
+
+export const createProduct = (newProduct) => async (dispatch) => {
+    try {
+        dispatch(actions.createProductStart());
+
+        const res = await Api.AdminProducts.createProduct(newProduct);
+        const { result: ids, entities } = normalize(res.data, schemes.AdminProductCollection);
+
+        dispatch(actions.createProductOk({
+            ids,
+            entities
+        }));
+    } catch (err) {
+        dispatch(actions.createProductError(err.message));
+    }
+}
+
+export const updateProduct = (productId, productBody) => async (dispatch) => {
+    try {
+        dispatch(actions.updateProductStart());
+
+        const res = await Api.AdminProducts.updateProductById(productId, productBody);
+
+        const { result: ids, entities } = normalize(res.data, schemes.AdminProductCollection);
+        
+        dispatch(actions.updateProductOk({
+            ids,
+            entities
+        }));
+    } catch (err) {
+        dispatch(actions.updateProductError(err.message));
+    }
+}
+
+export const removeProduct = (id) => async (dispatch) => {
+    try {
+        dispatch(actions.removeProductStart());
+
+        const res = await Api.AdminProducts.removeProductById(id);
+
+        if (res && res.data && res.data.success){
+            const ids = [id]
+            dispatch(actions.removeProductOk({
+                ids
+            }));
+        }
+    } catch (err) {
+        dispatch(actions.removeProductError(err.message));
     }
 }

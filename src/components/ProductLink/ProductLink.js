@@ -14,18 +14,18 @@ const ProductLink = ({
     actionButtonTitle, 
 }) => (
     <div className={s.ProductLink}>
-        <Link to={formatRoute(routes.product, {id})}>
+        <Link to={formatRoute(routes.product, {id})} className={s.linkAnchor}>
             <div>
-                <img src={image} alt={title}/>
+                <img src={image} alt={title} className={s.productImage} title={title}/>
             </div>
-            <div>
-                Title: {title}
-            </div>
-            <div>
-                Price: {price}
+            <h3 className={s.productTitle}>
+                {title}
+            </h3>
+            <div className={s.price}>
+                {price} y.e
             </div>
         </Link>
-        <button onClick={() => onActionButtonClick({id})}>{actionButtonTitle}</button>
+        <button className={s.actionButton} onClick={() => onActionButtonClick({id})}>{actionButtonTitle}</button>
     </div>
 )
 

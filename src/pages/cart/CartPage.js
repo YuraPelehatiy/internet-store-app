@@ -11,10 +11,7 @@ const CartPage = ({
         <div>
             <h2>Cart list</h2>
             {items.map((item) => 
-                <ProductLink 
-                    key={item.id}
-                    {...item} 
-                />
+                renderProductLink(item)
             )}
             <div>
                 Total price: {totalPrice}
@@ -22,6 +19,18 @@ const CartPage = ({
         </div>
     );
 }
+
+const renderProductLink = (item, index) => (
+    <ProductLink 
+        key={item.id} 
+        id={item.id} 
+        title={item.title}
+        image={item.image}
+        price={item.price}
+        onActionButtonClick={() => {}}
+        actionButtonTitle="Remove from Cart"
+    />
+)
 
 const mapStateToProps = (state) => ({
     items: cartSelectors.getProducts(state),

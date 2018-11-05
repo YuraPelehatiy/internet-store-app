@@ -1,13 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import ProdutcListAdminComponent from './ProdutcListAdminComponent';
-import * as Api from '../../../api/Api';
+import * as adminOperations from '../../../modules/admin/adminOperations';
+import * as adminSelectors from '../../../modules/admin/adminSelectors';
 
 class ProductListAdminContainer extends React.Component {
     constructor(){
         super();
     
         this.state = {
-          products: [],
           loading: true,
           showModalUpdate: false,
           showModalRemove: false,
@@ -25,20 +26,14 @@ class ProductListAdminContainer extends React.Component {
         this.handleAnswerToRemoveProduct = this.handleAnswerToRemoveProduct.bind(this);
     }
 
-    async componentDidMount(){
-        let productsData = await Api.AdminProducts.fetchProducts();
-        let products = productsData.data;
-
-        this.setState({ 
-            products, 
-            loading: false 
-        });
+    componentDidMount(){
+        this.props.fetchProducts();
     }
 
     showModalToUpdateProduct(id ,e){
         e.preventDefault();
-        let index = this.state.products.findIndex(i => i.id === id);
-        let productToEdit = this.state.products[index];
+        let index = this.props.products.findIndex(i => i.id === id);
+        let productToEdit = this.props.products[index];
 
         this.setState({ 
             showModalUpdate: true,
@@ -69,48 +64,30 @@ class ProductListAdminContainer extends React.Component {
         this.setState({ showModalRemove: false });
     }
 
-    async updateProduct(id, product){
-        let res = await Api.AdminProducts.updateProductById(id, product);
-        
-        let index = this.state.products.findIndex(i => i.id === id);
-        let products = [...this.state.products];
-
-        products[index] = res.data[0];
-
-        this.setState({
-            products
-        })
+    updateProduct(id, product){
+        this.props.updateProduct(id, product)
     }
 
-    async removeProduct(id){
-        let res = await Api.AdminProducts.removeProductById(id);
-
-        if (res && res.data && res.data.success){
-            let index = this.state.products.findIndex(i => i.id === id);
-            
-            let products = [...this.state.products];
-            products.splice(index, 1);
-            
-            this.setState({
-                products
-            })
-        }
+    removeProduct(id){
+        this.props.removeProduct(id)
     }
 
-    async createProduct(product){
-        let res = await Api.AdminProducts.createProduct(product);
-        
-        let products = [...this.state.products];
-        products.push(res.data[0]);
-        
-        this.setState({
-            products
-        });
+    createProduct(newProduct){
+        this.props.createProduct(newProduct);
     }
     
     render(){
-        if(this.state.loading){
+        if(this.props.isLoading){
             return <h1>Loading...</h1>
+        }
+
+        if(this.props.isError){
+            return(
+                <>
+                    <h1>Error...</h1>
+                    <p>{this.props.error}</p>
+                </>
+            );
         }
 
         return(
@@ -130,4 +107,22 @@ class ProductListAdminContainer extends React.Component {
     }
 }
 
-export default ProductListAdminContainer;
+const mapStateToProps = state => ({
+    products: adminSelectors.getProducst(state),
+    isLoading: state.admin.isLoading,
+    isError: !!state.admin.error,
+    error: state.admin.error,
+});
+
+const mapStateToDispatch = {
+    fetchProducts: adminOperations.fetchProducts,
+    createProduct: adminOperations.createProduct,
+    updateProduct: adminOperations.updateProduct,
+    removeProduct: adminOperations.removeProduct,
+}
+
+
+export default connect(
+    mapStateToProps, 
+    mapStateToDispatch,
+)(ProductListAdminContainer);

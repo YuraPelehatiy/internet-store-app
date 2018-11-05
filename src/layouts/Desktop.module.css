@@ -11,3 +11,8 @@
 .NavigationLink {
   padding: 10px;
 }
+
+.Content {
+  width: 70%;
+  margin: auto;
+}

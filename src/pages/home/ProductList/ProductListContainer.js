@@ -8,7 +8,7 @@ import ProductLink from '../../../components/ProductLink/ProductLink';
 
 class ProductListContainer extends React.Component {
     componentDidMount(){
-        this.props.fetchProducts()
+        this.props.fetchProducts();
     }
 
     renderProductLink = (item, index) => (
@@ -21,7 +21,7 @@ class ProductListContainer extends React.Component {
             onActionButtonClick={this.props.addItemToCart}
             actionButtonTitle="Add to Cart"
         />
-    )
+    );
 
     render(){
         if(this.props.isLoading){
@@ -50,7 +50,7 @@ const mapStateToProps = state => ({
     products: productsSelectors.getProducst(state),
     isLoading: state.products.isLoading,
     isError: !!state.products.error,
-    error: !!state.products.error,
+    error: state.products.error,
 });
 
 const mapStateToDispatch = {

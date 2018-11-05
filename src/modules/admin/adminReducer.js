@@ -24,6 +24,53 @@ export default handleActions(
             isLoading: false,
             error: action.payload.message,
         }),
+        [constants.CREATE_PRODUCT_START]: (state) => ({
+            ...state,
+            error: null,
+        }),
+        [constants.CREATE_PRODUCT_OK]: (state, action) => ({
+            ...state,
+            isLoading: false,
+            products: [action.payload.ids].concat(state.products),
+        }),
+        [constants.CREATE_PRODUCT_ERROR]: (state, action) => ({
+            ...state,
+            isLoading: false,
+            error: action.payload.message,
+        }),
+        [constants.UPDATE_PRODUCT_START]: (state) => ({
+            ...state,
+            error: null,
+        }),
+        [constants.UPDATE_PRODUCT_OK]: (state, action) => ({
+            ...state,
+            isLoading: false,
+            products: state.products.map(product => {
+                if(product === action.payload.ids[0]){
+                    return action.payload.ids[0]
+                }
+                return product;
+            }),
+        }),
+        [constants.UPDATE_PRODUCT_ERROR]: (state, action) => ({
+            ...state,
+            isLoading: false,
+            error: action.payload.message,
+        }),
+        [constants.REMOVE_PRODUCT_START]: (state) => ({
+            ...state,
+            error: null,
+        }),
+        [constants.REMOVE_PRODUCT_OK]: (state, action) => ({
+            ...state,
+            isLoading: false,
+            products: state.products.filter(product => product !== action.payload.ids[0]),
+        }),
+        [constants.REMOVE_PRODUCT_ERROR]: (state, action) => ({
+            ...state,
+            isLoading: false,
+            error: action.payload.message,
+        }),
     }, 
     initialState
 );

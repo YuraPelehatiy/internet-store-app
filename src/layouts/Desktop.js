@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import './Desktop.css';
+import s from './Desktop.module.css';
 import { routes } from '../routes';
 import AdminPage from '../pages/Admin/AdminPage';
 import HomePage from '../pages/Home/HomePage';
@@ -38,42 +38,20 @@ class App extends Component {
     );
 
     return (
-      <div className="App">
-        <div className="Navigation">
-          
-        </div>
+      <div className={s.App}>
         <Header/>
-        <Switch location={isModal ? this.previousLocation : location}>
-          <Route 
-            path={routes.admin} 
-            component={AdminPage}
-          />
-          <Route
-            path={routes.cart}
-            component={CartPage}
-          />
-          <Route  
-            path={routes.about} 
-            component={AboutPage}
-          />
-          <Route  
-            path={routes.contact} 
-            component={ContactPage}
-          />
-          <Route  
-            path={routes.privacypolicy} 
-            component={PrivacyPolicyPage}
-          />
-          <Route  
-            path={routes.termsandconditions} 
-            component={TermsAndConditionsPage}
-          />
-          <Route  
-            path={routes.home} 
-            component={HomePage}
-          />
-          <Route component={NotFoundPage}/>
-        </Switch>
+        <div className={s.Content}>
+          <Switch location={isModal ? this.previousLocation : location}>
+            <Route path={routes.admin} component={AdminPage}/>
+            <Route path={routes.cart} component={CartPage}/>
+            <Route path={routes.about} component={AboutPage}/>
+            <Route path={routes.contact} component={ContactPage}/>
+            <Route path={routes.privacypolicy} component={PrivacyPolicyPage}/>
+            <Route path={routes.termsandconditions} component={TermsAndConditionsPage}/>
+            <Route path={routes.home} component={HomePage}/>
+            <Route component={NotFoundPage}/>
+          </Switch>
+        </div>
         {isModal ? <Route path={routes.cart} component={CartPageModal}/> : null}
         <Footer/>
       </div>

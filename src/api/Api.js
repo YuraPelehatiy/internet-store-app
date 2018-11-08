@@ -41,3 +41,10 @@ export const Products = {
         return axios.get(`/api/v1/products/${id}`);
     },
 }
+
+export const Cart = {
+    getProductsByIds(ids){
+        let query = "ids[]=" + ids.join("&ids[]=");
+        return axios.get(`/api/v1/products?${query}`);
+    }
+}

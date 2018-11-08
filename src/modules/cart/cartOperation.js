@@ -1,23 +1,23 @@
 import { normalize } from 'normalizr';
 import * as schemes from '../../api/schemes'
-import * as actions from './productsActions';
+import * as actions from './cartActions';
 import * as Api from '../../api/Api';
 
 export const fetchProducts = refresh => async (dispatch, getState) => {
     try {
-        const ids = getState().products.products;
-
-        if(ids.length > 0 && !refresh) {
+        const products = getState().entities.products;
+        const itemsIds = getState().cart.items;
+        
+        if(Object.keys(products).length > 0 || itemsIds.length === 0) {
             return;
         }
 
         dispatch(actions.fetchProductsStart());
 
-        const res = await Api.Products.fetchProducts();
-        const { result, entities } = normalize(res.data, schemes.ProductCollection);
-
+        const res = await Api.Cart.getProductsByIds(itemsIds);
+        const { entities } = normalize(res.data, schemes.ProductCollection);
+        
         dispatch(actions.fetchProductsOk({
-            ids: result,
             entities
         }));
     } catch (err) {

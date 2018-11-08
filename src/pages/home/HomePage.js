@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { routes } from '../../routes';
-import ProductContainer from '../../components/Product/ProductContainer';
+import ProductContainer from '../Product/ProductContainer';
 import ProductListContainer from './ProductList/ProductListContainer';
 import NotFoundPage from '../NotFound/NotFoundPage';
 

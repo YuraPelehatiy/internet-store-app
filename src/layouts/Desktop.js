@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import s from './Desktop.module.css';
 import { routes } from '../routes';
 import AdminPage from '../pages/Admin/AdminPage';
@@ -10,9 +10,21 @@ import AboutPage from '../pages/About/AboutPage';
 import ContactPage from '../pages/Contact/ContactPage';
 import PrivacyPolicyPage from '../pages/PrivacyPolicy/PrivacyPolicyPage';
 import TermsAndConditionsPage from '../pages/TermsAndConditions/TermsAndConditionsPage';
+import LoginPage from '../pages/Login/LoginPage';
+import RegisterPage from '../pages/Register/RegisterPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import * as Api from '../api/Api';
+
+function ProtectedRoute(props){
+  if(!Api.isAuthenticated()){
+    return <Redirect to={routes.auth + `/login`} />
+  }
+
+  return <Route {...props} />;
+}
+
 class App extends Component {
   previousLocation = this.props.location;
 
@@ -42,12 +54,14 @@ class App extends Component {
         <Header/>
         <div className={s.Content}>
           <Switch location={isModal ? this.previousLocation : location}>
-            <Route path={routes.admin} component={AdminPage}/>
+            <ProtectedRoute path={routes.admin} component={AdminPage}/>
             <Route path={routes.cart} component={CartPage}/>
             <Route path={routes.about} component={AboutPage}/>
             <Route path={routes.contact} component={ContactPage}/>
             <Route path={routes.privacypolicy} component={PrivacyPolicyPage}/>
             <Route path={routes.termsandconditions} component={TermsAndConditionsPage}/>
+            <Route path={routes.auth + `/login`} component={LoginPage}/>
+            <Route path={routes.auth + `/register`} component={RegisterPage}/>
             <Route path={routes.home} component={HomePage}/>
             <Route component={NotFoundPage}/>
           </Switch>

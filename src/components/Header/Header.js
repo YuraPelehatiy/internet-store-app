@@ -20,6 +20,10 @@ const Header = ({ cartItemsCount }) => (
                <li className={s.detailsLinksItem}>
                    <Link to={routes.termsandconditions}>Terms and Conditions</Link>
                </li>
+               <li className={s.detailsLinksItem}>
+                   <Link to={routes.auth + `/login`}><button>Login In</button></Link>
+                   <Link to={routes.auth + `/register`}><button>Register</button></Link>
+               </li>
            </ul>
         </div>
         <div className={s.headerMain}>

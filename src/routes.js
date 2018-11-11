@@ -6,7 +6,7 @@ export const routes = {
     cart: '/cart',
     cartCheckout: '/cart/checkout',
     about: '/about',
-    contact: '/contactn',
+    contact: '/contact',
     termsandconditions: '/termsandconditions',
     privacypolicy: '/privacypolicy',
     auth: '/auth',

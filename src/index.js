@@ -7,15 +7,28 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 import App from './layouts/Desktop';
 import { store, persistor } from './store/store';
+import * as appOperations from './modules/app/appOperations';
+
+class InitApp extends React.Component {
+    componentDidMount(){
+        store.dispatch(appOperations.init());
+    }
+
+    render(){
+        return(
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor} >
+                    <BrowserRouter>
+                        <Route component={App}/>
+                    </BrowserRouter>
+                </PersistGate>
+            </Provider>
+        )
+    }
+}
 
 ReactDOM.render(
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor} >
-            <BrowserRouter>
-                <Route component={App}/>
-            </BrowserRouter>
-        </PersistGate>
-    </Provider>, 
+    <InitApp />, 
     document.getElementById('root')
 );
 

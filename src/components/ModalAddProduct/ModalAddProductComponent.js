@@ -16,7 +16,7 @@ const ModalAddProductComponent = ({
     onOpen 
 }) => (
     <>
-        <button onClick={onOpen}>Add new product</button>
+        <button onClick={onOpen} className={s.AddButton}>Add new product</button>
         <Modal open={openModal} onClose={onClose} center>
             <form onSubmit = {onSubmitAdd} className={s.form}>
                 <div>

@@ -2,14 +2,14 @@ import React from 'react';
 import s from './ActionButton.module.css';
 
 const ActionButton = ({
-    onActionButtonClick,
-    actionButtonTitle,
+    children,
+    ...props,
 }) => (
     <button
         className={s.ActionButton} 
-        onClick={onActionButtonClick}
+        {...props}
     >
-        {actionButtonTitle}
+        {children}
     </button>
 )
 

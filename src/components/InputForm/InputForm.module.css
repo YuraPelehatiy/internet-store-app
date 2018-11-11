@@ -1,0 +1,21 @@
+.InputContainer {
+    text-align: start;
+}
+
+.InputField {
+    width: 100%;
+    font-size: 1rem;
+    padding: 7px 12px;
+    margin: 10px auto;
+}
+
+.ErrorField {
+    color: red;
+}
+
+.InputFieldError {
+    width: 100%;
+    font-size: 1rem;
+    padding: 7px;
+    border: 1px solid red;
+}

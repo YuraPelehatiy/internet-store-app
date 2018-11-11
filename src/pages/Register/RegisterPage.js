@@ -1,7 +1,13 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import InputField from '../../components/InputField/InputField';
-import * as Api from '../../api/Api';
+import { FORM_ERROR } from 'final-form';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as appOperations from '../../modules/app/appOperations';
+import { routes } from '../../routes';
+import InputForm from '../../components/InputForm/InputForm';
+import ActionButton from '../../components/ActionButton/ActionButton';
+import AuthForm from '../../components/AuthForm/AuthForm';
 
 const validate = values => {
     const errors = {}
@@ -22,74 +28,73 @@ const validate = values => {
         errors.password = "Please enter a valid password, password must be 8 or more symbols"
     }
 
-    if(values.rePassword !== values.password){
-        errors.rePassword = "Passwords do not match"
-    }
-
     return errors;
 }
 
-const RegisterPage = () => {
-    const onSubmit = async values => {
-        
+const RegisterPage = ({ register, login }) => {
+    const onSubmit = async (values, form) => {
+        try {
+            await register(values);
+            await login({
+                email: values.email,
+                password: values.password,
+            })
+            form.reset();
+        } catch (err) {
+            return {
+                [FORM_ERROR]: "User already registered"
+            }
+        }
     }
 
     return(
-        <div>
+        <AuthForm>
             <Form
                 onSubmit={onSubmit}
                 validate={validate}
-                render={({handleSubmit}) => (
+                render={({ handleSubmit, submitError, submitSucceeded }) => (
                     <>
                         <Field name="firstName">
                             {({ input, meta }) => (
-                                <div>
-                                    <InputField {...input} type="text" placeholder="First Name"/>
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                <InputForm {...input} type="text" placeholder="First Name" meta={meta}/>
                             )}
                         </Field>
                         <Field name="lastName">
                             {({ input, meta }) => (
-                                <div>
-                                    <InputField {...input} type="text" placeholder="Last Name"/>
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                <InputForm {...input} type="text" placeholder="Last Name" meta={meta}/>
                             )}
                         </Field>
                         <Field name="email">
                             {({ input, meta }) => (
-                                <div>
-                                    <InputField {...input} type="text" placeholder="Email"/>
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                <InputForm {...input} type="text" placeholder="Email" meta={meta}/>
                             )}
                         </Field>
                         <Field name="password">
                             {({ input, meta }) => (
-                                <div>
-                                    <InputField {...input} type="password" placeholder="Create Password"/>
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                <InputForm {...input} type="password" placeholder="Create Password" meta={meta}/>
                             )}
                         </Field>
-                        <Field name="rePassword">
-                            {({ input, meta }) => (
-                                <div>
-                                    <InputField {...input} type="password" placeholder="Re-type Password"/>
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                            )}
-                        </Field>
-
                         <div>
-                            <button onClick={handleSubmit}>Register</button>
+                            <ActionButton onClick={handleSubmit}>Register</ActionButton>
                         </div>
+                        {submitError && <div>{submitError}</div>}
+                        {submitSucceeded && <Redirect to={routes.home} />}
                     </>
                 )}
             />
-        </div>
+        </AuthForm>
     );
 }
 
-export default RegisterPage;
+const mapStateToProps = state => ({});
+
+const mapStateToDispatch = {
+    register: appOperations.register,
+    login: appOperations.login,
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapStateToDispatch
+)(RegisterPage);

@@ -19,7 +19,7 @@ import * as Api from '../api/Api';
 
 function ProtectedRoute(props){
   if(!Api.isAuthenticated()){
-    return <Redirect to={routes.auth + `/login`} />
+    return <Redirect to={routes.authLogin} />;
   }
 
   return <Route {...props} />;
@@ -60,8 +60,8 @@ class App extends Component {
             <Route path={routes.contact} component={ContactPage}/>
             <Route path={routes.privacypolicy} component={PrivacyPolicyPage}/>
             <Route path={routes.termsandconditions} component={TermsAndConditionsPage}/>
-            <Route path={routes.auth + `/login`} component={LoginPage}/>
-            <Route path={routes.auth + `/register`} component={RegisterPage}/>
+            <Route path={routes.authLogin} component={LoginPage}/>
+            <Route path={routes.authRegister} component={RegisterPage}/>
             <Route path={routes.home} component={HomePage}/>
             <Route component={NotFoundPage}/>
           </Switch>

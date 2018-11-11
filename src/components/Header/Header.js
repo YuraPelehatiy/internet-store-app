@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { routes } from '../../routes.js';
 import s from './Header.module.css';
+import * as appOperations from '../../modules/app/appOperations';
 
-const Header = ({ cartItemsCount }) => (
+const Header = ({ 
+    cartItemsCount, 
+    user, 
+    logout 
+}) => (
     <div className={s.header}>
         <div className={s.detailsPart}>
            <ul className={s.detailsLinks}>
@@ -20,9 +25,10 @@ const Header = ({ cartItemsCount }) => (
                <li className={s.detailsLinksItem}>
                    <Link to={routes.termsandconditions}>Terms and Conditions</Link>
                </li>
+               {user && user.id !== undefined && <li className={s.detailsLinksItem}>{user.firstName + " " + user.lastName}</li>}
                <li className={s.detailsLinksItem}>
-                   <Link to={routes.auth + `/login`}><button>Login In</button></Link>
-                   <Link to={routes.auth + `/register`}><button>Register</button></Link>
+                    {user && user.id !== undefined && <button onClick={logout} className={s.loginButton}>Logout</button>}
+                    {user && user.id === undefined && <Link to={routes.authLogin}><button className={s.loginButton}>Login/Register</button></Link>}
                </li>
            </ul>
         </div>
@@ -46,6 +52,11 @@ const Header = ({ cartItemsCount }) => (
 
 const mapStateToProps = state => ({
     cartItemsCount: state.cart.items.length,
+    user: state.app.user,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapStateToDispatch = {
+    logout: appOperations.logout,
+}
+
+export default connect(mapStateToProps, mapStateToDispatch)(Header);

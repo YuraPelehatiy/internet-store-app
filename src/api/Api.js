@@ -18,6 +18,8 @@ export const setToken = (token) => {
 
 export const removeToken = () => {
     localStorage.removeItem('token');
+
+    _token = null;
     
     axios.defaults.headers.Authorization = null;
 }
@@ -26,6 +28,7 @@ export const isAuthenticated = () => {
     if(_token === "undefined"){
         return false;
     }
+
     return !!_token
 };
 
@@ -80,7 +83,7 @@ export const Auth = {
     },
 
     register(body){
-        return axios.post('/api/v2/auth/rgister', body)
+        return axios.post('/api/v2/auth/register', body)
     },
 
     remember(body){

@@ -11,4 +11,6 @@ export const routes = {
     privacypolicy: '/privacypolicy',
     auth: '/auth',
     authRemember: '/auth/remember',
+    authLogin: '/auth/login',
+    authRegister: '/auth/register',
 }

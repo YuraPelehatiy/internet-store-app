@@ -14,9 +14,11 @@ const ProductLinkAdmin = ({
     <div className={s.ProductLinkAdmin}>
         <Link to={formatRoute(routes.adminProduct, {id})} >
             {title}
-            <button onClick={(e) => showModalToUpdateProduct(id, e)}>Edit</button>
-            <button onClick={(e) => showModalToRemoveProduct(id, e)}>Remove</button>
         </Link>
+        <div className={s.ProductLinkAdminButtons}>
+            <button className={s.ActionButtonAdmin} onClick={(e) => showModalToUpdateProduct(id, e)}>Edit</button>
+            <button className={s.ActionButtonAdmin} onClick={(e) => showModalToRemoveProduct(id, e)}>Remove</button>
+        </div>
     </div>
 )
 

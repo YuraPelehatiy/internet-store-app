@@ -1,3 +1,13 @@
 .form {
     margin: 10px 30px;
 }
+
+.AddButton {
+    border: 1px solid #979797fa;
+    border-radius: 5px;
+    width: 100%;
+    margin: 5px 0;
+    font-size: 1.25rem;
+    padding: 20px;
+    background: #fafafa;
+}

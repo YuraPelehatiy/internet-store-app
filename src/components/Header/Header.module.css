@@ -4,6 +4,11 @@
     background: #f3f3f3fa;
 }
 
+.header a {
+    color: #0089cf;
+    text-decoration: none;
+}
+
 .detailsPart {
     background: #fff;
     width: 100%;
@@ -42,4 +47,12 @@
 
 .cartBox {
    font-size: 1.4rem;
+}
+
+.loginButton {
+    background: #0089cf;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 10px;
 }

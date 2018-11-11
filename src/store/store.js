@@ -9,7 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ["cart"]
+    whitelist: ["cart", "app"]
 }
 
 const persistedReducer = persistReducer(persistConfig, rootModule);

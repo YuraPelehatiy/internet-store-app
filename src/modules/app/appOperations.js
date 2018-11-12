@@ -37,9 +37,24 @@ export const login = values => async dispatch => {
     }
 }
 
-export const register = values => async () => {
+export const register = values => async dispatch => {
     try {
-        await Api.Auth.register(values);
+        const resRegister = await Api.Auth.register(values);
+
+        if(resRegister.data.success){
+            const resLogin = await Api.Auth.login({
+                email: values.email,
+                password: values.password,
+            });
+    
+            Api.setToken(resLogin.data.token);
+    
+            const resUser = await Api.User.getCurrent()
+    
+            dispatch(appActions.addUser({
+                user: resUser.data.user,
+            }));
+        }
     } catch (err) {
         throw new Error();
     }

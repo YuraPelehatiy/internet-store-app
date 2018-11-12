@@ -31,14 +31,10 @@ const validate = values => {
     return errors;
 }
 
-const RegisterPage = ({ register, login }) => {
+const RegisterPage = ({ register }) => {
     const onSubmit = async (values, form) => {
         try {
             await register(values);
-            await login({
-                email: values.email,
-                password: values.password,
-            })
             form.reset();
         } catch (err) {
             return {
@@ -90,7 +86,6 @@ const mapStateToProps = state => ({});
 
 const mapStateToDispatch = {
     register: appOperations.register,
-    login: appOperations.login,
 }
 
 

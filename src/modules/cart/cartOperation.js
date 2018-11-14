@@ -6,15 +6,17 @@ import * as Api from '../../api/Api';
 export const fetchProducts = refresh => async (dispatch, getState) => {
     try {
         const products = getState().entities.products;
-        const itemsIds = getState().cart.items;
+        const items = getState().cart.items;
         
-        if(Object.keys(products).length > 1 || itemsIds.length === 0) {
+        if(Object.keys(products).length > 1 || Object.keys(items).length === 0) {
             return;
         }
 
+        const ids = Object.keys(items)
+
         dispatch(actions.fetchProductsStart());
 
-        const res = await Api.Cart.getProductsByIds(itemsIds);
+        const res = await Api.Cart.getProductsByIds(ids);
         const { entities } = normalize(res.data, schemes.ProductCollection);
         
         dispatch(actions.fetchProductsOk({

@@ -5,13 +5,14 @@ import ActionButton from '../../components/ActionButton/ActionButton';
 const CartListContainer = ({
     items, 
     renderProductLink,
-    countTotalPrice
+    countTotalPrice,
+    itemsCart,
 }) => (
     <div className = {s.CartList}>
         <h2>Cart list</h2>
         <hr/>
         {items.map((item, index)=> 
-            renderProductLink(item, index)
+            renderProductLink(item, index, itemsCart)
         )}
         <hr/>
         <div>

@@ -5,6 +5,7 @@ import T from 'prop-types';
 import { routes } from '../../routes';
 import s from './ProductLink.module.css'
 import ActionButton from '../ActionButton/ActionButton';
+import Counter from '../Counter/Counter';
 
 const ProductLink = ({ 
     title, 
@@ -12,9 +13,20 @@ const ProductLink = ({
     image, 
     price,
     onActionButtonClick,
-    actionButtonTitle, 
+    actionButtonTitle,
+    cart,
+    count,
+    increment,
+    decrement, 
 }) => (
     <div className={s.ProductLink}>
+        {cart && <Counter 
+                    value={count} 
+                    increment={increment} 
+                    decrement={decrement} 
+                    id={id}
+                />
+        }
         <Link to={formatRoute(routes.product, {id})} className={s.linkAnchor}>
             <div>
                 <img src={image} alt={title} className={s.productImage} title={title}/>

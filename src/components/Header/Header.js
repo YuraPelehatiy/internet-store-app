@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { routes } from '../../routes.js';
 import s from './Header.module.css';
 import * as appOperations from '../../modules/app/appOperations';
+import * as cartSelectors from '../../modules/cart/cartSelectors';
+
 
 const Header = ({ 
     cartItemsCount, 
@@ -51,8 +53,9 @@ const Header = ({
 );
 
 const mapStateToProps = state => ({
-    cartItemsCount: state.cart.items.length,
+    //cartItemsCount: state.cart.items.length,
     user: state.app.user,
+    cartItemsCount: cartSelectors.getCountItems(state),
 });
 
 const mapStateToDispatch = {

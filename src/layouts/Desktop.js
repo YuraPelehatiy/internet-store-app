@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+//import { compose, lifecycle, withPropsOnChange } from 'recompose';
 import s from './Desktop.module.css';
 import { routes } from '../routes';
 import AdminPage from '../pages/Admin/AdminPage';
@@ -77,3 +78,57 @@ class App extends Component {
 }
 
 export default App;
+
+/* const App = ({ location, previousLocation }) => {
+  
+  let isModal = !!(
+    location.state &&
+    location.state.modal &&
+    previousLocation !== location
+  );
+
+  return(
+    <div className={s.App}>
+      <Header/>
+      <div className={s.Content}>
+        <Switch location={isModal ? previousLocation : location}>
+          <ProtectedRoute path={routes.admin} component={AdminPage}/>
+          <Route path={routes.cart} component={CartPage}/>
+          <Route path={routes.about} component={AboutPage}/>
+          <Route path={routes.contact} component={ContactPage}/>
+          <Route path={routes.privacypolicy} component={PrivacyPolicyPage}/>
+          <Route path={routes.termsandconditions} component={TermsAndConditionsPage}/>
+          <Route path={routes.authLogin} component={LoginPage}/>
+          <Route path={routes.authRegister} component={RegisterPage}/>
+          <Route path={routes.authRemember} component={RememberPage}/>
+          <Route path={routes.home} component={HomePage}/>
+          <Route component={NotFoundPage}/>
+        </Switch>
+      </div>
+      {isModal ? <Route path={routes.cart} component={CartPageModal}/> : null}
+      <Footer/>
+    </div>
+  );
+}
+
+export default compose(
+  withPropsOnChange(
+    (props, nexProps) => false,
+    props => ({
+      previousLocation: props.location
+    })
+  ),
+  lifecycle({
+    componentWillUpdate(nextProps){
+      let { location } = this.props;
+
+      // Set previousLocation if props.location is not modal
+      if (
+        nextProps.history.action !== "POP" &&
+        (!location.state || !location.state.modal)
+      ) {
+        this.previousLocation = this.props.location;
+      }
+    }
+  }),
+)(App) */

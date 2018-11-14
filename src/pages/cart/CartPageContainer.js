@@ -10,10 +10,10 @@ import { lifecycle, renderComponent, branch, mapProps } from 'recompose';
 import Loader from '../../components/Loader/Loader';
 
 const mapStateToProps = (state) => ({
-    itemsIds: state.cart.items,
+    itemsCart: state.cart.items,
     items: cartSelectors.getProducts(state, state.cart.isLoading),
     countTotalPrice: cartSelectors.getTotalPrice(state, state.cart.isLoading ),
-    products: state.entities.products,
+    //products: state.entities.products,
     isLoading: state.cart.isLoading,
     isError: !!state.cart.error,
     error: state.cart.error,
@@ -22,6 +22,8 @@ const mapStateToProps = (state) => ({
 const mapStateToDispatch = {
     removeItemFromCart: cartActions.remove,
     fetchProducts: cartOperation.fetchProducts,
+    increase: cartActions.increase,
+    decrease: cartActions.decrease,
 };
 
 export default compose(
@@ -47,18 +49,23 @@ export default compose(
         )
     ),
     mapProps(props => ({
-        renderProductLink: (item, index) => (
+        renderProductLink: (item, index, itemsCart) => (
             <ProductLink 
+                cart
+                count={itemsCart[item.id].count}
                 key={item.id + index} 
                 id={item.id} 
                 title={item.title}
                 image={item.image}
                 price={item.price}
                 onActionButtonClick={props.removeItemFromCart}
+                increment={props.increase}
+                decrement={props.decrease}
                 actionButtonTitle="Remove from Cart"
             />
         ),
         items: props.items,
+        itemsCart: props.itemsCart,
         countTotalPrice: props.countTotalPrice,
     }))
 )(CartPageComponent);

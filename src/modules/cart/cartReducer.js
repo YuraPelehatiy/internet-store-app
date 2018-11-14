@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import * as constants from './cartConstants';
 
 const initialState = {
-    items: [],
+    items: {},
     isLoading: false,
     error: null,
 }
@@ -11,11 +11,11 @@ export default handleActions(
     {
         [constants.ADD]: (state, action) => ({
             ...state,
-            items: [action.payload.id].concat(state.items),
+            items: addItem(state, action),
         }),
         [constants.REMOVE]: (state, action) => ({
             ...state,
-            items: state.items.filter(id => id !== action.payload.id),
+            items: removeItem(state, action),
         }),
         [constants.FETCH_PRODUCTS_START]: (state) => ({
             ...state,
@@ -31,6 +31,61 @@ export default handleActions(
             isLoading: false,
             error: action.payload.message,
         }),
+        [constants.INCREASE]: (state, action) => ({
+            ...state,
+            items: {
+                ...state.items,
+                [action.payload.id]: {
+                    ...state.items[action.payload.id],
+                    count: state.items[action.payload.id].count + 1
+                }
+            }
+        }),
+        [constants.DECREASE]: (state, action) => ({
+            ...state,
+            items: decrease(state, action)
+        }),
     }, 
     initialState
 );
+
+function addItem(state, action){
+    if(!state.items[action.payload.id]){
+        return {
+            ...state.items,
+            [action.payload.id]: {
+                id: action.payload.id,
+                count: 1,
+            }
+        }
+    }
+    return {
+        ...state.items,
+        [action.payload.id]: {
+            id: action.payload.id,
+            count: state.items[action.payload.id].count + 1,
+        }
+    }
+}
+
+function removeItem(state, action){
+    const items = state.items;
+    delete items[action.payload.id]
+    return {
+        ...items
+    }
+}
+
+function decrease(state, action){
+    if(state.items[action.payload.id].count - 1 === 0){
+        return state.items;
+    }
+
+    return {
+        ...state.items,
+        [action.payload.id]: {
+            ...state.items[action.payload.id],
+            count: state.items[action.payload.id].count - 1
+        }
+    }
+}

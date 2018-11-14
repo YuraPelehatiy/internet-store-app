@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { routes } from '../../routes';
-import ProductContainer from '../Product/ProductContainer';
+import ProductPageContainer from '../Product/ProductPageContainer';
 import ProductListContainer from './ProductList/ProductListContainer';
 import NotFoundPage from '../NotFound/NotFoundPage';
 
@@ -17,7 +17,7 @@ const HomePage = ({
             />
             <Route 
                 path={routes.product} 
-                component={ProductContainer} 
+                component={ProductPageContainer} 
             />
             <Route component={NotFoundPage}/>
         </Switch>

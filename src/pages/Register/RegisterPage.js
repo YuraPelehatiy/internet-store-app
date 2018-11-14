@@ -74,7 +74,7 @@ const RegisterPage = ({ register }) => {
                             <ActionButton onClick={handleSubmit}>Register</ActionButton>
                         </div>
                         {submitError && <div>{submitError}</div>}
-                        {submitSucceeded && <Redirect to={routes.home} />}
+                        {submitSucceeded && <Redirect to={routes.authLogin} />}
                     </>
                 )}
             />

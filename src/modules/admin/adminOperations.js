@@ -68,3 +68,25 @@ export const removeProduct = (id) => async (dispatch) => {
         dispatch(actions.removeProductError(err.message));
     }
 }
+
+export const getProduct = (id, refresh) => async (dispatch, getState) => {
+    try {
+        const product = getState().entities.products[id];
+
+        if(product) {
+            return;
+        }
+
+        dispatch(actions.getProductStart());
+
+        const res = await Api.AdminProducts.getProductsById(id);
+        const { result, entities } = normalize(res.data, schemes.AdminProductCollection);
+
+        dispatch(actions.getProductOk({
+            id: result,
+            entities
+        }));
+    } catch (err) {
+        dispatch(actions.getProductError(err.message));
+    }
+}

@@ -16,3 +16,7 @@ export const updateProductError = createAction(constants.UPDATE_PRODUCT_ERROR);
 export const removeProductStart = createAction(constants.REMOVE_PRODUCT_START);
 export const removeProductOk = createAction(constants.REMOVE_PRODUCT_OK);
 export const removeProductError = createAction(constants.REMOVE_PRODUCT_ERROR);
+
+export const getProductStart = createAction(constants.GET_PRODUCT_START);
+export const getProductOk = createAction(constants.GET_PRODUCT_OK);
+export const getProductError = createAction(constants.GET_PRODUCT_ERROR);

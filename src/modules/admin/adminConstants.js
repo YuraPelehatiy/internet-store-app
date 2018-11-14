@@ -13,3 +13,7 @@ export const UPDATE_PRODUCT_ERROR = 'admin/UPDATE_PRODUCT_ERROR';
 export const REMOVE_PRODUCT_START = 'admin/REMOVE_PRODUCT_START';
 export const REMOVE_PRODUCT_OK = 'admin/REMOVE_PRODUCT_OK';
 export const REMOVE_PRODUCT_ERROR = 'admin/REMOVE_PRODUCT_ERROR';
+
+export const GET_PRODUCT_START = 'admin/GET_PRODUCT_START';
+export const GET_PRODUCT_OK = 'admin/GET_PRODUCT_OK';
+export const GET_PRODUCT_ERROR = 'admin/GET_PRODUCT_ERROR';

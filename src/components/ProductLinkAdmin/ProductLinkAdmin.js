@@ -16,8 +16,8 @@ const ProductLinkAdmin = ({
             {title}
         </Link>
         <div className={s.ProductLinkAdminButtons}>
-            <button className={s.ActionButtonAdmin} onClick={(e) => showModalToUpdateProduct(id, e)}>Edit</button>
-            <button className={s.ActionButtonAdmin} onClick={(e) => showModalToRemoveProduct(id, e)}>Remove</button>
+            <button className={s.ActionButtonAdmin} onClick={() => showModalToUpdateProduct(id)}>Edit</button>
+            <button className={s.ActionButtonAdmin} onClick={() => showModalToRemoveProduct(id)}>Remove</button>
         </div>
     </div>
 )

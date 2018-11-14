@@ -4,7 +4,7 @@ import s from './Desktop.module.css';
 import { routes } from '../routes';
 import AdminPage from '../pages/Admin/AdminPage';
 import HomePage from '../pages/Home/HomePage';
-import CartPage from '../pages/Cart/CartPage';
+import CartPage from '../pages/Cart/CartPageContainer';
 import CartPageModal from '../pages/Cart/CartModal/CartModal';
 import AboutPage from '../pages/About/AboutPage';
 import ContactPage from '../pages/Contact/ContactPage';
@@ -12,10 +12,12 @@ import PrivacyPolicyPage from '../pages/PrivacyPolicy/PrivacyPolicyPage';
 import TermsAndConditionsPage from '../pages/TermsAndConditions/TermsAndConditionsPage';
 import LoginPage from '../pages/Login/LoginPage';
 import RegisterPage from '../pages/Register/RegisterPage';
+import RememberPage from '../pages/Remember/RememberPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as Api from '../api/Api';
+
 
 function ProtectedRoute(props){
   if(!Api.isAuthenticated()){
@@ -62,6 +64,7 @@ class App extends Component {
             <Route path={routes.termsandconditions} component={TermsAndConditionsPage}/>
             <Route path={routes.authLogin} component={LoginPage}/>
             <Route path={routes.authRegister} component={RegisterPage}/>
+            <Route path={routes.authRemember} component={RememberPage}/>
             <Route path={routes.home} component={HomePage}/>
             <Route component={NotFoundPage}/>
           </Switch>

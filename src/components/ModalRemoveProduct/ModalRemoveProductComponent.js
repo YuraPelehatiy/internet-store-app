@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
 import s from './ModalRemoveProduct.module.css';
+import ActionButton from '../ActionButton/ActionButton';
 
 const ModalRemoveProductComponent = ({ 
     answer,
@@ -11,8 +12,8 @@ const ModalRemoveProductComponent = ({
         <div className={s.form}>
             <h3>Are you sure?</h3>
             <div>
-                <button onClick={() => answer(true)}>Yes</button>
-                <button onClick={() => answer(false)}>No</button>
+                <ActionButton onClick={() => answer(true)}>Yes</ActionButton>
+                <ActionButton onClick={() => answer(false)}>No</ActionButton>
             </div>
         </div>
     </Modal>

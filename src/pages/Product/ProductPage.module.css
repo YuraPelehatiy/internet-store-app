@@ -1,0 +1,27 @@
+.ProductPage {
+    width: 100%;
+    display: flex;
+}
+
+.imageContainer {
+    display: block;
+    width: 30%;
+    height: auto;
+}
+
+.contentContainer {
+    display: block;
+    width: 70%;
+    height: auto;
+    text-align: start;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    margin-bottom: 10px;
+}

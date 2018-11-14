@@ -3,29 +3,30 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
+import { compose, lifecycle } from 'recompose';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import App from './layouts/Desktop';
 import { store, persistor } from './store/store';
 import * as appOperations from './modules/app/appOperations';
 
-class InitApp extends React.Component {
-    componentDidMount(){
-        store.dispatch(appOperations.init());
-    }
+const InitAppComponent = () => (
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor} >
+            <BrowserRouter>
+                <Route component={App}/>
+            </BrowserRouter>
+        </PersistGate>
+    </Provider>
+);
 
-    render(){
-        return(
-            <Provider store={store}>
-                <PersistGate loading={null} persistor={persistor} >
-                    <BrowserRouter>
-                        <Route component={App}/>
-                    </BrowserRouter>
-                </PersistGate>
-            </Provider>
-        )
-    }
-}
+const InitApp = compose(
+    lifecycle({
+        componentDidMount(){
+            store.dispatch(appOperations.init());
+        }
+    }),
+)(InitAppComponent);
 
 ReactDOM.render(
     <InitApp />, 

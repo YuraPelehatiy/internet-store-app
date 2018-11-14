@@ -7,7 +7,7 @@ export const fetchProducts = refresh => async (dispatch, getState) => {
     try {
         const ids = getState().products.products;
 
-        if(ids.length > 0 && !refresh) {
+        if(ids.length > 1 && !refresh) {
             return;
         }
 
@@ -22,5 +22,27 @@ export const fetchProducts = refresh => async (dispatch, getState) => {
         }));
     } catch (err) {
         dispatch(actions.fetchProductsError(err.message));
+    }
+}
+
+export const getProduct = (id, refresh) => async (dispatch, getState) => {
+    try {
+        const product = getState().entities.products[id];
+
+        if(product) {
+            return;
+        }
+
+        dispatch(actions.getProductStart());
+
+        const res = await Api.Products.getProductsById(id);
+        const { result, entities } = normalize(res.data, schemes.ProductCollection);
+
+        dispatch(actions.getProductOk({
+            id: result,
+            entities
+        }));
+    } catch (err) {
+        dispatch(actions.getProductError(err.message));
     }
 }

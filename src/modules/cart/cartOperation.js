@@ -8,7 +8,7 @@ export const fetchProducts = refresh => async (dispatch, getState) => {
         const products = getState().entities.products;
         const itemsIds = getState().cart.items;
         
-        if(Object.keys(products).length > 0 || itemsIds.length === 0) {
+        if(Object.keys(products).length > 1 || itemsIds.length === 0) {
             return;
         }
 

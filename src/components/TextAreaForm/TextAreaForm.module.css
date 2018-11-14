@@ -1,11 +1,19 @@
-.InputField {
+.TextAreaContainer {
+    text-align: start;
+}
+
+.TextAreaField {
     width: 100%;
     font-size: 1rem;
     padding: 7px 12px;
-    margin: 10px;
+    margin: 10px auto;
 }
 
-.InputFieldError {
+.ErrorField {
+    color: red;
+}
+
+.TextAreaFieldError {
     width: 100%;
     font-size: 1rem;
     padding: 7px;

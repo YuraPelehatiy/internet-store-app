@@ -4,6 +4,7 @@ import { formatRoute } from 'react-router-named-routes';
 import T from 'prop-types';
 import { routes } from '../../routes';
 import s from './ProductLink.module.css'
+import ActionButton from '../ActionButton/ActionButton';
 
 const ProductLink = ({ 
     title, 
@@ -25,7 +26,7 @@ const ProductLink = ({
                 {price} y.e
             </div>
         </Link>
-        <button className={s.actionButton} onClick={() => onActionButtonClick({id})}>{actionButtonTitle}</button>
+        <ActionButton onClick={() => onActionButtonClick({id})}>{actionButtonTitle}</ActionButton>
     </div>
 )
 

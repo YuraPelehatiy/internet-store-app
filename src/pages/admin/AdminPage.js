@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { routes } from '../../routes';
-import ProductAdminContainer from '../../components/ProductAdmin/ProductAdminContainer';
-import ProductListAdmin from './ProductList/ProductListAdminContainer';
+import ProductPageAdminContainer from '../ProductAdmin/ProductPageAdminContainer';
+import ProductListAdmin from './ProductListAdmin/ProductListAdminContainer';
 
 const AdminPage = ({  
     match
@@ -16,7 +16,7 @@ const AdminPage = ({
             />
             <Route 
                 path={routes.adminProduct} 
-                component={ProductAdminContainer}
+                component={ProductPageAdminContainer}
             />
         </Switch>
     </div>

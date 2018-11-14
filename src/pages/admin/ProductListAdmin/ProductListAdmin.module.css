@@ -1,5 +1,8 @@
-.form {
-    margin: 10px 30px;
+.ProductListAdmin {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
 }
 
 .AddButton {

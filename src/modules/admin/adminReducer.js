@@ -71,6 +71,21 @@ export default handleActions(
             isLoading: false,
             error: action.payload.message,
         }),
+        [constants.GET_PRODUCT_START]: (state) => ({
+            ...state,
+            isLoading: true,
+            error: null,
+        }),
+        [constants.GET_PRODUCT_OK]: (state, action) => ({
+            ...state,
+            isLoading: false,
+            products: [action.payload.id[0]].concat(state.products),
+        }),
+        [constants.GET_PRODUCT_ERROR]: (state, action) => ({
+            ...state,
+            isLoading: false,
+            error: action.payload.message,
+        }),
     }, 
     initialState
 );

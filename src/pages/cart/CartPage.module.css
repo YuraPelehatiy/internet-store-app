@@ -1,8 +1,23 @@
-.CartList {
+.CartPage {
     display: block;
     min-width: 100%;
     width: 100vh;
     text-align: center;
     margin: auto;
     text-align: center;
+}
+
+.CartPageTop {
+    margin: 1%;
+}
+
+.CartPageBottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.CartPageTotalPrice {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 2%;
 }

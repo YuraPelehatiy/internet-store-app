@@ -5,6 +5,7 @@ import { routes } from '../../routes.js';
 import s from './Header.module.css';
 import * as appOperations from '../../modules/app/appOperations';
 import * as cartSelectors from '../../modules/cart/cartSelectors';
+import InputForm from '../InputForm/InputForm.js';
 
 
 const Header = ({ 
@@ -40,7 +41,7 @@ const Header = ({
             </div>
             <div className={s.searchBox}>
                 <form>
-                    <input className={s.inputField} type="text" placeholder="what are you looking for..."/>
+                    <InputForm className={s.inputField} type="text" placeholder="what are you looking for..."/>
                 </form>
             </div>
             <div>

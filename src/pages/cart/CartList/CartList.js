@@ -1,22 +1,25 @@
 import React from 'react';
 import s from './CartList.module.css'
 
-const CartListContainer = ({
-    items, 
+const CartList= ({
+    products,
+    itemsCart, 
     renderProductLink,
-    countTotalPrice
-}) => (
-    <div className = {s.CartList}>
-        <h2>Cart list</h2>
-        <hr/>
-        {items.map((item, index)=> 
-            renderProductLink(item, index)
-        )}
-        <hr/>
-        <div>
-            Total Price: {countTotalPrice}
-        </div>
-    </div>
-);
+}) => {
+    if(products.length === 0){
+        
+        return (
+            <h2 className={s.EmptyCart}>Your cart is empty</h2>
+        )
+    }
 
-export default CartListContainer;
+    return (
+        <div className = {s.CartList}>
+            {products.map(item => 
+                renderProductLink(item, itemsCart)
+            )}
+        </div>
+    );
+}
+
+export default CartList;

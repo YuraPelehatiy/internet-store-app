@@ -18,12 +18,6 @@ const ProdutcListAdminComponent = ({
         </button>
         {ModalForm()}
         {ModalAsk()}
-        {/* <ModalAsk
-            open={isOpenModalAsk}
-            onClose={closeModalAsk}
-            onPositiveAction
-            onNegativeAction={closeModalAsk}
-        /> */}
         {products.map(({id, title}) => (
                 <ProductLinkAdmin 
                     key={id} 

@@ -74,6 +74,7 @@ export const getProduct = (id, refresh) => async (dispatch, getState) => {
         const product = getState().entities.products[id];
 
         if(product) {
+            console.log("TRUE")
             return;
         }
 

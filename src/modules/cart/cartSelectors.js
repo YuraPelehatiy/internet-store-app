@@ -7,13 +7,6 @@ const getProductsItems = (state, isLoadign) => {
     return state.cart.items;
 };
 
-const getProductsItemsIds = (state, isLoadign) => {
-    if(isLoadign){
-        return [];
-    }
-    return Object.keys(state.cart.items);
-};
-
 const getProductsEntities = state => state.entities.products;
 
 const getStatusLoading = (state, isLoadign) => {
@@ -25,15 +18,22 @@ const getStatusLoading = (state, isLoadign) => {
 
 export const getProducts = createSelector(
     [getProductsItems, getProductsEntities],
-    (items, entities) => Object.keys(items).map(id => entities[id])
+    (items, entities) => Object.keys(items).map(id => {
+        if(entities[id] === undefined){
+            return ({
+                id: id,
+                title: "Loading...",
+                price: 0,
+            });
+        }
+        
+        return entities[id];
+    })
 );
 
 export const getTotalPrice = createSelector(
     [getProducts, getProductsItems, getStatusLoading],
     (products, items, status) => {
-        if(status || products.some(product => product === undefined)){
-            return 0;
-        }
         return products.reduce((acc, product) => acc + product.price * items[product.id].count, 0);
     }
 );

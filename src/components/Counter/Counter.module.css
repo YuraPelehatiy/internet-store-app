@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: column;
     width: 10%;
+    margin: 30px;
 }
 
 .Counter button {
     background: #fff;
     border: 0px;
     font-size: 1.7rem;
+    padding: 5px 10px;
 }

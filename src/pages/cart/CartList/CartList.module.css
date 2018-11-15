@@ -6,3 +6,10 @@
     margin: auto;
     text-align: center;
 }
+
+.EmptyCart {
+    margin: 20% auto;
+    color: #959595;
+    font-weight: 400;
+    font-size: 1.5rem;
+}

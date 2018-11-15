@@ -30,7 +30,7 @@
     width: 80%;
     margin: auto;
     display: grid;
-    grid-template-columns: 2fr 4fr 1fr;
+    grid-template-columns: 2fr 4fr 2fr;
     padding: 20px 0;
 }
 

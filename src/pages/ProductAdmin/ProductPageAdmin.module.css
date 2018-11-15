@@ -1,0 +1,21 @@
+.ProductPageAdminForm {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.ProductPageAdminFields {
+    width: 70%;
+}
+
+.ProductPageAdminImage {
+    width: 30%;
+    align-self: center;
+    justify-self: center;
+}
+
+.ProductPageAdminProductImage {
+    display: block;
+    width: 100%;
+    margin: 20px;
+}

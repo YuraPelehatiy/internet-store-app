@@ -1,26 +1,31 @@
 import React from 'react';
 import s from './CartPage.module.css'
 import ActionButton from '../../components/ActionButton/ActionButton';
+import CartList from './CartList/CartList';
 
-const CartListContainer = ({
-    items, 
+const CartPageComponent = ({
+    products, 
     renderProductLink,
     countTotalPrice,
     itemsCart,
 }) => (
-    <div className = {s.CartList}>
-        <h2>Cart list</h2>
+    <div className = {s.CartPage}>
+        <h2 className={s.CartPageTop}>Cart list</h2>
         <hr/>
-        {items.map((item, index)=> 
-            renderProductLink(item, index, itemsCart)
-        )}
+        <CartList 
+            products={products} 
+            renderProductLink={renderProductLink} 
+            itemsCart={itemsCart}
+        />
         <hr/>
-        <div>
-            Total Price: {countTotalPrice}
+        <div className={s.CartPageBottom}>
+            <div className={s.CartPageTotalPrice}>
+                Total Price: {countTotalPrice}
+            </div>
             <ActionButton>Checkout</ActionButton>
         </div>
         
     </div>
 );
 
-export default CartListContainer;
+export default CartPageComponent;

@@ -9,6 +9,12 @@
     transition-duration: 0.5s;
 }
 
+.ProductLinkCart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .linkAnchor {
     color: #000;
     text-decoration: none;
@@ -24,7 +30,7 @@
     color: #0089cf;
 }
 
-.price {
+.productPrice {
     margin: 10px;
     font-size: 1rem;
     color: #0089cf;
@@ -32,12 +38,13 @@
     outline: none;
 }
 
-.actionButton {
-    padding: 10px 15px;
-    margin: 10px;
-    font-size: 0.9rem;
-    border: 0px solid;
-    border-radius: 5px;
-    background: #0089cf;
-    color: #fff;
+.LeftHandSide {
+    display: flex;
+    align-items: center;
 }
+
+.ProductVisibleCart {
+    display: flex;
+    align-items: center;
+}
+

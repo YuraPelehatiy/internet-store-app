@@ -8,12 +8,12 @@ import * as cartOperation from '../../modules/cart/cartOperation';
 import { compose } from '../../../../../AppData/Local/Microsoft/TypeScript/3.0/node_modules/redux';
 import { lifecycle, renderComponent, branch, mapProps } from 'recompose';
 import Loader from '../../components/Loader/Loader';
+import ErrorLoadign from '../../components/ErrorLoading/ErrorLoading';
 
 const mapStateToProps = (state) => ({
     itemsCart: state.cart.items,
-    items: cartSelectors.getProducts(state, state.cart.isLoading),
-    countTotalPrice: cartSelectors.getTotalPrice(state, state.cart.isLoading ),
-    //products: state.entities.products,
+    products: cartSelectors.getProducts(state, state.cart.isLoading),
+    countTotalPrice: cartSelectors.getTotalPrice(state, state.cart.isLoading),
     isLoading: state.cart.isLoading,
     isError: !!state.cart.error,
     error: state.cart.error,
@@ -37,23 +37,19 @@ export default compose(
         }
     }),
     branch(
-        props => (props.isLoading || props.items.some(item => item === undefined)),
+        props => (props.isLoading),
         renderComponent(Loader),
         branch(
             props => props.isError,
-            renderComponent(
-                <>
-                    <h1>Error...</h1>
-                </>
-            ),
+            renderComponent(ErrorLoadign),
         )
     ),
     mapProps(props => ({
-        renderProductLink: (item, index, itemsCart) => (
+        renderProductLink: (item, itemsCart) => (
             <ProductLink 
                 cart
                 count={itemsCart[item.id].count}
-                key={item.id + index} 
+                key={item.id} 
                 id={item.id} 
                 title={item.title}
                 image={item.image}
@@ -64,7 +60,7 @@ export default compose(
                 actionButtonTitle="Remove from Cart"
             />
         ),
-        items: props.items,
+        products: props.products,
         itemsCart: props.itemsCart,
         countTotalPrice: props.countTotalPrice,
     }))

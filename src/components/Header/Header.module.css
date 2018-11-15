@@ -1,20 +1,20 @@
-.header {
+.Header {
     width: 100%;
     display: block;
     background: #f3f3f3fa;
 }
 
-.header a {
+.Header a {
     color: #0089cf;
     text-decoration: none;
 }
 
-.detailsPart {
+.HeaderTop {
     background: #fff;
     width: 100%;
 }
 
-.detailsLinks {
+.HeaderLinks {
     display: flex;
     font-size: 1rem;
     list-style: none;
@@ -22,11 +22,11 @@
     margin-right: 10%;
 }
 
-.detailsLinksItem {
+.HeaderLinkItem {
     margin: 5px 15px;
 }
 
-.headerMain {
+.HeaderMain {
     width: 80%;
     margin: auto;
     display: grid;
@@ -34,25 +34,10 @@
     padding: 20px 0;
 }
 
-.logo {
+.Logo {
     font-size: 2rem;
 }
 
-.inputField {
-    display: block;
-    width: 100%;
-    height: 30px;
-    margin: 0 20px;
-}
-
-.cartBox {
+.CartBox {
    font-size: 1.4rem;
-}
-
-.loginButton {
-    background: #0089cf;
-    color: #fff;
-    border: 0;
-    border-radius: 5px;
-    padding: 5px 10px;
 }

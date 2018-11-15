@@ -4,6 +4,7 @@ import { formatRoute } from 'react-router-named-routes';
 import T from 'prop-types';
 import { routes } from '../../routes';
 import s from './ProductLinkAdmin.module.css';
+import ActionButton from '../ActionButton/ActionButton';
 
 const ProductLinkAdmin = ({ 
     title, 
@@ -16,8 +17,8 @@ const ProductLinkAdmin = ({
             {title}
         </Link>
         <div className={s.ProductLinkAdminButtons}>
-            <button className={s.ActionButtonAdmin} onClick={() => showModalToUpdateProduct(id)}>Edit</button>
-            <button className={s.ActionButtonAdmin} onClick={() => showModalToRemoveProduct(id)}>Remove</button>
+            <ActionButton mediumSize onClick={() => showModalToUpdateProduct(id)}>Edit</ActionButton>
+            <ActionButton mediumSize onClick={() => showModalToRemoveProduct(id)}>Remove</ActionButton>
         </div>
     </div>
 )

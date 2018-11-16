@@ -51,6 +51,21 @@ const Header = ({
                 </Link>
             </div>
         </div>
+        {user && user.role === "admin" &&
+            <div className={s.HeaderBottom}>
+                <ul className={s.HeaderLinksBottom}>
+                    <li className={s.HeaderLinkItem}>
+                        Admin:
+                    </li>
+                    <li className={s.HeaderLinkItem}>
+                        <Link to={routes.admin}>Products</Link>
+                    </li>
+                    <li className={s.HeaderLinkItem}>
+                        <Link to={routes.adminUsers}>Users</Link>
+                    </li>
+                </ul>
+            </div>
+        }
     </div>
 );
 

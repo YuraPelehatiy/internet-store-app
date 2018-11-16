@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-//import { compose, lifecycle, withPropsOnChange } from 'recompose';
+import { compose, lifecycle, mapProps, withProps } from 'recompose';
 import s from './Desktop.module.css';
 import { routes } from '../routes';
 import AdminPage from '../pages/Admin/AdminPage';
@@ -28,7 +28,7 @@ function ProtectedRoute(props){
   return <Route {...props} />;
 }
 
-class App extends Component {
+/* class App extends Component {
   previousLocation = this.props.location;
 
   componentWillUpdate(nextProps){
@@ -78,8 +78,8 @@ class App extends Component {
 }
 
 export default App;
-
-/* const App = ({ location, previousLocation }) => {
+ */
+const App = ({ location, previousLocation }) => {
   
   let isModal = !!(
     location.state &&
@@ -111,12 +111,18 @@ export default App;
   );
 }
 
+let previousLocation;
+
+const getPreviousLocation = () => previousLocation;
+const setPreviousLocation = newPreviousLocation => {
+  previousLocation = newPreviousLocation;
+}
+
 export default compose(
-  withPropsOnChange(
-    (props, nexProps) => false,
-    props => ({
-      previousLocation: props.location
-    })
+  withProps(
+    props => {
+      setPreviousLocation(props.location)
+    }
   ),
   lifecycle({
     componentWillUpdate(nextProps){
@@ -127,8 +133,12 @@ export default compose(
         nextProps.history.action !== "POP" &&
         (!location.state || !location.state.modal)
       ) {
-        this.previousLocation = this.props.location;
+        setPreviousLocation(this.props.location);
       }
     }
   }),
-)(App) */
+  mapProps(props => ({
+    ...props,
+    previousLocation: getPreviousLocation()
+  }))
+)(App)

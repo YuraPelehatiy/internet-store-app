@@ -25,7 +25,7 @@ export const createProduct = (newProduct) => async (dispatch) => {
 
         const res = await Api.AdminProducts.createProduct(newProduct);
         const { result: ids, entities } = normalize(res.data, schemes.AdminProductCollection);
-
+        console.log(entities)
         dispatch(actions.createProductOk({
             ids,
             entities
@@ -88,5 +88,77 @@ export const getProduct = (id, refresh) => async (dispatch, getState) => {
         }));
     } catch (err) {
         dispatch(actions.getProductError(err.message));
+    }
+}
+
+export const fetchUsers = () => async (dispatch) => {
+    try {
+        dispatch(actions.fetchUsersStart());
+
+        const res = await Api.AdminUsers.fetchUsers();
+        const { result: ids, entities } = normalize(res.data, schemes.AdminUserCollection);
+
+        dispatch(actions.fetchUsersOk({
+            ids,
+            entities
+        }));
+    } catch (err) {
+        dispatch(actions.fetchUsersError(err.message));
+    }
+}
+
+export const updateUser = (productId, productBody) => async (dispatch) => {
+    try {
+        dispatch(actions.updateUserStart());
+
+        const res = await Api.AdminUsers.updateUserById(productId, productBody);
+
+        const { result: ids, entities } = normalize(res.data, schemes.AdminUserCollection);
+        
+        dispatch(actions.updateUserOk({
+            ids,
+            entities
+        }));
+    } catch (err) {
+        dispatch(actions.updateUserError(err.message));
+    }
+}
+
+export const removeUser = (id) => async (dispatch) => {
+    try {
+        dispatch(actions.removeUserStart());
+
+        const res = await Api.AdminUsers.removeUserById(id);
+
+        if (res && res.data && res.data.success){
+            const ids = [id]
+            dispatch(actions.removeUserOk({
+                ids
+            }));
+        }
+    } catch (err) {
+        dispatch(actions.removeUserError(err.message));
+    }
+}
+
+export const getUser = (id, refresh) => async (dispatch, getState) => {
+    try {
+        const product = getState().entities.users[id];
+
+        if(product) {
+            return;
+        }
+
+        dispatch(actions.getUserStart());
+
+        const res = await Api.AdminUsers.getUserById(id);
+        const { result, entities } = normalize(res.data, schemes.AdminUserCollection);
+
+        dispatch(actions.getUserOk({
+            id: result,
+            entities
+        }));
+    } catch (err) {
+        dispatch(actions.getUserError(err.message));
     }
 }

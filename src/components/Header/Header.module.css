@@ -41,3 +41,16 @@
 .CartBox {
    font-size: 1.4rem;
 }
+
+.HeaderBottom {
+    border-top: 1px solid #0089cf;
+    width: 100%;
+}
+
+.HeaderLinksBottom {
+    display: flex;
+    font-size: 1rem;
+    list-style: none;
+    justify-content: flex-start;
+    margin-left: 15%;
+}

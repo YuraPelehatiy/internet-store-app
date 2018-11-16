@@ -6,9 +6,9 @@ import { Form } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 
 const ModalAsk = ({ 
+    id,
     open,
     onClose,
-    id,
     onSubmitAction,
 }) => {
     const onSubmit = async () => {
@@ -38,7 +38,6 @@ const ModalAsk = ({
                         )}
                     />
                 </div>
-                
             </div>
         </Modal>
 )};

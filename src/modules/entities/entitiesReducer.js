@@ -3,6 +3,11 @@ const initialState = {
         // [product.id]: {
         //     ...product
         // }
+    },
+    users: {
+        // [user.id]: {
+        //     ...user
+        // }
     }
 }
 

@@ -6,14 +6,15 @@ import { routes } from '../../routes';
 import s from './ProductLinkAdmin.module.css';
 import ActionButton from '../ActionButton/ActionButton';
 
-const ProductLinkAdmin = ({ 
-    title, 
+const ProductLinkAdmin = ({  
     id,
+    title,
     showModalToUpdateProduct,
-    showModalToRemoveProduct
+    showModalToRemoveProduct,
+    users,
 }) => (
     <div className={s.ProductLinkAdmin}>
-        <Link to={formatRoute(routes.adminProduct, {id})} >
+        <Link to={formatRoute((users && routes.adminUser) || routes.adminProduct, {id})} >
             {title}
         </Link>
         <div className={s.ProductLinkAdminButtons}>

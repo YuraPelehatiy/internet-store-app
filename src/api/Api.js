@@ -40,59 +40,77 @@ export const initApi = () => {
 
 export const AdminProducts = {
     fetchProducts(){
-        return axios.get(`/api/v2/products`);
+        return axios.get(`/api/v3/products`);
     },
 
     getProductsById(id){
-        return axios.get(`/api/v2/products/${id}`);
+        return axios.get(`/api/v3/products/${id}`);
     },
 
     createProduct(body){
-        return axios.post('/api/v2/products', body);
+        return axios.post('/api/v3/products', body);
     },
 
     updateProductById(id, body){
-        return axios.patch(`/api/v2/products/${id}`, body);
+        return axios.patch(`/api/v3/products/${id}`, body);
     },
 
     removeProductById(id){
-        return axios.delete(`/api/v2/products/${id}`);
+        return axios.delete(`/api/v3/products/${id}`);
+    }
+}
+
+export const AdminUsers = {
+    fetchUsers(){
+        return axios.get(`/api/v3/users`);
+    },
+
+    getUserById(id){
+        return axios.get(`/api/v3/users/${id}`);
+    },
+
+    updateUserById(id, body){
+        return axios.patch(`/api/v3/users/${id}`, body);
+    },
+
+    removeUserById(id){
+        return axios.delete(`/api/v3/users/${id}`);
     }
 }
 
 export const Products = {
     fetchProducts(){
-        return axios.get(`/api/v2/products`);
+        return axios.get(`/api/v3/products`);
     },
 
     getProductsById(id){
-        return axios.get(`/api/v2/products/${id}`);
+        return axios.get(`/api/v3/products/${id}`);
     },
 }
 
 export const Cart = {
     getProductsByIds(ids){
         let query = "ids[]=" + ids.join("&ids[]=");
-        return axios.get(`/api/v2/products?${query}`);
+        return axios.get(`/api/v3/products?${query}`);
     }
 }
 
 export const Auth = {
     login(body){
-        return axios.post('/api/v2/auth/login', body)
+        return axios.post('/api/v3/auth/login', body)
     },
 
     register(body){
-        return axios.post('/api/v2/auth/register', body)
+        return axios.post('/api/v3/auth/register', body)
     },
 
     remember(body){
-        return axios.post('/api/v2/auth/remember', body)
+        return axios.post('/api/v3/auth/remember', body)
     }
 }
 
 export const User = {
     getCurrent(){
-        return axios.get('/api/v2/users/current');
+        return axios.get('/api/v3/users/current');
     }
 }

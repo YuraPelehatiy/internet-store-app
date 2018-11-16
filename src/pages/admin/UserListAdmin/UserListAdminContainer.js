@@ -1,27 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose, lifecycle, branch, renderComponent, withHandlers, withState, mapProps } from 'recompose';
-import ProdutcListAdminComponent from './ProdutcListAdminComponent';
+import UserListAdminComponent from './UserListAdminComponent';
 import * as adminOperations from '../../../modules/admin/adminOperations';
 import * as adminSelectors from '../../../modules/admin/adminSelectors';
 import Loader from '../../../components/Loader/Loader';
 import ErrorLoadign from '../../../components/ErrorLoading/ErrorLoading';
 import ModalAsk from '../../../components/ModalAsk/ModalAsk';
 import Modal from '../../../components/Modal/Modal';
-import ProductForm from '../../../components/ProductForm/ProductForm';
+import UserForm from '../../../components/UserForm/UserForm';
 
 const mapStateToProps = state => ({
-    products: adminSelectors.getProducst(state),
+    users: adminSelectors.getUsers(state),
     isLoading: state.admin.isLoading,
     isError: !!state.admin.error,
     error: state.admin.error,
 });
 
 const mapStateToDispatch = {
-    fetchProducts: adminOperations.fetchProducts,
-    createProduct: adminOperations.createProduct,
-    updateProduct: adminOperations.updateProduct,
-    removeProduct: adminOperations.removeProduct,
+    fetchUsers: adminOperations.fetchUsers,
+    updateUser: adminOperations.updateUser,
+    removeUser: adminOperations.removeUser,
 }
 
 
@@ -31,46 +30,32 @@ export default compose(
         mapStateToDispatch,
     ),
     withState("isOpenModalForm", "openerModalForm", false),
-    withState("modalAction", "setModalAction", {}),
+    withState("userId", "setUserId", null),
+    withState("user", "setUser", {}),
     withHandlers({
         openModalForm: (props) => (id) => {
-            if(id){
-                props.setModalAction({
-                    product: props.products.filter(i => i.id === id)[0],
-                    title: "Update",
-                    action: props.updateProduct,
-                });
-            } else {
-                props.setModalAction({
-                    title: "Create",
-                    action: props.createProduct
-                });
-            }
+            props.setUser(props.users.filter(i => i.id === id)[0]);
             props.openerModalForm(true);
         },
         closeModalForm: props => () => {
             props.openerModalForm(false);
-            props.setModalAction({});
+            props.setUser({});
         }
     }),
     withState("isOpenModalAsk", "openerModalAsk", false),
-    withState("modalActionAsk", "setModalActionAsk", {}),
     withHandlers({
         openModalAsk: (props) => (id) => {
-            props.setModalActionAsk({
-                action: props.removeProduct,
-                id: id,
-            })
+            props.setUserId(id);
             props.openerModalAsk(true);
         },
         closeModalAsk: props => () => {
             props.openerModalAsk(false);
-            props.setModalActionAsk({});
+            props.setUserId(null)
         }
     }),
     lifecycle({
         componentDidMount(){
-            this.props.fetchProducts();
+            this.props.fetchUsers();
         }
     }),
     branch(
@@ -87,11 +72,11 @@ export default compose(
                 open={props.isOpenModalForm}
                 onClose={props.closeModalForm}
             >
-                <ProductForm 
-                    onClose={props.closeModalForm}
-                    onSubmitAction={props.modalAction.action}
-                    onSubmitButtonTitle={props.modalAction.title}
-                    product={props.modalAction.product || {}}
+                <UserForm 
+                    actionAfterSucceeded={props.closeModalForm}
+                    onSubmitAction={props.updateUser}
+                    onSubmitButtonTitle="Update"
+                    user={props.user}
                 />
             </Modal>
         ),
@@ -99,8 +84,8 @@ export default compose(
             <ModalAsk
                 open={props.isOpenModalAsk}
                 onClose={props.closeModalAsk}
-                id={props.modalActionAsk.id}
-                onSubmitAction={props.modalActionAsk.action}
+                id={props.userId}
+                onSubmitAction={props.removeUser}
                 onNegativeAction={props.closeModalAsk}
             />
         ),
@@ -108,4 +93,4 @@ export default compose(
     })
 
     )
-)(ProdutcListAdminComponent);
+)(UserListAdminComponent);

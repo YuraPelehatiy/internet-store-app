@@ -20,3 +20,19 @@ export const removeProductError = createAction(constants.REMOVE_PRODUCT_ERROR);
 export const getProductStart = createAction(constants.GET_PRODUCT_START);
 export const getProductOk = createAction(constants.GET_PRODUCT_OK);
 export const getProductError = createAction(constants.GET_PRODUCT_ERROR);
+
+export const fetchUsersStart = createAction(constants.FETCH_USERS_START);
+export const fetchUsersOk = createAction(constants.FETCH_USERS_OK);
+export const fetchUsersError = createAction(constants.FETCH_USERS_ERROR);
+
+export const updateUserStart = createAction(constants.UPDATE_USER_START);
+export const updateUserOk = createAction(constants.UPDATE_USER_OK);
+export const updateUserError = createAction(constants.UPDATE_USER_ERROR);
+
+export const removeUserStart = createAction(constants.REMOVE_USER_START);
+export const removeUserOk = createAction(constants.REMOVE_USER_OK);
+export const removeUserError = createAction(constants.REMOVE_PRODUCT_ERROR);
+
+export const getUserStart = createAction(constants.GET_USER_START);
+export const getUserOk = createAction(constants.GET_USER_OK);
+export const getUserError = createAction(constants.GET_USER_ERROR);

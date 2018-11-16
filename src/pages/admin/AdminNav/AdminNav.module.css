@@ -1,0 +1,21 @@
+.AdminNav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.AdminNavLink {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #7a7a7a;
+    border-bottom: 1px solid #999;
+    margin-bottom: 5px;
+}
+
+.AdminNavLinkActive {
+    color: #0089cf;
+    border-bottom: 3px solid #0089cf;
+}

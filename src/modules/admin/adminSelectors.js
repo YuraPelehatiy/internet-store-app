@@ -10,3 +10,14 @@ export const getProducst = createSelector(
 );
 
 export const getProduct = createSelector(getProductById, result => result);
+
+const getUsersIds = state => state.admin.users;
+const getUserById = (state, id) => state.entities.users[id];
+const getUsersEntities = state => state.entities.users;
+
+export const getUsers = createSelector(
+    [getUsersIds, getUsersEntities],
+    (products, entities) => products.map(id => entities[id]),
+);
+
+export const getUser = createSelector(getUserById, result => result);

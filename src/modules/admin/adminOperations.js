@@ -3,6 +3,7 @@ import * as schemes from '../../api/schemes'
 import * as actions from './adminActions';
 import * as Api from '../../api/Api'
 
+// Poructs operations 
 export const fetchProducts = () => async (dispatch) => {
     try {
         dispatch(actions.fetchProductsStart());
@@ -35,11 +36,11 @@ export const createProduct = (newProduct) => async (dispatch) => {
     }
 }
 
-export const updateProduct = (productId, productBody) => async (dispatch) => {
+export const updateProduct = (productData) => async (dispatch) => {
     try {
         dispatch(actions.updateProductStart());
 
-        const res = await Api.AdminProducts.updateProductById(productId, productBody);
+        const res = await Api.AdminProducts.updateProductById(productData.id, productData);
 
         const { result: ids, entities } = normalize(res.data, schemes.AdminProductCollection);
         
@@ -91,6 +92,7 @@ export const getProduct = (id, refresh) => async (dispatch, getState) => {
     }
 }
 
+// Users operations 
 export const fetchUsers = () => async (dispatch) => {
     try {
         dispatch(actions.fetchUsersStart());
@@ -107,11 +109,11 @@ export const fetchUsers = () => async (dispatch) => {
     }
 }
 
-export const updateUser = (productId, productBody) => async (dispatch) => {
+export const updateUser = (userData) => async (dispatch) => {
     try {
         dispatch(actions.updateUserStart());
 
-        const res = await Api.AdminUsers.updateUserById(productId, productBody);
+        const res = await Api.AdminUsers.updateUserById(userData.id, userData);
 
         const { result: ids, entities } = normalize(res.data, schemes.AdminUserCollection);
         
@@ -141,7 +143,7 @@ export const removeUser = (id) => async (dispatch) => {
     }
 }
 
-export const getUser = (id, refresh) => async (dispatch, getState) => {
+export const getUser = (id) => async (dispatch, getState) => {
     try {
         const product = getState().entities.users[id];
 

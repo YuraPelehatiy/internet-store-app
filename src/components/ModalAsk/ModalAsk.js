@@ -18,7 +18,7 @@ const ModalAsk = ({
             onClose();
         } catch (err) {
             return {
-                [FORM_ERROR]: "Error"
+                [FORM_ERROR]: "Something went wrong"
             }
         }
     }
@@ -30,7 +30,7 @@ const ModalAsk = ({
                 <div>
                     <Form
                         onSubmit={onSubmit}
-                        render={({ handleSubmit }) => (
+                        render={({ handleSubmit, submitError }) => (
                             <>
                                 <ActionButton onClick={handleSubmit}>Yes</ActionButton>
                                 <ActionButton onClick={onClose}>No</ActionButton>

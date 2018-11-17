@@ -32,13 +32,13 @@ const ProductPageAdminComponent = ({
     removeProduct,
     history,
 }) => {
-    const onSubmitUpdate = async ({id, ...values}) => {
+    const onSubmitUpdate = async (values) => {
         try {
-            await updateProduct(id, values);
+            await updateProduct(values);
             history.go(-1);
         } catch (err) {
             return {
-                [FORM_ERROR]: "Somethings went wrogn"
+                [FORM_ERROR]: "Something went wrogn"
             }
         }
     }
@@ -49,7 +49,7 @@ const ProductPageAdminComponent = ({
             history.go(-1);
         } catch (err) {
             return {
-                [FORM_ERROR]: "Somethings went wrogn"
+                [FORM_ERROR]: "Something went wrogn"
             }
         }
     }
@@ -60,7 +60,7 @@ const ProductPageAdminComponent = ({
                 initialValues={{ ...product }}
                 onSubmit={onSubmitUpdate}
                 validate={validate}
-                render={({ handleSubmit, values }) => (
+                render={({ handleSubmit, submitError, values }) => (
                     <div>
                         <div className={s.ProductPageAdminForm}>
                             <div className={s.ProductPageAdminFields}>
@@ -92,14 +92,18 @@ const ProductPageAdminComponent = ({
                         <div>
                             <ActionButton onClick={handleSubmit}>Update</ActionButton>
                         </div>
+                        {submitError && <div>{submitError}</div>}
                     </div>
                 )}
             />
             <Form
                 initialValues = {{ ...product }}
                 onSubmit={onSubmitRemove}
-                render={({ handleSubmit }) => (
-                    <ActionButton onClick={handleSubmit}>Remove</ActionButton>
+                render={({ handleSubmit, submitError }) => (
+                    <>
+                        <ActionButton onClick={handleSubmit}>Remove</ActionButton>
+                        {submitError && <div>{submitError}</div>}
+                    </>
                 )}
             />
         </div>

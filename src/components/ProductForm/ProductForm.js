@@ -30,13 +30,9 @@ const ProductForm = ({
     onSubmitButtonTitle,
     product,
 }) => {
-    const onSubmit = async ({ id, ...values }, form) => {
+    const onSubmit = async (values, form) => {
         try {
-            if(id){
-                await onSubmitAction(id, values);
-            } else {
-                await onSubmitAction(values);
-            }
+            await onSubmitAction(values);
             
             form.reset()
             onClose()

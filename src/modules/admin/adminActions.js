@@ -1,6 +1,10 @@
 import { createAction } from 'redux-actions';
 import * as constants from './adminConstants';
 
+//--------------------------------------------------------------------------
+//                        Actions for products
+//--------------------------------------------------------------------------
+
 export const fetchProductsStart = createAction(constants.FETCH_PRODUCTS_START);
 export const fetchProductsOk = createAction(constants.FETCH_PRODUCTS_OK);
 export const fetchProductsError = createAction(constants.FETCH_PRODUCTS_ERROR);
@@ -20,6 +24,12 @@ export const removeProductError = createAction(constants.REMOVE_PRODUCT_ERROR);
 export const getProductStart = createAction(constants.GET_PRODUCT_START);
 export const getProductOk = createAction(constants.GET_PRODUCT_OK);
 export const getProductError = createAction(constants.GET_PRODUCT_ERROR);
+
+
+
+//--------------------------------------------------------------------------
+//                          Actions for users
+//--------------------------------------------------------------------------
 
 export const fetchUsersStart = createAction(constants.FETCH_USERS_START);
 export const fetchUsersOk = createAction(constants.FETCH_USERS_OK);

@@ -28,9 +28,9 @@ const UserForm = ({
     onSubmitButtonTitle,
     actionAfterSucceeded,
 }) => {
-    const onSubmit = async ({ id, ...values }) => {
+    const onSubmit = async (values) => {
         try {
-            await onSubmitAction(id, values);
+            await onSubmitAction(values);
 
             if(actionAfterSucceeded){
                 actionAfterSucceeded();

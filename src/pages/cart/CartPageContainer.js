@@ -24,6 +24,7 @@ const mapStateToDispatch = {
     fetchProducts: cartOperation.fetchProducts,
     increase: cartActions.increase,
     decrease: cartActions.decrease,
+    enterValue: cartActions.enterValue,
 };
 
 export default compose(
@@ -57,6 +58,7 @@ export default compose(
                 onActionButtonClick={props.removeItemFromCart}
                 increment={props.increase}
                 decrement={props.decrease}
+                onEnterValueCounter={props.enterValue}
                 actionButtonTitle="Remove from Cart"
             />
         ),

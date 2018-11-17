@@ -6,10 +6,15 @@ const Counter = ({
     value,
     increment,
     decrement,
+    onEnterValue,
 }) => (
     <div className={s.Counter}>
         <button onClick={() => increment({id})}>+</button>
-        <h2>{value}</h2>
+        <input value={value} onChange={e => {
+            if (e.target.value.match(/^\d+$/) || e.target.value.trim().length === 0) {
+                onEnterValue({ value: Number(e.target.value), id });
+            } 
+        }} />
         <button onClick={() => decrement({id})}>-</button>
     </div>
 )

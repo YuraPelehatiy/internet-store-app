@@ -7,3 +7,4 @@ export const FETCH_PRODUCTS_ERROR = 'cart/FETCH_PRODUCTS_ERROR';
 
 export const INCREASE = 'cart/INCREASE';
 export const DECREASE = 'cart/DECREASE';
+export const ENTER_VALUE = 'cart/ENTER_VALUE';

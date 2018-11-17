@@ -45,6 +45,10 @@ export default handleActions(
             ...state,
             items: decrease(state, action)
         }),
+        [constants.ENTER_VALUE]: (state, action) => ({
+            ...state,
+            items: enterValue(state, action)
+        })
     }, 
     initialState
 );
@@ -77,7 +81,7 @@ function removeItem(state, action){
 }
 
 function decrease(state, action){
-    if(state.items[action.payload.id].count - 1 === 0){
+    if(state.items[action.payload.id].count - 1 < 0){
         return state.items;
     }
 
@@ -86,6 +90,26 @@ function decrease(state, action){
         [action.payload.id]: {
             ...state.items[action.payload.id],
             count: state.items[action.payload.id].count - 1
+        }
+    }
+}
+
+function enterValue(state, action){
+    if(action.payload.value < 0){
+        return {
+            ...state.items,
+            [action.payload.id]: {
+                ...state.items[action.payload.id],
+                count: 0
+            }
+        }
+    }
+
+    return {
+        ...state.items,
+        [action.payload.id]: {
+            ...state.items[action.payload.id],
+            count: action.payload.value
         }
     }
 }

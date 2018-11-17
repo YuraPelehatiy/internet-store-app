@@ -21,6 +21,7 @@ const ProductLink = ({
     count,
     increment,
     decrement,
+    onEnterValueCounter,
 }) => (
     <div className={cx({ProductLink: true, ProductLinkCart: cart})}>
         <div className={cx({LeftHandSide: cart})}>
@@ -28,6 +29,7 @@ const ProductLink = ({
                         value={count} 
                         increment={increment} 
                         decrement={decrement} 
+                        onEnterValue={onEnterValueCounter}
                         id={id} 
                     />
             }

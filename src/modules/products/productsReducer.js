@@ -9,6 +9,7 @@ const initialState = {
 
 export default handleActions(
     {
+        // Fetch all products
         [constants.FETCH_PRODUCTS_START]: (state) => ({
             ...state,
             isLoading: true,
@@ -24,6 +25,8 @@ export default handleActions(
             isLoading: false,
             error: action.payload.message,
         }),
+
+        // Get one product
         [constants.GET_PRODUCT_START]: (state) => ({
             ...state,
             isLoading: true,

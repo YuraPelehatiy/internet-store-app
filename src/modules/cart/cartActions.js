@@ -10,3 +10,4 @@ export const fetchProductsError = createAction(constants.FETCH_PRODUCTS_ERROR);
 
 export const increase = createAction(constants.INCREASE);
 export const decrease = createAction(constants.DECREASE);
+export const enterValue = createAction(constants.ENTER_VALUE);

@@ -5,7 +5,7 @@ import s from './ProductPageAdmin.module.css';
 import InputForm from '../../components/InputForm/InputForm';
 import TextAreaForm from '../../components/TextAreaForm/TextAreaForm';
 import ActionButton from '../../components/ActionButton/ActionButton';
-
+import ErrorSubmiting from '../../components/ErrorSubmiting/ErrorSubmiting';
 
 const validate = values => {
     const errors = {}
@@ -92,7 +92,7 @@ const ProductPageAdminComponent = ({
                         <div>
                             <ActionButton onClick={handleSubmit}>Update</ActionButton>
                         </div>
-                        {submitError && <div>{submitError}</div>}
+                        {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                     </div>
                 )}
             />
@@ -102,7 +102,7 @@ const ProductPageAdminComponent = ({
                 render={({ handleSubmit, submitError }) => (
                     <>
                         <ActionButton onClick={handleSubmit}>Remove</ActionButton>
-                        {submitError && <div>{submitError}</div>}
+                        {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                     </>
                 )}
             />

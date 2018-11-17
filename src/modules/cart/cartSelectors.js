@@ -1,20 +1,18 @@
 import { createSelector } from 'reselect';
 
-const getProductsItems = (state, isLoadign) => {
-    if(isLoadign){
+const getProductsItems = (state, isLoading) => {
+
+    // We use this condition and the isLoading parameter to force 
+    // the getProducts selector to recalculate after fetching data 
+    // from the server.
+
+    if(isLoading){
         return [];
     }
     return state.cart.items;
 };
 
 const getProductsEntities = state => state.entities.products;
-
-const getStatusLoading = (state, isLoadign) => {
-    if(isLoadign){
-        return true;
-    }
-    return false;
-}
 
 export const getProducts = createSelector(
     [getProductsItems, getProductsEntities],
@@ -32,10 +30,8 @@ export const getProducts = createSelector(
 );
 
 export const getTotalPrice = createSelector(
-    [getProducts, getProductsItems, getStatusLoading],
-    (products, items, status) => {
-        return products.reduce((acc, product) => acc + product.price * items[product.id].count, 0);
-    }
+    [getProducts, getProductsItems],
+    (products, items) => products.reduce((acc, product) => acc + product.price * items[product.id].count, 0),
 );
 
 export const getCountItems = createSelector(

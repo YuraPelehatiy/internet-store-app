@@ -1,8 +1,9 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
+import { FORM_ERROR } from 'final-form';
 import InputForm from '../InputForm/InputForm';
 import ActionButton from '../ActionButton/ActionButton';
-import { FORM_ERROR } from 'final-form';
+import ErrorSubmiting from '../ErrorSubmiting/ErrorSubmiting';
 
 const validate = values => {
     const errors = {}
@@ -78,7 +79,7 @@ const UserForm = ({
                         <div>
                             <ActionButton onClick={handleSubmit}>{onSubmitButtonTitle}</ActionButton>
                         </div>
-                        {submitError && <div>{submitError}</div>}
+                        {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                     </>
                 )}
             />

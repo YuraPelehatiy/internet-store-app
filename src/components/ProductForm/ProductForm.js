@@ -4,6 +4,7 @@ import { FORM_ERROR } from 'final-form';
 import InputForm from '../InputForm/InputForm';
 import ActionButton from '../ActionButton/ActionButton';
 import TextAreaForm from '../TextAreaForm/TextAreaForm';
+import ErrorSubmiting from '../ErrorSubmiting/ErrorSubmiting';
 
 const validate = values => {
     const errors = {}
@@ -74,7 +75,7 @@ const ProductForm = ({
                         <div>
                             <ActionButton onClick={handleSubmit}>{onSubmitButtonTitle}</ActionButton>
                         </div>
-                        {submitError && <div>{submitError}</div>}
+                        {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                     </>
                 )}
             />

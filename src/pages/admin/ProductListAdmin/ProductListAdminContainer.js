@@ -105,7 +105,5 @@ export default compose(
             />
         ),
         ...props,
-    })
-
-    )
+    }))
 )(ProdutcListAdminComponent);

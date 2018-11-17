@@ -8,6 +8,7 @@ import { routes } from '../../routes';
 import InputForm from '../../components/InputForm/InputForm';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import ErrorSubmiting from '../../components/ErrorSubmiting/ErrorSubmiting';
 
 const validate = values => {
     const errors = {}
@@ -73,7 +74,7 @@ const RegisterPage = ({ register }) => {
                         <div>
                             <ActionButton onClick={handleSubmit}>Register</ActionButton>
                         </div>
-                        {submitError && <div>{submitError}</div>}
+                        {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                         {submitSucceeded && <Redirect to={routes.authLogin} />}
                     </>
                 )}

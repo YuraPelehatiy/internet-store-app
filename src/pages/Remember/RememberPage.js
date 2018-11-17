@@ -6,6 +6,7 @@ import * as appOperations from '../../modules/app/appOperations';
 import InputForm from '../../components/InputForm/InputForm';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import ErrorSubmiting from '../../components/ErrorSubmiting/ErrorSubmiting';
 
 const validate = values => {
     const errors = {}
@@ -44,7 +45,7 @@ const RememberPage = ({ remember }) => {
                         <div>
                             <ActionButton onClick={handleSubmit}>Remember</ActionButton>
                         </div>
-                        {submitError && <div>{submitError}</div>}
+                        {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                         {submitSucceeded && <div>We have sent instructions for your email</div>}
                     </>
                 )}

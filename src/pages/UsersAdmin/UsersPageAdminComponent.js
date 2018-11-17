@@ -3,6 +3,7 @@ import { Form } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import UserForm from '../../components/UserForm/UserForm';
+import ErrorSubmiting from '../../components/ErrorSubmiting/ErrorSubmiting';
 
 const UserPageAdminComponent = ({ 
     user,
@@ -32,8 +33,11 @@ const UserPageAdminComponent = ({
             <Form
                 initialValues = {{ ...user }}
                 onSubmit={onSubmitRemove}
-                render={({ handleSubmit }) => (
-                    <ActionButton onClick={handleSubmit}>Remove</ActionButton>
+                render={({ handleSubmit, submitError }) => (
+                    <>
+                        <ActionButton onClick={handleSubmit}>Remove</ActionButton>
+                        {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
+                    </>
                 )}
             />
         </div>

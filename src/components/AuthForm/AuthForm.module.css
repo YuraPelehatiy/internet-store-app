@@ -10,7 +10,6 @@
 .AuthFormNav {
     display: flex;
     width: 100%;
-    border-bottom: 1px solid #999;
     margin-bottom: 5%;
 }
 
@@ -26,9 +25,10 @@
     height: 40px;
     text-decoration: none;
     color: #999;
+    border-bottom: 1px solid #999;
 }
 
 .AuthFormActiveLink {
-    color: #0089cf;
-    border-bottom: 3px solid #0089cf;
+    color: #ff8a00;
+    border-bottom: 3px solid #ff8a00;
 }

@@ -9,10 +9,11 @@ import './index.css';
 import App from './layouts/Desktop';
 import { store, persistor } from './store/store';
 import * as appOperations from './modules/app/appOperations';
+import Loader from './components/Loader/Loader';
 
 const InitAppComponent = () => (
     <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor} >
+        <PersistGate loading={<Loader />} persistor={persistor} >
             <BrowserRouter>
                 <Route component={App}/>
             </BrowserRouter>

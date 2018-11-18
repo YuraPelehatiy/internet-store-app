@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './ProductPage.module.css';
 import ActionButton from '../../components/ActionButton/ActionButton';
-import { productPropTypes } from '../../schemes/product';
 
 const ProductPageComponent = ({ 
     id,
@@ -31,7 +30,5 @@ const ProductPageComponent = ({
         
     </div>
 )
-
-ProductPageComponent.propTypes = productPropTypes;
 
 export default ProductPageComponent;

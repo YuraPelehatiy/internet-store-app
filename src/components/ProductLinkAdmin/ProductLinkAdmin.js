@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatRoute } from 'react-router-named-routes';
-import T from 'prop-types';
 import { routes } from '../../routes';
 import s from './ProductLinkAdmin.module.css';
 import ActionButton from '../ActionButton/ActionButton';
@@ -23,10 +22,5 @@ const ProductLinkAdmin = ({
         </div>
     </div>
 )
-
-ProductLinkAdmin.propTypes = {
-    id: T.string.isRequired,
-    title: T.string.isRequired
-}
 
 export default ProductLinkAdmin;

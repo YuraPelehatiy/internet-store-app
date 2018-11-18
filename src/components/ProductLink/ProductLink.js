@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatRoute } from 'react-router-named-routes';
-import T from 'prop-types';
 import s from './ProductLink.module.css';
 import { routes } from '../../routes';
 import ActionButton from '../ActionButton/ActionButton';
@@ -55,12 +54,5 @@ const ProductLink = ({
         <ActionButton onClick={() => onActionButtonClick({id})}>{actionButtonTitle}</ActionButton>
     </div>
 )
-
-ProductLink.propTypes = {
-    id: T.string.isRequired,
-    title: T.string.isRequired,
-    //image: T.string.isRequired,
-    price: T.number.isRequired
-}
 
 export default ProductLink;

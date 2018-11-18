@@ -42,7 +42,7 @@ const Header = ({
             </div>
             <div className={s.SearchBox}>
                 <form>
-                    <InputForm type="text" placeholder="what are you looking for..."/>
+                    <InputForm type="search" placeholder="what are you looking for..."/>
                 </form>
             </div>
             <div>

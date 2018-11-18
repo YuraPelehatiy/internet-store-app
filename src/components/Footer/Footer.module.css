@@ -1,9 +1,43 @@
-.footer {
+.Footer {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 1rem;
-    background-color: #efefef;
+    background-color: #eee;
     text-align: center;
+}
+
+.FooterS {
+    color: #fff;
+    padding-top: 7px;
+    border-top: 1px solid #777;
+    background: #333;
+    padding-bottom: 5px;
+}
+
+.Footer a {
+    text-decoration: none;
+    color: #555;
+}
+
+.Footer a:hover {
+    color: #ff8a00
+}
+
+.FooterMain {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px 0;
+}
+
+.FooterLinks {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    list-style: none;
+    align-items: flex-start;
+}
+
+.FooterLinkItem {
+    margin: 5px;
 }

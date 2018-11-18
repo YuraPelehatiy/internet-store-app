@@ -1,3 +1,15 @@
+.AuthPage {
+    text-align: center;
+}
+
+.Logo a {
+    display: block;
+    font-size: 3rem;
+    color: #ff8a00;
+    text-decoration: none;
+    padding: 30px;
+}
+
 .AuthForm {
     margin: 30px auto 60px;
     width: 40%;
@@ -10,7 +22,6 @@
 .AuthFormNav {
     display: flex;
     width: 100%;
-    border-bottom: 1px solid #999;
     margin-bottom: 5%;
 }
 
@@ -26,9 +37,10 @@
     height: 40px;
     text-decoration: none;
     color: #999;
+    border-bottom: 1px solid #999;
 }
 
 .AuthFormActiveLink {
-    color: #0089cf;
-    border-bottom: 3px solid #0089cf;
+    color: #ff8a00;
+    border-bottom: 3px solid #ff8a00;
 }

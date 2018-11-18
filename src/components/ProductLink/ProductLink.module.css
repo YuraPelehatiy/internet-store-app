@@ -27,13 +27,13 @@
 }
 
 .productTitle:hover {
-    color: #0089cf;
+    color: #ff8f0f;
 }
 
 .productPrice {
     margin: 10px;
     font-size: 1rem;
-    color: #0089cf;
+    color: #ff8a00;
     text-decoration: none;
     outline: none;
 }

@@ -145,9 +145,9 @@ export const removeUser = (id) => async (dispatch) => {
 
 export const getUser = (id) => async (dispatch, getState) => {
     try {
-        const product = getState().entities.users[id];
+        const user = getState().entities.users[id];
 
-        if(product) {
+        if(user) {
             return;
         }
 

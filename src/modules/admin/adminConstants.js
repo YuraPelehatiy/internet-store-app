@@ -1,4 +1,7 @@
-// Products constants
+//--------------------------------------------------------------------------
+//                        Constants for products
+//--------------------------------------------------------------------------
+
 export const FETCH_PRODUCTS_START = 'admin/FETCH_PRODUCTS_START';
 export const FETCH_PRODUCTS_OK = 'admin/FETCH_PRODUCTS_OK';
 export const FETCH_PRODUCTS_ERROR = 'admin/FETCH_PRODUCTS_ERROR';
@@ -19,7 +22,11 @@ export const GET_PRODUCT_START = 'admin/GET_PRODUCT_START';
 export const GET_PRODUCT_OK = 'admin/GET_PRODUCT_OK';
 export const GET_PRODUCT_ERROR = 'admin/GET_PRODUCT_ERROR';
 
-// User constants
+
+//--------------------------------------------------------------------------
+//                        Constants for users
+//--------------------------------------------------------------------------
+
 export const FETCH_USERS_START = 'admin/FETCH_USERS_START';
 export const FETCH_USERS_OK = 'admin/FETCH_USERS_OK';
 export const FETCH_USERS_ERROR = 'admin/FETCH_USERS_ERROR';

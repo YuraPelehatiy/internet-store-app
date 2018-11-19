@@ -59,7 +59,7 @@ function addItem(state, action){
             ...state.items,
             [action.payload.id]: {
                 id: action.payload.id,
-                count: 1,
+                count: action.payload.value,
             }
         }
     }
@@ -67,7 +67,7 @@ function addItem(state, action){
         ...state.items,
         [action.payload.id]: {
             id: action.payload.id,
-            count: state.items[action.payload.id].count + 1,
+            count: state.items[action.payload.id].count + action.payload.value,
         }
     }
 }

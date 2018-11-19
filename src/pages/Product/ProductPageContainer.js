@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle, branch, renderComponent, mapProps } from 'recompose';
+import { compose, lifecycle, branch, renderComponent, mapProps, withStateHandlers } from 'recompose';
 import * as productsSelectors from '../../modules/products/productsSelectors';
 import * as productsOperations from '../../modules/products/productsOperations';
 import * as cartActions from '../../modules/cart/cartActions';
@@ -29,6 +29,30 @@ export default compose(
             this.props.getProduct(this.props.match.params.id)
         }
     }),
+    withStateHandlers(
+        ({ initialCount = 1 }) => ({
+            count: initialCount,
+        }),
+        {
+            increment: ({ count }) => () => ({
+                count: count + 1,
+            }),
+            decrement: ({ count }) => () => {
+                if(count - 1 < 0){
+                    return ({
+                        count: 0,
+                    })
+                }
+
+                return ({
+                    count: count - 1,
+                })
+            },
+            onEnterValueCounter: ({ count }) => (value) => ({
+                count: value,
+            }),
+        }
+    ),
     branch(
         props => props.isLoading,
         renderComponent(Loader),
@@ -38,7 +62,11 @@ export default compose(
         ),
     ),
     mapProps(props => ({
-        addItemToCart: props.addItemToCart,
         ...props.product,
+        addItemToCart: props.addItemToCart,
+        count: props.count,
+        increment: props.increment,
+        decrement: props.decrement,
+        onEnterValueCounter: props.onEnterValueCounter,
     }))
 )(ProductPageComponent);

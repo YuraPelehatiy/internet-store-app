@@ -51,7 +51,7 @@ const ProductLink = ({
                 </div>
             </Link>
         </div>
-        <ActionButton onClick={() => onActionButtonClick({id})}>{actionButtonTitle}</ActionButton>
+        <ActionButton onClick={() => onActionButtonClick({id, value: 1})}>{actionButtonTitle}</ActionButton>
     </div>
 )
 

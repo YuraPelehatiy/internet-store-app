@@ -16,7 +16,7 @@ export const adminReducerUsers = {
         [constants.FETCH_USERS_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Update user
@@ -26,7 +26,6 @@ export const adminReducerUsers = {
         }),
         [constants.UPDATE_USER_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             users: state.users.map(user => {
                 if(user === action.payload.ids[0]){
                     return action.payload.ids[0]
@@ -36,8 +35,7 @@ export const adminReducerUsers = {
         }),
         [constants.UPDATE_USER_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Remove user
@@ -47,13 +45,11 @@ export const adminReducerUsers = {
         }),
         [constants.REMOVE_USER_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             users: state.users.filter(user => user !== action.payload.ids[0]),
         }),
         [constants.REMOVE_USER_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Get one product
@@ -70,6 +66,6 @@ export const adminReducerUsers = {
         [constants.GET_USER_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 };

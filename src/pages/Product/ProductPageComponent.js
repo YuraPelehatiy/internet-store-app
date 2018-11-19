@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './ProductPage.module.css';
 import ActionButton from '../../components/ActionButton/ActionButton';
+import Counter from '../../components/Counter/Counter';
 
 const ProductPageComponent = ({ 
     id,
@@ -9,6 +10,10 @@ const ProductPageComponent = ({
     image, 
     price ,
     addItemToCart,
+    count,
+    increment,
+    decrement,
+    onEnterValueCounter
 }) => (
     <div className={s.ProductPage}>
         <div className={s.imageContainer}>
@@ -25,7 +30,15 @@ const ProductPageComponent = ({
             <h2>
                 Price: {price}
             </h2>
-            <ActionButton onClick={() => addItemToCart({id})}>Add to cart</ActionButton>
+            <Counter 
+                value={count} 
+                increment={increment} 
+                decrement={decrement} 
+                onEnterValue={onEnterValueCounter}
+                id={id} 
+                horizontalStyle
+            />
+            <ActionButton onClick={() => addItemToCart({id, value: count})}>Add to cart</ActionButton>
         </div>
         
     </div>

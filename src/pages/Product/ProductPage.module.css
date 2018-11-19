@@ -25,3 +25,11 @@
 .title {
     margin-bottom: 10px;
 }
+
+
+.imageContainerModal {
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: auto;
+}

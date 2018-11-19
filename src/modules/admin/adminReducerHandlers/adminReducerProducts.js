@@ -15,7 +15,7 @@ export const adminReducerProducts = {
         [constants.FETCH_PRODUCTS_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Create product
@@ -25,13 +25,11 @@ export const adminReducerProducts = {
         }),
         [constants.CREATE_PRODUCT_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             products: action.payload.ids.concat(state.products),
         }),
         [constants.CREATE_PRODUCT_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Update product
@@ -41,7 +39,6 @@ export const adminReducerProducts = {
         }),
         [constants.UPDATE_PRODUCT_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             products: state.products.map(product => {
                 if(product === action.payload.ids[0]){
                     return action.payload.ids[0]
@@ -51,8 +48,7 @@ export const adminReducerProducts = {
         }),
         [constants.UPDATE_PRODUCT_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Remove product
@@ -62,13 +58,11 @@ export const adminReducerProducts = {
         }),
         [constants.REMOVE_PRODUCT_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             products: state.products.filter(product => product !== action.payload.ids[0]),
         }),
         [constants.REMOVE_PRODUCT_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Get one product
@@ -85,6 +79,6 @@ export const adminReducerProducts = {
         [constants.GET_PRODUCT_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 };

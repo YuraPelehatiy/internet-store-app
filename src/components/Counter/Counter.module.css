@@ -1,8 +1,20 @@
 .Counter {
     display: flex;
-    flex-direction: column;
+    margin: 5px;
+}
+
+.CounterVertical {
     width: 10%;
-    margin: 20px;
+    flex-direction: column;
+}
+
+.CounterHorizontal {
+    width: 30px;
+    display: flex;
+}
+
+.CounterHorizontal input {
+    width: 60px;
 }
 
 .Counter button {

@@ -1,5 +1,8 @@
 import React from 'react';
 import s from './Counter.module.css'
+import classNames from 'classnames/bind';
+
+let cx = classNames.bind(s);
 
 const Counter = ({
     id,
@@ -7,8 +10,13 @@ const Counter = ({
     increment,
     decrement,
     onEnterValue,
+    horizontalStyle
 }) => (
-    <div className={s.Counter}>
+    <div className={cx({
+        Counter: true,
+        CounterVertical: !horizontalStyle,
+        CounterHorizontal: horizontalStyle,
+    })}>
         <button onClick={() => increment({id})}>+</button>
         <input value={value} onChange={e => {
             if (e.target.value.match(/^\d+$/) || e.target.value.trim().length === 0) {

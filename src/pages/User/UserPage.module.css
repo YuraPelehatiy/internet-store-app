@@ -1,0 +1,18 @@
+.UserPage {
+    width: 50%;
+    font-size: 1.2rem;
+    text-align: start;
+    margin: 10px auto;
+    font-weight: 500;
+}
+
+.UserPageHeader {
+    text-align: center;
+}
+
+.Line {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+

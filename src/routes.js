@@ -5,6 +5,7 @@ export const routes = {
     adminUsers: '/admin/users',
     home: '/',
     product: '/products/:id',
+    user: '/user',
     cart: '/cart',
     cartCheckout: '/cart/checkout',
     about: '/about',

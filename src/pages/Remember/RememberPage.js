@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import * as appOperations from '../../modules/app/appOperations';
 import InputForm from '../../components/InputForm/InputForm';
 import ActionButton from '../../components/ActionButton/ActionButton';
-import AuthForm from '../../components/AuthForm/AuthForm';
 import ErrorSubmiting from '../../components/ErrorSubmiting/ErrorSubmiting';
 
 const validate = values => {
@@ -31,7 +30,7 @@ const RememberPage = ({ remember }) => {
     }
 
     return(
-        <AuthForm>
+        <div>
             <Form
                 onSubmit={onSubmit}
                 validate={validate}
@@ -50,7 +49,7 @@ const RememberPage = ({ remember }) => {
                     </>
                 )}
             />
-        </AuthForm>
+        </div>
     );
 }
 

@@ -29,7 +29,13 @@ const Header = ({
                <li className={s.HeaderLinkItem}>
                    <Link to={routes.termsandconditions}>Terms and Conditions</Link>
                </li>
-               {user && user.id !== undefined && <li className={s.HeaderLinkItem}>{user.firstName + " " + user.lastName}</li>}
+               {user 
+                && user.id !== undefined 
+                && <li className={s.HeaderLinkItem}>
+                        <Link to={routes.user}>
+                            User: {user.firstName + " " + user.lastName}
+                        </Link>
+                    </li>}
                <li className={s.HeaderLinkItem}>
                     {user && user.id !== undefined && <ActionButton onClick={logout} smallSize>Logout</ActionButton>}
                     {user && user.id === undefined && <Link to={routes.authLogin}><ActionButton smallSize>Login/Register</ActionButton></Link>}

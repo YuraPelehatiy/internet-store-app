@@ -23,14 +23,12 @@ const mapStateToDispatch = {
     removeUser: adminOperations.removeUser,
 }
 
-
 export default compose(
     connect(
         mapStateToProps, 
         mapStateToDispatch,
     ),
     withState("isOpenModalForm", "openerModalForm", false),
-    withState("userId", "setUserId", null),
     withState("user", "setUser", {}),
     withHandlers({
         openModalForm: (props) => (id) => {
@@ -45,12 +43,12 @@ export default compose(
     withState("isOpenModalAsk", "openerModalAsk", false),
     withHandlers({
         openModalAsk: (props) => (id) => {
-            props.setUserId(id);
+            props.setUser(props.users.filter(i => i.id === id)[0]);
             props.openerModalAsk(true);
         },
         closeModalAsk: props => () => {
             props.openerModalAsk(false);
-            props.setUserId(null)
+            props.setUser({})
         }
     }),
     lifecycle({
@@ -84,7 +82,7 @@ export default compose(
             <ModalAsk
                 open={props.isOpenModalAsk}
                 onClose={props.closeModalAsk}
-                id={props.userId}
+                id={props.user.id}
                 onSubmitAction={props.removeUser}
                 onNegativeAction={props.closeModalAsk}
             />

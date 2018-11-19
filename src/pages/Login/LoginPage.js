@@ -7,7 +7,6 @@ import * as appOperations from '../../modules/app/appOperations';
 import { routes } from '../../routes';
 import InputForm from '../../components/InputForm/InputForm';
 import ActionButton from '../../components/ActionButton/ActionButton';
-import AuthForm from '../../components/AuthForm/AuthForm';
 import ErrorSubmiting from '../../components/ErrorSubmiting/ErrorSubmiting';
 
 const validate = values => {
@@ -38,7 +37,7 @@ const LoginPage = ({ login }) => {
     }
 
     return(
-        <AuthForm>
+        <div>
             <Form
                 onSubmit={onSubmit}
                 validate={validate}
@@ -62,7 +61,7 @@ const LoginPage = ({ login }) => {
                     </>
                 )}
             />
-        </AuthForm>
+        </div>
     );
 }
 

@@ -18,6 +18,8 @@ import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
+import ProtectedRouteUser from '../components/ProtectedRouteUser/ProtectedRouteUser';
+import UserPage from '../pages/User/UserPageContainer';
 
 const App = ({ location, previousLocation }) => {
   
@@ -41,6 +43,7 @@ const App = ({ location, previousLocation }) => {
           <Route path={routes.authLogin} component={LoginPage}/>
           <Route path={routes.authRegister} component={RegisterPage}/>
           <Route path={routes.authRemember} component={RememberPage}/>
+          <ProtectedRouteUser path={routes.user} component={UserPage}/>
           <Route path={routes.home} component={HomePage}/>
           <Route component={NotFoundPage}/>
         </Switch>

@@ -11,9 +11,6 @@ import AboutPage from '../pages/About/AboutPage';
 import ContactPage from '../pages/Contact/ContactPage';
 import PrivacyPolicyPage from '../pages/PrivacyPolicy/PrivacyPolicyPage';
 import TermsAndConditionsPage from '../pages/TermsAndConditions/TermsAndConditionsPage';
-import LoginPage from '../pages/Login/LoginPage';
-import RegisterPage from '../pages/Register/RegisterPage';
-import RememberPage from '../pages/Remember/RememberPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -40,9 +37,6 @@ const App = ({ location, previousLocation }) => {
           <Route path={routes.contact} component={ContactPage}/>
           <Route path={routes.privacypolicy} component={PrivacyPolicyPage}/>
           <Route path={routes.termsandconditions} component={TermsAndConditionsPage}/>
-          <Route path={routes.authLogin} component={LoginPage}/>
-          <Route path={routes.authRegister} component={RegisterPage}/>
-          <Route path={routes.authRemember} component={RememberPage}/>
           <ProtectedRouteUser path={routes.user} component={UserPage}/>
           <Route path={routes.home} component={HomePage}/>
           <Route component={NotFoundPage}/>

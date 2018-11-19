@@ -23,7 +23,7 @@ export default handleActions(
         [constants.FETCH_PRODUCTS_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Get one product
@@ -40,7 +40,7 @@ export default handleActions(
         [constants.GET_PRODUCT_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
     }, 
     initialState

@@ -26,7 +26,7 @@ export const createProduct = (newProduct) => async (dispatch) => {
 
         const res = await Api.AdminProducts.createProduct(newProduct);
         const { result: ids, entities } = normalize(res.data, schemes.AdminProductCollection);
-        console.log(entities)
+        
         dispatch(actions.createProductOk({
             ids,
             entities

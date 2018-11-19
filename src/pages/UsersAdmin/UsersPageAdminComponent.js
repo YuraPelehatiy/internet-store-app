@@ -33,9 +33,11 @@ const UserPageAdminComponent = ({
             <Form
                 initialValues = {{ ...user }}
                 onSubmit={onSubmitRemove}
-                render={({ handleSubmit, submitError }) => (
+                render={({ handleSubmit, submitError, submitting, submitSucceeded }) => (
                     <>
                         <ActionButton onClick={handleSubmit}>Remove</ActionButton>
+                        {submitting && <h2>Submiting...</h2>}
+                        {submitSucceeded && <h2>Complete</h2>}
                         {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                     </>
                 )}

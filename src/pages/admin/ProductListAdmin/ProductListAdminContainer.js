@@ -54,10 +54,9 @@ export default compose(
         }
     }),
     withState("isOpenModalAsk", "openerModalAsk", false),
-    withState("modalActionAsk", "setModalActionAsk", {}),
     withHandlers({
         openModalAsk: (props) => (id) => {
-            props.setModalActionAsk({
+            props.setModalAction({
                 action: props.removeProduct,
                 id: id,
             })
@@ -65,7 +64,7 @@ export default compose(
         },
         closeModalAsk: props => () => {
             props.openerModalAsk(false);
-            props.setModalActionAsk({});
+            props.setModalAction({});
         }
     }),
     lifecycle({
@@ -99,8 +98,8 @@ export default compose(
             <ModalAsk
                 open={props.isOpenModalAsk}
                 onClose={props.closeModalAsk}
-                id={props.modalActionAsk.id}
-                onSubmitAction={props.modalActionAsk.action}
+                id={props.modalAction.id}
+                onSubmitAction={props.modalAction.action}
                 onNegativeAction={props.closeModalAsk}
             />
         ),

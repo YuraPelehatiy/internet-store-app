@@ -49,7 +49,7 @@ const UserForm = ({
                 initialValues={{ ...user }}
                 onSubmit={onSubmit}
                 validate={validate}
-                render={({ handleSubmit, submitError }) => (
+                render={({ handleSubmit, submitError, submitting, submitSucceeded }) => (
                     <>
                         <Field name="firstName">
                             {({ input, meta }) => (
@@ -79,6 +79,8 @@ const UserForm = ({
                         <div>
                             <ActionButton onClick={handleSubmit}>{onSubmitButtonTitle}</ActionButton>
                         </div>
+                        {submitting && <h2>Submiting...</h2>}
+                        {submitSucceeded && <h2>Complete</h2>}
                         {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                     </>
                 )}

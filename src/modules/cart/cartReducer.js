@@ -29,7 +29,7 @@ export default handleActions(
         [constants.FETCH_PRODUCTS_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
         [constants.INCREASE]: (state, action) => ({
             ...state,

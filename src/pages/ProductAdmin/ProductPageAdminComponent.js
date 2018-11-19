@@ -60,7 +60,7 @@ const ProductPageAdminComponent = ({
                 initialValues={{ ...product }}
                 onSubmit={onSubmitUpdate}
                 validate={validate}
-                render={({ handleSubmit, submitError, values }) => (
+                render={({ handleSubmit, submitError, values, submitting, submitSucceeded }) => (
                     <div>
                         <div className={s.ProductPageAdminForm}>
                             <div className={s.ProductPageAdminFields}>
@@ -92,6 +92,8 @@ const ProductPageAdminComponent = ({
                         <div>
                             <ActionButton onClick={handleSubmit}>Update</ActionButton>
                         </div>
+                        {submitting && <h2>Submiting...</h2>}
+                        {submitSucceeded && <h2>Complete</h2>}
                         {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                     </div>
                 )}
@@ -99,9 +101,11 @@ const ProductPageAdminComponent = ({
             <Form
                 initialValues = {{ ...product }}
                 onSubmit={onSubmitRemove}
-                render={({ handleSubmit, submitError }) => (
+                render={({ handleSubmit, submitError, submitting, submitSucceeded }) => (
                     <>
                         <ActionButton onClick={handleSubmit}>Remove</ActionButton>
+                        {submitting && <h2>Submiting...</h2>}
+                        {submitSucceeded && <h2>Complete</h2>}
                         {submitError && <ErrorSubmiting>{submitError}</ErrorSubmiting>}
                     </>
                 )}

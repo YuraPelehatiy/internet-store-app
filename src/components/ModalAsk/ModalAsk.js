@@ -30,10 +30,12 @@ const ModalAsk = ({
                 <div>
                     <Form
                         onSubmit={onSubmit}
-                        render={({ handleSubmit, submitError }) => (
+                        render={({ handleSubmit, submitError, submitting, submitSucceeded }) => (
                             <>
                                 <ActionButton onClick={handleSubmit}>Yes</ActionButton>
                                 <ActionButton onClick={onClose}>No</ActionButton>
+                                {submitting && <h2>Submiting...</h2>}
+                                {submitSucceeded && <h2>Complete</h2>}
                             </>
                         )}
                     />

@@ -24,7 +24,7 @@ export default handleActions(
         [constants.FETCH_PRODUCTS_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Create product
@@ -34,13 +34,11 @@ export default handleActions(
         }),
         [constants.CREATE_PRODUCT_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             products: action.payload.ids.concat(state.products),
         }),
         [constants.CREATE_PRODUCT_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Update product
@@ -50,7 +48,6 @@ export default handleActions(
         }),
         [constants.UPDATE_PRODUCT_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             products: state.products.map(product => {
                 if(product === action.payload.ids[0]){
                     return action.payload.ids[0]
@@ -60,8 +57,7 @@ export default handleActions(
         }),
         [constants.UPDATE_PRODUCT_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Remove product
@@ -71,13 +67,11 @@ export default handleActions(
         }),
         [constants.REMOVE_PRODUCT_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             products: state.products.filter(product => product !== action.payload.ids[0]),
         }),
         [constants.REMOVE_PRODUCT_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Get one product
@@ -94,7 +88,7 @@ export default handleActions(
         [constants.GET_PRODUCT_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Fetch all users
@@ -111,7 +105,7 @@ export default handleActions(
         [constants.FETCH_USERS_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Update user
@@ -121,7 +115,6 @@ export default handleActions(
         }),
         [constants.UPDATE_USER_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             users: state.users.map(user => {
                 if(user === action.payload.ids[0]){
                     return action.payload.ids[0]
@@ -131,8 +124,7 @@ export default handleActions(
         }),
         [constants.UPDATE_USER_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Remove user
@@ -142,13 +134,11 @@ export default handleActions(
         }),
         [constants.REMOVE_USER_OK]: (state, action) => ({
             ...state,
-            isLoading: false,
             users: state.users.filter(user => user !== action.payload.ids[0]),
         }),
         [constants.REMOVE_USER_ERROR]: (state, action) => ({
             ...state,
-            isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
 
         // Get one product
@@ -165,7 +155,7 @@ export default handleActions(
         [constants.GET_USER_ERROR]: (state, action) => ({
             ...state,
             isLoading: false,
-            error: action.payload.message,
+            error: action.payload,
         }),
     }, 
     initialState

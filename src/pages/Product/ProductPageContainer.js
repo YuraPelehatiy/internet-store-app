@@ -9,6 +9,9 @@ import ErrorLoadign from '../../components/ErrorLoading/ErrorLoading';
 
 const mapStateToProps = (state, props) => ({
     product: productsSelectors.getProduct(state, props.match.params.id),
+    isLoading: state.products.isLoading,
+    isError: !!state.products.error,
+    error: state.products.error,
 })
 
 const mapStateToDispatch = {

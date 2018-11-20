@@ -5,6 +5,9 @@ const initialState = {
     products: [],
     isLoading: false,
     error: null,
+    limit: 12,
+    page: 0,
+    offset: 0,
 }
 
 export default handleActions(
@@ -42,6 +45,12 @@ export default handleActions(
             isLoading: false,
             error: action.payload,
         }),
+
+        [constants.SET_PAGE]: (state, action) => ({
+            ...state,
+            page: action.payload.page,
+            offset: action.payload.page * state.limit
+        })
     }, 
     initialState
 );

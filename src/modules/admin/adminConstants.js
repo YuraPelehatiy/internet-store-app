@@ -1,3 +1,6 @@
+export const SET_PAGE_PRODUCTS = 'admin/SET_PAGE_PRODUCTS'
+export const SET_PAGE_USERS = 'admin/SET_PAGE_USERS'
+
 //--------------------------------------------------------------------------
 //                        Constants for products
 //--------------------------------------------------------------------------

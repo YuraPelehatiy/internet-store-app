@@ -2,10 +2,11 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { routes } from '../../routes';
 import AdminNav from './AdminNav/AdminNav'
-import ProductListAdminContainer from './ProductListAdmin/ProductListAdminContainer';
+import ProductListAdminContainer from './ProductListPageAdmin/ProductListPageAdminContainer';
 import ProductPageAdminContainer from '../ProductAdmin/ProductPageAdminContainer';
-import UserListAdminContainer from './UserListAdmin/UserListAdminContainer';
+import UserListAdminContainer from './UserListPageAdmin/UserListPageAdminContainer';
 import UsersPageAdminContainer from '../UsersAdmin/UsersPageAdminContainer';
+import NotFoundPage from '../NotFound/NotFoundPage';
 
 const AdminPage = ({  
     match
@@ -30,6 +31,7 @@ const AdminPage = ({
                 path={routes.adminUser} 
                 component={UsersPageAdminContainer}
             />
+            <Route component={NotFoundPage}/>
         </Switch>
     </div>
 );

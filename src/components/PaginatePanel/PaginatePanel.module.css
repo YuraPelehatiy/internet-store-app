@@ -1,0 +1,48 @@
+.ReactPaginateContainer {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    border: 1px solid #ff8a00;
+    color: #ff8a00;
+    height: 40px;
+    width: 70%;
+    margin: 20px auto;
+    justify-content: space-between;
+}
+
+.ReactPaginatePage {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-right: 1px solid #ff8a00;
+    cursor: pointer;
+}
+
+.ReactPaginatePage a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+}
+
+.Active {
+    background: #ff8a00;
+    color: #fff;
+}
+
+.ReactPaginatePageBreak {
+    display: block;
+    height: 100%;
+    width: 120%;
+    border-right: 1px solid #ff8a00;
+    cursor: pointer;
+}
+
+.ReactPaginatePageBreak a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+}

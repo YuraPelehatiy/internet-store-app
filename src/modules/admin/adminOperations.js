@@ -4,11 +4,14 @@ import * as actions from './adminActions';
 import * as Api from '../../api/Api'
 
 // Poructs operations 
-export const fetchProducts = () => async (dispatch) => {
+export const fetchProducts = () => async (dispatch, getState) => {
     try {
+        const offset = getState().admin.offsetProducts;
+        const limit = getState().admin.limit;
+
         dispatch(actions.fetchProductsStart());
 
-        const res = await Api.AdminProducts.fetchProducts();
+        const res = await Api.AdminProducts.fetchProducts(offset, limit);
         const { result: ids, entities } = normalize(res.data, schemes.AdminProductCollection);
 
         dispatch(actions.fetchProductsOk({
@@ -93,11 +96,14 @@ export const getProduct = (id, refresh) => async (dispatch, getState) => {
 }
 
 // Users operations 
-export const fetchUsers = () => async (dispatch) => {
+export const fetchUsers = () => async (dispatch, getState) => {
     try {
+        const offset = getState().admin.offsetUsers;
+        const limit = getState().admin.limit;
+
         dispatch(actions.fetchUsersStart());
 
-        const res = await Api.AdminUsers.fetchUsers();
+        const res = await Api.AdminUsers.fetchUsers(offset, limit);
         const { result: ids, entities } = normalize(res.data, schemes.AdminUserCollection);
 
         dispatch(actions.fetchUsersOk({

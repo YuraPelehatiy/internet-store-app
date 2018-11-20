@@ -39,8 +39,10 @@ export const initApi = () => {
 }
 
 export const AdminProducts = {
-    fetchProducts(){
-        return axios.get(`/api/v3/products`);
+    fetchProducts(offset, limit){
+        const query = `?offset=${offset}&limit=${limit}`;
+
+        return axios.get(`/api/v3/products${query}`);
     },
 
     getProductsById(id){
@@ -61,8 +63,10 @@ export const AdminProducts = {
 }
 
 export const AdminUsers = {
-    fetchUsers(){
-        return axios.get(`/api/v3/users`);
+    fetchUsers(offset, limit){
+        const query = `?offset=${offset}&limit=${limit}`;
+
+        return axios.get(`/api/v3/users${query}`);
     },
 
     getUserById(id){
@@ -79,8 +83,10 @@ export const AdminUsers = {
 }
 
 export const Products = {
-    fetchProducts(){
-        return axios.get(`/api/v3/products`);
+    fetchProducts(offset, limit){
+        const query = `?offset=${offset}&limit=${limit}`;
+
+        return axios.get(`/api/v3/products${query}`);
     },
 
     getProductsById(id){

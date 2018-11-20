@@ -28,7 +28,7 @@ export default compose(
     ),
     lifecycle({
         componentDidMount(){
-            this.props.fetchProducts();
+            //this.props.fetchProducts();
         }
     }),
     branch(

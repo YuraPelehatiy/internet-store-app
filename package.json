@@ -12,6 +12,7 @@
     "react-dom": "^16.5.2",
     "react-final-form": "^3.6.7",
     "react-modal": "^3.6.1",
+    "react-paginate": "^6.0.0",
     "react-redux": "^5.1.0",
     "react-responsive-modal": "^3.4.0",
     "react-router-dom": "^4.3.1",
@@ -39,7 +40,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "https://internet-store-api.herokuapp.com",
+  "proxy": "http://localhost:3111",
   "devDependencies": {
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",

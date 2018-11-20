@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { routes } from '../../routes';
 import ProductPageContainer from '../Product/ProductPageContainer';
-import ProductListContainer from './ProductList/ProductListContainer';
+import ProdutcListPageComponent from './ProductListPage/ProductListPageContainer';
 import NotFoundPage from '../NotFound/NotFoundPage';
 
 const HomePage = ({ 
@@ -13,7 +13,7 @@ const HomePage = ({
             <Route 
                 exact 
                 path={match.path} 
-                component={ProductListContainer}
+                component={ProdutcListPageComponent}
             />
             <Route 
                 path={routes.product} 

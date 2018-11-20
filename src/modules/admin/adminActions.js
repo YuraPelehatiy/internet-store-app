@@ -1,6 +1,9 @@
 import { createAction } from 'redux-actions';
 import * as constants from './adminConstants';
 
+export const setPageProducts = createAction(constants.SET_PAGE_PRODUCTS);
+export const setPageUsers = createAction(constants.SET_PAGE_USERS);
+
 //--------------------------------------------------------------------------
 //                        Actions for products
 //--------------------------------------------------------------------------

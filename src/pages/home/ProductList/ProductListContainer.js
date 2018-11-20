@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, lifecycle, branch, renderComponent, mapProps } from 'recompose';
-import * as productsOperations from '../../../modules/products/productsOperations';
+import { compose, branch, renderComponent, mapProps } from 'recompose';
 import * as productsSelectors from '../../../modules/products/productsSelectors';
 import * as cartActions from '../../../modules/cart/cartActions';
 import ProdutcListComponent from './ProdutcListComponent';
@@ -17,7 +16,6 @@ const mapStateToProps = state => ({
 });
 
 const mapStateToDispatch = {
-    fetchProducts: productsOperations.fetchProducts,
     addItemToCart: cartActions.add,
 }
 
@@ -26,11 +24,6 @@ export default compose(
         mapStateToProps, 
         mapStateToDispatch,
     ),
-    lifecycle({
-        componentDidMount(){
-            //this.props.fetchProducts();
-        }
-    }),
     branch(
         props => props.isLoading,
         renderComponent(Loader),

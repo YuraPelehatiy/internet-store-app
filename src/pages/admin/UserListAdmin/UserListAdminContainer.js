@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, lifecycle, branch, renderComponent, withHandlers, withState, mapProps } from 'recompose';
+import { compose, branch, renderComponent, withHandlers, withState, mapProps } from 'recompose';
 import UserListAdminComponent from './UserListAdminComponent';
 import * as adminOperations from '../../../modules/admin/adminOperations';
 import * as adminSelectors from '../../../modules/admin/adminSelectors';
@@ -18,7 +18,6 @@ const mapStateToProps = state => ({
 });
 
 const mapStateToDispatch = {
-    fetchUsers: adminOperations.fetchUsers,
     updateUser: adminOperations.updateUser,
     removeUser: adminOperations.removeUser,
 }
@@ -49,11 +48,6 @@ export default compose(
         closeModalAsk: props => () => {
             props.openerModalAsk(false);
             props.setUser({})
-        }
-    }),
-    lifecycle({
-        componentDidMount(){
-            this.props.fetchUsers();
         }
     }),
     branch(

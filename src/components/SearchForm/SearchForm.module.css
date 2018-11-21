@@ -1,0 +1,22 @@
+.SearchContainer {
+    text-align: start;
+    display: flex;
+}
+
+.SearchField {
+    width: 80%;
+    font-size: 1rem;
+    padding: 7px 12px;
+    border-radius: 5px 0 0 5px;
+}
+
+.SearchButton {
+    width: 20%;
+    border: 0px solid;
+    border-radius: 0 5px 5px 0;
+    background: #ff8a00;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}

@@ -5,9 +5,8 @@ import { routes } from '../../routes.js';
 import s from './Header.module.css';
 import * as appOperations from '../../modules/app/appOperations';
 import * as cartSelectors from '../../modules/cart/cartSelectors';
-import InputForm from '../InputForm/InputForm.js';
 import ActionButton from '../ActionButton/ActionButton.js';
-
+import SearchForm from '../SearchForm/SearchForm';
 
 const Header = ({ 
     cartItemsCount, 
@@ -47,9 +46,7 @@ const Header = ({
                 <Link to={routes.home}>Internet Store</Link>
             </div>
             <div className={s.SearchBox}>
-                <form>
-                    <InputForm type="search" placeholder="what are you looking for..."/>
-                </form>
+                <SearchForm />
             </div>
             <div>
                 <Link to={{ pathname: routes.cart, state: {modal: true} }}>

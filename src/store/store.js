@@ -14,12 +14,21 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootModule);
 
-/* export const store = createStore(
-    persistedReducer, 
-    composeWithDevTools(
-        applyMiddleware(reduxThunk, logger)
-    )
-); */
+/* export let store;
+
+if (process.env.NODE_ENV === 'development') {
+    store = createStore(
+        persistedReducer, 
+        composeWithDevTools(
+            applyMiddleware(reduxThunk, logger)
+        )
+    );
+} else {
+    store = createStore(
+        persistedReducer, 
+        applyMiddleware(reduxThunk)
+    );
+} */
 
 export const store = createStore(
     persistedReducer, 

@@ -2,6 +2,10 @@
   "name": "internet-store",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "9.5.0",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",

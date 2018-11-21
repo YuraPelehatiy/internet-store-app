@@ -4,8 +4,8 @@
         "/**": "index.html"
     },
     "proxies": {
-        "/api": {
-          "origin": "https://internet-store-api.herokuapp.com"
+        "/api/": {
+          "origin": "${API_URL}"
         }
     }
 }

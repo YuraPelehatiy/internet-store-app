@@ -36,8 +36,9 @@ const Header = ({
                         </Link>
                     </li>}
                <li className={s.HeaderLinkItem}>
-                    {user && user.id !== undefined && <ActionButton onClick={logout} smallSize>Logout</ActionButton>}
-                    {user && user.id === undefined && <Link to={routes.authLogin}><ActionButton smallSize>Login/Register</ActionButton></Link>}
+                    {user && user.id !== undefined 
+                        ? <ActionButton onClick={logout} smallSize>Logout</ActionButton>
+                        : <Link to={routes.authLogin}><ActionButton smallSize>Login/Register</ActionButton></Link>}
                </li>
            </ul>
         </div>

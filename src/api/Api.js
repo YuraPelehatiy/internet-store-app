@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+// ---------------------------------------------
+// Provides API for work with products, users,
+// auth and token
+// ---------------------------------------------
+
+// Provides API for work with token and localStorage
+
 let _token = null;
 
 export const setToken = (token) => {
@@ -38,6 +45,7 @@ export const initApi = () => {
     setToken(token);
 }
 
+// Provides API for work with proucts on admin side
 export const AdminProducts = {
     fetchProducts(offset, limit){
         const query = `?offset=${offset}&limit=${limit}`;
@@ -62,6 +70,7 @@ export const AdminProducts = {
     }
 }
 
+// Provides API for work with users on admin side
 export const AdminUsers = {
     fetchUsers(offset, limit){
         const query = `?offset=${offset}&limit=${limit}`;
@@ -82,6 +91,7 @@ export const AdminUsers = {
     }
 }
 
+// Provides API for work with proucts on users side
 export const Products = {
     fetchProducts(offset, limit){
         const query = `?offset=${offset}&limit=${limit}`;
@@ -94,6 +104,7 @@ export const Products = {
     },
 }
 
+// Provides API for work with proucts on cart page
 export const Cart = {
     getProductsByIds(ids){
         let query = "ids[]=" + ids.join("&ids[]=");
@@ -101,6 +112,7 @@ export const Cart = {
     }
 }
 
+// Provides API for Authenticate
 export const Auth = {
     login(body){
         return axios.post('/api/v3/auth/login', body)
@@ -115,6 +127,7 @@ export const Auth = {
     }
 }
 
+// Provides API for work wtih users on user side
 export const User = {
     getCurrent(){
         return axios.get('/api/v3/users/current');

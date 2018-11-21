@@ -48,6 +48,12 @@ const App = ({ location, previousLocation }) => {
   );
 }
 
+
+// This logic allows you to open the cart page in the modal window
+// when we click on the cart link and on a separate page when we 
+// go to the cart page directly by the link or reload the page with 
+// the open modal box of the cart
+
 let previousLocation;
 
 const getPreviousLocation = () => previousLocation;

@@ -96,7 +96,7 @@ export const Products = {
     fetchProducts(offset, limit){
         const query = `?offset=${offset}&limit=${limit}`;
 
-        return axios.get(`/api/v3/products${query}`);
+        return axios.get(`https://internet-store-api.herokuapp.com/api/v3/products${query}`);
     },
 
     getProductsById(id){

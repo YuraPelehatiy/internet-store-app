@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootModule from '../modules/rootModule';
 import reduxThunk from 'redux-thunk';
-import logger from 'redux-logger';
+//import logger from 'redux-logger';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { composeWithDevTools } from 'redux-devtools-extension';
+//import { composeWithDevTools } from 'redux-devtools-extension';
 
 const persistConfig = {
     key: 'root',

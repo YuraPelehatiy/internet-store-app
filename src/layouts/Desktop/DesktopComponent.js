@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { compose, lifecycle, mapProps, withProps } from 'recompose';
 import s from './Desktop.module.css';
 import { routes } from '../routes';
 import AdminPage from '../pages/Admin/AdminPage';
@@ -48,34 +47,4 @@ const App = ({ location, previousLocation }) => {
   );
 }
 
-let previousLocation;
-
-const getPreviousLocation = () => previousLocation;
-const setPreviousLocation = newPreviousLocation => {
-  previousLocation = newPreviousLocation;
-}
-
-export default compose(
-  withProps(
-    props => {
-      setPreviousLocation(props.location)
-    }
-  ),
-  lifecycle({
-    componentWillUpdate(nextProps){
-      let { location } = this.props;
-
-      // Set previousLocation if props.location is not modal
-      if (
-        nextProps.history.action !== "POP" &&
-        (!location.state || !location.state.modal)
-      ) {
-        setPreviousLocation(this.props.location);
-      }
-    }
-  }),
-  mapProps(props => ({
-    ...props,
-    previousLocation: getPreviousLocation()
-  }))
-)(App);
+export default App;

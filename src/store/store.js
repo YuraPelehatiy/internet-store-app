@@ -14,11 +14,16 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootModule);
 
-export const store = createStore(
+/* export const store = createStore(
     persistedReducer, 
     composeWithDevTools(
         applyMiddleware(reduxThunk, logger)
     )
+); */
+
+export const store = createStore(
+    persistedReducer, 
+    applyMiddleware(reduxThunk)
 );
 
 export const persistor = persistStore(store)

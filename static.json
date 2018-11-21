@@ -5,7 +5,7 @@
     },
     "proxies": {
         "/api/": {
-          "origin": "https://internet-store-api.herokuapp.com"
+          "origin": "https://internet-store-api.herokuapp.com/api"
         }
     }
 }

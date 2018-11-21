@@ -5,8 +5,7 @@ import CartPageComponent from './CartPageComponent';
 import * as cartSelectors from '../../modules/cart/cartSelectors';
 import * as cartActions from '../../modules/cart/cartActions';
 import * as cartOperation from '../../modules/cart/cartOperation';
-import { compose } from '../../../../../AppData/Local/Microsoft/TypeScript/3.0/node_modules/redux';
-import { lifecycle, renderComponent, branch, mapProps } from 'recompose';
+import { lifecycle, renderComponent, branch, mapProps, compose } from 'recompose';
 import Loader from '../../components/Loader/Loader';
 import ErrorLoadign from '../../components/ErrorLoading/ErrorLoading';
 

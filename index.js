@@ -6,7 +6,7 @@ const proxy = require('http-proxy-middleware');
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/*', function(req, res) {
-    app.use(proxy('/api', { target: process.env.API_URL }));
+    app.use(proxy('/api', { target: "https://internet-store-api.herokuapp.com" }));
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 

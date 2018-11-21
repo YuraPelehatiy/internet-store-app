@@ -9,7 +9,9 @@ export const fetchProducts = (refresh) => async (dispatch, getState) => {
         const offset = getState().products.offset;
 
         const ids = getState().products.products;
-        // TODO Rewieve this condition 
+    
+        // When we go straight through the link to the product page, 
+        // we can already have one product
         if(ids.length > 1 && !refresh) {
             return;
         }

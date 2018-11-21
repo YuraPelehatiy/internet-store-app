@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootModule from '../modules/rootModule';
 import reduxThunk from 'redux-thunk';
-//import logger from 'redux-logger';
+import logger from 'redux-logger';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-//import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const persistConfig = {
     key: 'root',
@@ -14,7 +14,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootModule);
 
-/* export let store;
+export let store;
 
 if (process.env.NODE_ENV === 'development') {
     store = createStore(
@@ -28,11 +28,11 @@ if (process.env.NODE_ENV === 'development') {
         persistedReducer, 
         applyMiddleware(reduxThunk)
     );
-} */
+} 
 
-export const store = createStore(
+/* export const store = createStore(
     persistedReducer, 
     applyMiddleware(reduxThunk)
-);
+); */
 
 export const persistor = persistStore(store)

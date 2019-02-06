@@ -1,23 +1,25 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle, branch, renderComponent, mapProps } from 'recompose';
+import {
+    compose, lifecycle, branch, renderComponent, mapProps,
+} from 'recompose';
 import UsersPageAdminComponent from './UsersPageAdminComponent';
 import * as adminOperations from '../../modules/admin/adminOperations';
 import * as adminSelectors from '../../modules/admin/adminSelectors';
 import Loader from '../../components/Loader/Loader';
 import ErrorLoadign from '../../components/ErrorLoading/ErrorLoading';
 
-const mapStateToProps = (state, props)=> ({
+const mapStateToProps = (state, props) => ({
     user: adminSelectors.getUser(state, props.match.params.id),
     isLoading: state.admin.isLoading,
     isError: !!state.admin.error,
     error: state.admin.error,
-})
+});
 
 const mapStateToDispatch = {
     getUser: adminOperations.getUser,
     removeUser: adminOperations.removeUser,
     updateUser: adminOperations.updateUser,
-}
+};
 
 export default compose(
     connect(
@@ -25,9 +27,9 @@ export default compose(
         mapStateToDispatch,
     ),
     lifecycle({
-        componentDidMount(){
-            this.props.getUser(this.props.match.params.id)
-        }
+        componentDidMount() {
+            this.props.getUser(this.props.match.params.id);
+        },
     }),
     branch(
         props => props.isLoading,

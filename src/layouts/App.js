@@ -7,10 +7,10 @@ import AuthPage from '../pages/Auth/AuthPage';
 
 const App = () => (
     <Switch>
-        <Route path={routes.authLogin} component={AuthPage}/>
-        <Route path={routes.authRegister} component={AuthPage}/>
-        <Route path={routes.authRemember} component={AuthPage}/>
-        <Route component={Desktop}/>
+        <Route path={routes.authLogin} component={AuthPage} />
+        <Route path={routes.authRegister} component={AuthPage} />
+        <Route path={routes.authRemember} component={AuthPage} />
+        <Route component={Desktop} />
     </Switch>
 );
 

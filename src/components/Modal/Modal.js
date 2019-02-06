@@ -1,14 +1,14 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
-import s from './Modal.module.css'
+import s from './Modal.module.css';
 
-const UniversalModal = ({ 
+const UniversalModal = ({
     open,
     onClose,
-    children
+    children,
 }) => (
     <Modal open={open} onClose={onClose}>
-        <div className={s.Modal}> 
+        <div className={s.Modal}>
             {children}
         </div>
     </Modal>

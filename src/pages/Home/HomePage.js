@@ -5,26 +5,26 @@ import ProductPageContainer from '../Product/ProductPageContainer';
 import ProdutcListPageComponent from './ProductListPage/ProductListPageContainer';
 import NotFoundPage from '../NotFound/NotFoundPage';
 
-const HomePage = ({ 
-    match, 
+const HomePage = ({
+    match,
 }) => (
     <div>
         <Switch>
-            <Route 
-                exact 
-                path={match.path} 
+            <Route
+                exact
+                path={match.path}
                 component={ProdutcListPageComponent}
             />
-            <Route 
-                path={routes.product} 
-                component={ProductPageContainer} 
+            <Route
+                path={routes.product}
+                component={ProductPageContainer}
             />
-            <Route component={NotFoundPage}/>
+            <Route component={NotFoundPage} />
         </Switch>
     </div>
 );
 
 HomePage.propTypes = {
-}
+};
 
 export default HomePage;

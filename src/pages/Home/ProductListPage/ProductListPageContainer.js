@@ -1,6 +1,8 @@
 
 import { connect } from 'react-redux';
-import { compose, lifecycle, branch, renderComponent, mapProps, withHandlers } from 'recompose';
+import {
+    compose, lifecycle, branch, renderComponent, mapProps, withHandlers,
+} from 'recompose';
 import * as productsOperations from '../../../modules/products/productsOperations';
 import * as productsActions from '../../../modules/products/productsActions';
 import ProdutcListPageComponent from './ProdutcListPageComponent';
@@ -10,17 +12,17 @@ const mapStateToProps = state => ({
     isError: !!state.products.error,
     error: state.products.error,
     selectedPage: state.products.page,
-    offset: state.products.offset
+    offset: state.products.offset,
 });
 
 const mapStateToDispatch = {
     fetchProducts: productsOperations.fetchProducts,
     setPage: productsActions.setPage,
-}
+};
 
 export default compose(
     connect(
-        mapStateToProps, 
+        mapStateToProps,
         mapStateToDispatch,
     ),
     branch(
@@ -29,21 +31,21 @@ export default compose(
     ),
     withHandlers({
         handleOnPageChange: props => ({ selected }) => {
-            props.setPage({ page: selected })
-        }
+            props.setPage({ page: selected });
+        },
     }),
     lifecycle({
-        componentDidUpdate(nextProps){
-            if(this.props.offset !== nextProps.offset){
-                this.props.fetchProducts(true)
+        componentDidUpdate(nextProps) {
+            if (this.props.offset !== nextProps.offset) {
+                this.props.fetchProducts(true);
             }
         },
-        componentDidMount(){
+        componentDidMount() {
             this.props.fetchProducts();
-        }
+        },
     }),
     mapProps(props => ({
         handleOnPageChange: props.handleOnPageChange,
         selectedPage: props.selectedPage,
-    }))
+    })),
 )(ProdutcListPageComponent);

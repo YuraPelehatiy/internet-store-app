@@ -3,15 +3,15 @@ import { compose, mapProps } from 'recompose';
 import ProductPageComponent from './UserPageComponent';
 
 const mapStateToProps = state => ({
-    user: state.app.user
-})
+    user: state.app.user,
+});
 
 
 export default compose(
     connect(
-        mapStateToProps, 
+        mapStateToProps,
     ),
     mapProps(props => ({
-        ...props.user
-    }))
+        ...props.user,
+    })),
 )(ProductPageComponent);

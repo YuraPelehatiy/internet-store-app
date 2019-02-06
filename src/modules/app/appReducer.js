@@ -2,8 +2,8 @@ import { handleActions } from 'redux-actions';
 import * as constants from './appConstants';
 
 const initialState = {
-    user: {}
-}
+    user: {},
+};
 
 export default handleActions(
     {
@@ -11,10 +11,10 @@ export default handleActions(
             ...state,
             user: action.payload.user,
         }),
-        [constants.REMOVE_USER]: (state, action) => ({
+        [constants.REMOVE_USER]: state => ({
             ...state,
             user: {},
-        })
+        }),
     },
     initialState,
 );

@@ -12,18 +12,17 @@ const UserListAdminComponent = ({
     <div className={s.ProductListAdmin}>
         {ModalForm()}
         {ModalAsk()}
-        {users.map(({id, firstName, lastName}) => (
-                <ProductLinkAdmin
-                    users 
-                    key={id} 
-                    id={id} 
-                    title={firstName + " " + lastName}
-                    showModalToUpdateProduct={openModalForm}
-                    showModalToRemoveProduct={openModalAsk}
-                />
-            )
-        )}
+        {users.map(({ id, firstName, lastName }) => (
+            <ProductLinkAdmin
+                users
+                key={id}
+                id={id}
+                title={`${firstName} ${lastName}`}
+                showModalToUpdateProduct={openModalForm}
+                showModalToRemoveProduct={openModalAsk}
+            />
+        ))}
     </div>
-)
+);
 
 export default UserListAdminComponent;

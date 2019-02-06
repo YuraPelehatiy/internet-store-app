@@ -5,7 +5,7 @@ const initialState = {
     items: {},
     isLoading: false,
     error: null,
-}
+};
 
 export default handleActions(
     {
@@ -17,12 +17,12 @@ export default handleActions(
             ...state,
             items: removeItem(state, action),
         }),
-        [constants.FETCH_PRODUCTS_START]: (state) => ({
+        [constants.FETCH_PRODUCTS_START]: state => ({
             ...state,
             isLoading: true,
             error: null,
         }),
-        [constants.FETCH_PRODUCTS_OK]: (state, action) => ({
+        [constants.FETCH_PRODUCTS_OK]: state => ({
             ...state,
             isLoading: false,
         }),
@@ -37,51 +37,51 @@ export default handleActions(
                 ...state.items,
                 [action.payload.id]: {
                     ...state.items[action.payload.id],
-                    count: state.items[action.payload.id].count + 1
-                }
-            }
+                    count: state.items[action.payload.id].count + 1,
+                },
+            },
         }),
         [constants.DECREASE]: (state, action) => ({
             ...state,
-            items: decrease(state, action)
+            items: decrease(state, action),
         }),
         [constants.ENTER_VALUE]: (state, action) => ({
             ...state,
-            items: enterValue(state, action)
-        })
-    }, 
-    initialState
+            items: enterValue(state, action),
+        }),
+    },
+    initialState,
 );
 
-function addItem(state, action){
-    if(!state.items[action.payload.id]){
+function addItem(state, action) {
+    if (!state.items[action.payload.id]) {
         return {
             ...state.items,
             [action.payload.id]: {
                 id: action.payload.id,
                 count: action.payload.value,
-            }
-        }
+            },
+        };
     }
     return {
         ...state.items,
         [action.payload.id]: {
             id: action.payload.id,
             count: state.items[action.payload.id].count + action.payload.value,
-        }
-    }
+        },
+    };
 }
 
-function removeItem(state, action){
+function removeItem(state, action) {
     const items = state.items;
-    delete items[action.payload.id]
+    delete items[action.payload.id];
     return {
-        ...items
-    }
+        ...items,
+    };
 }
 
-function decrease(state, action){
-    if(state.items[action.payload.id].count - 1 < 0){
+function decrease(state, action) {
+    if (state.items[action.payload.id].count - 1 < 0) {
         return state.items;
     }
 
@@ -89,27 +89,27 @@ function decrease(state, action){
         ...state.items,
         [action.payload.id]: {
             ...state.items[action.payload.id],
-            count: state.items[action.payload.id].count - 1
-        }
-    }
+            count: state.items[action.payload.id].count - 1,
+        },
+    };
 }
 
-function enterValue(state, action){
-    if(action.payload.value < 0){
+function enterValue(state, action) {
+    if (action.payload.value < 0) {
         return {
             ...state.items,
             [action.payload.id]: {
                 ...state.items[action.payload.id],
-                count: 0
-            }
-        }
+                count: 0,
+            },
+        };
     }
 
     return {
         ...state.items,
         [action.payload.id]: {
             ...state.items[action.payload.id],
-            count: action.payload.value
-        }
-    }
+            count: action.payload.value,
+        },
+    };
 }

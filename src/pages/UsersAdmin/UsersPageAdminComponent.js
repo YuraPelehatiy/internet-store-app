@@ -5,35 +5,37 @@ import ActionButton from '../../components/ActionButton/ActionButton';
 import UserForm from '../../components/UserForm/UserForm';
 import ErrorSubmiting from '../../components/ErrorSubmiting/ErrorSubmiting';
 
-const UserPageAdminComponent = ({ 
+const UserPageAdminComponent = ({
     user,
     updateUser,
     removeUser,
     history,
 }) => {
-    const onSubmitRemove = async ({ id }) => {
+    const onSubmitRemove = async ({ id }) => { // eslint-disable-line
         try {
             await removeUser(id);
             history.go(-1);
         } catch (err) {
             return {
-                [FORM_ERROR]: "Somethings went wrogn"
-            }
+                [FORM_ERROR]: 'Somethings went wrogn',
+            };
         }
-    }
-    
+    };
+
     return (
         <div>
-            <UserForm 
-                user={user} 
-                onSubmitAction={updateUser} 
+            <UserForm
+                user={user}
+                onSubmitAction={updateUser}
                 onSubmitButtonTitle="Update"
                 actionAfterSucceeded={history.goBack}
             />
             <Form
-                initialValues = {{ ...user }}
+                initialValues={{ ...user }}
                 onSubmit={onSubmitRemove}
-                render={({ handleSubmit, submitError, submitting, submitSucceeded }) => (
+                render={({
+                    handleSubmit, submitError, submitting, submitSucceeded,
+                }) => (
                     <>
                         <ActionButton onClick={handleSubmit}>Remove</ActionButton>
                         {submitting && <h2>Submiting...</h2>}
@@ -44,6 +46,6 @@ const UserPageAdminComponent = ({
             />
         </div>
     );
-}
+};
 
 export default UserPageAdminComponent;

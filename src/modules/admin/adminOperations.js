@@ -1,9 +1,9 @@
 import { normalize } from 'normalizr';
-import * as schemes from '../../api/schemes'
+import * as schemes from '../../api/schemes';
 import * as actions from './adminActions';
-import * as Api from '../../api/Api'
+import * as Api from '../../api/Api';
 
-// Poructs operations 
+// Poructs operations
 export const fetchProducts = () => async (dispatch, getState) => {
     try {
         const offset = getState().admin.offsetProducts;
@@ -16,68 +16,68 @@ export const fetchProducts = () => async (dispatch, getState) => {
 
         dispatch(actions.fetchProductsOk({
             ids,
-            entities
+            entities,
         }));
     } catch (err) {
         dispatch(actions.fetchProductsError(err.message));
     }
-}
+};
 
-export const createProduct = (newProduct) => async (dispatch) => {
+export const createProduct = newProduct => async (dispatch) => {
     try {
         dispatch(actions.createProductStart());
 
         const res = await Api.AdminProducts.createProduct(newProduct);
         const { result: ids, entities } = normalize(res.data, schemes.AdminProductCollection);
-        
+
         dispatch(actions.createProductOk({
             ids,
-            entities
+            entities,
         }));
     } catch (err) {
         dispatch(actions.createProductError(err.message));
     }
-}
+};
 
-export const updateProduct = (productData) => async (dispatch) => {
+export const updateProduct = productData => async (dispatch) => {
     try {
         dispatch(actions.updateProductStart());
 
         const res = await Api.AdminProducts.updateProductById(productData.id, productData);
 
         const { result: ids, entities } = normalize(res.data, schemes.AdminProductCollection);
-        
+
         dispatch(actions.updateProductOk({
             ids,
-            entities
+            entities,
         }));
     } catch (err) {
         dispatch(actions.updateProductError(err.message));
     }
-}
+};
 
-export const removeProduct = (id) => async (dispatch) => {
+export const removeProduct = id => async (dispatch) => {
     try {
         dispatch(actions.removeProductStart());
 
         const res = await Api.AdminProducts.removeProductById(id);
 
-        if (res && res.data && res.data.success){
-            const ids = [id]
+        if (res && res.data && res.data.success) {
+            const ids = [id];
             dispatch(actions.removeProductOk({
-                ids
+                ids,
             }));
         }
     } catch (err) {
         dispatch(actions.removeProductError(err.message));
     }
-}
+};
 
-export const getProduct = (id, refresh) => async (dispatch, getState) => {
+export const getProduct = id => async (dispatch, getState) => {
     try {
         const product = getState().entities.products[id];
 
-        if(product) {
+        if (product) {
             return;
         }
 
@@ -88,14 +88,14 @@ export const getProduct = (id, refresh) => async (dispatch, getState) => {
 
         dispatch(actions.getProductOk({
             id: result,
-            entities
+            entities,
         }));
     } catch (err) {
         dispatch(actions.getProductError(err.message));
     }
-}
+};
 
-// Users operations 
+// Users operations
 export const fetchUsers = () => async (dispatch, getState) => {
     try {
         const offset = getState().admin.offsetUsers;
@@ -108,52 +108,52 @@ export const fetchUsers = () => async (dispatch, getState) => {
 
         dispatch(actions.fetchUsersOk({
             ids,
-            entities
+            entities,
         }));
     } catch (err) {
         dispatch(actions.fetchUsersError(err.message));
     }
-}
+};
 
-export const updateUser = (userData) => async (dispatch) => {
+export const updateUser = userData => async (dispatch) => {
     try {
         dispatch(actions.updateUserStart());
 
         const res = await Api.AdminUsers.updateUserById(userData.id, userData);
 
         const { result: ids, entities } = normalize(res.data, schemes.AdminUserCollection);
-        
+
         dispatch(actions.updateUserOk({
             ids,
-            entities
+            entities,
         }));
     } catch (err) {
         dispatch(actions.updateUserError(err.message));
     }
-}
+};
 
-export const removeUser = (id) => async (dispatch) => {
+export const removeUser = id => async (dispatch) => {
     try {
         dispatch(actions.removeUserStart());
 
         const res = await Api.AdminUsers.removeUserById(id);
 
-        if (res && res.data && res.data.success){
-            const ids = [id]
+        if (res && res.data && res.data.success) {
+            const ids = [id];
             dispatch(actions.removeUserOk({
-                ids
+                ids,
             }));
         }
     } catch (err) {
         dispatch(actions.removeUserError(err.message));
     }
-}
+};
 
-export const getUser = (id) => async (dispatch, getState) => {
+export const getUser = id => async (dispatch, getState) => {
     try {
         const user = getState().entities.users[id];
 
-        if(user) {
+        if (user) {
             return;
         }
 
@@ -164,9 +164,9 @@ export const getUser = (id) => async (dispatch, getState) => {
 
         dispatch(actions.getUserOk({
             id: result,
-            entities
+            entities,
         }));
     } catch (err) {
         dispatch(actions.getUserError(err.message));
     }
-}
+};

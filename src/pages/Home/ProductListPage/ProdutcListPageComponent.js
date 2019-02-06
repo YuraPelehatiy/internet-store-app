@@ -8,7 +8,7 @@ const ProdutcListPageComponent = ({
 }) => (
     <div>
         <ProdutcListContainer />
-        <PaginatePanel 
+        <PaginatePanel
             onPageChange={handleOnPageChange}
             initialPage={selectedPage}
             pageCount={10}
@@ -16,6 +16,6 @@ const ProdutcListPageComponent = ({
             marginRangeDisplayed={3}
         />
     </div>
-)
+);
 
 export default ProdutcListPageComponent;

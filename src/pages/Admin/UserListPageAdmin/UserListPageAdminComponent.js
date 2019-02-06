@@ -8,7 +8,7 @@ const UserListPageAdminComponent = ({
 }) => (
     <div>
         <UserListAdminContainer />
-        <PaginatePanel 
+        <PaginatePanel
             onPageChange={handleOnPageChange}
             initialPage={selectedPage}
             pageCount={10}
@@ -16,6 +16,6 @@ const UserListPageAdminComponent = ({
             marginRangeDisplayed={3}
         />
     </div>
-)
+);
 
 export default UserListPageAdminComponent;

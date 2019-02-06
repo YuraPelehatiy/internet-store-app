@@ -5,17 +5,17 @@ import { routes } from '../../routes';
 import * as Api from '../../api/Api';
 
 const ProtectedRoute = ({ user, ...props }) => {
-    if(!Api.isAuthenticated() || (user && user.role !== 'admin')){
-        return <Redirect to={routes.authLogin}/>;
+    if (!Api.isAuthenticated() || (user && user.role !== 'admin')) {
+        return <Redirect to={routes.authLogin} />;
     }
 
     return <Route {...props} />;
-}
+};
 
 const mapStateToProps = state => ({
-    user: state.app.user
-})
+    user: state.app.user,
+});
 
 export default connect(
     mapStateToProps,
-)(ProtectedRoute)
+)(ProtectedRoute);

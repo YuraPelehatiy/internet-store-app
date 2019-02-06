@@ -2,9 +2,9 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import s from './PaginatePanel.module.css';
 
-const PaginatePanel = (props) => (
+const PaginatePanel = props => (
     <div>
-        <ReactPaginate 
+        <ReactPaginate
             {...props}
             nextLabel="Next"
             breakLabel="..."
@@ -17,6 +17,6 @@ const PaginatePanel = (props) => (
             previousClassName={s.ReactPaginatePage}
         />
     </div>
-)
+);
 
 export default PaginatePanel;

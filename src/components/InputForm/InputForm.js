@@ -1,18 +1,18 @@
 import React from 'react';
-import s from './InputForm.module.css';
 import classNames from 'classnames/bind';
+import s from './InputForm.module.css';
 
-let cx = classNames.bind(s)
+const cx = classNames.bind(s);
 
 const InputForm = ({
     meta,
     ...props
 }) => (
     <div className={s.InputContainer}>
-        <input 
-            {...props} 
-            className={cx({ 
-                InputField: true, 
+        <input
+            {...props}
+            className={cx({
+                InputField: true,
                 InputFieldError: (meta && meta.error && meta.touched),
             })}
         />

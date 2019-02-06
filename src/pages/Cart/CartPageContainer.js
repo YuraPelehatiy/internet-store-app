@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {
+    lifecycle, renderComponent, branch, mapProps, compose,
+} from 'recompose';
 import ProductLink from '../../components/ProductLink/ProductLink';
 import CartPageComponent from './CartPageComponent';
 import * as cartSelectors from '../../modules/cart/cartSelectors';
 import * as cartActions from '../../modules/cart/cartActions';
 import * as cartOperation from '../../modules/cart/cartOperation';
-import { lifecycle, renderComponent, branch, mapProps, compose } from 'recompose';
 import Loader from '../../components/Loader/Loader';
 import ErrorLoadign from '../../components/ErrorLoading/ErrorLoading';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     itemsCart: state.cart.items,
     products: cartSelectors.getProducts(state, state.cart.isLoading),
     countTotalPrice: cartSelectors.getTotalPrice(state, state.cart.isLoading),
@@ -28,13 +30,13 @@ const mapStateToDispatch = {
 
 export default compose(
     connect(
-        mapStateToProps, 
-        mapStateToDispatch
+        mapStateToProps,
+        mapStateToDispatch,
     ),
     lifecycle({
-        componentDidMount(){
-            this.props.fetchProducts()
-        }
+        componentDidMount() {
+            this.props.fetchProducts();
+        },
     }),
     branch(
         props => (props.isLoading),
@@ -42,15 +44,15 @@ export default compose(
         branch(
             props => props.isError,
             renderComponent(ErrorLoadign),
-        )
+        ),
     ),
     mapProps(props => ({
         renderProductLink: (item, itemsCart) => (
-            <ProductLink 
+            <ProductLink
                 cart
                 count={itemsCart[item.id].count}
-                key={item.id} 
-                id={item.id} 
+                key={item.id}
+                id={item.id}
                 title={item.title}
                 image={item.image}
                 price={item.price}
@@ -64,5 +66,5 @@ export default compose(
         products: props.products,
         itemsCart: props.itemsCart,
         countTotalPrice: props.countTotalPrice,
-    }))
+    })),
 )(CartPageComponent);

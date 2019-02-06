@@ -1,0 +1,10 @@
+.userRoleSwitch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.roleSwitch {
+    padding: 4px 10px;
+}

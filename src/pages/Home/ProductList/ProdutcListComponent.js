@@ -8,6 +8,6 @@ const ProdutcListComponent = ({
     <div className={s.ProductList}>
         {products.map(item => renderProductLink(item))}
     </div>
-)
+);
 
 export default ProdutcListComponent;

@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle, branch, renderComponent, mapProps, withStateHandlers } from 'recompose';
+import {
+    compose, lifecycle, branch, renderComponent, mapProps, withStateHandlers,
+} from 'recompose';
 import * as productsSelectors from '../../modules/products/productsSelectors';
 import * as productsOperations from '../../modules/products/productsOperations';
 import * as cartActions from '../../modules/cart/cartActions';
@@ -12,22 +14,22 @@ const mapStateToProps = (state, props) => ({
     isLoading: state.products.isLoading,
     isError: !!state.products.error,
     error: state.products.error,
-})
+});
 
 const mapStateToDispatch = {
     getProduct: productsOperations.getProduct,
-    addItemToCart: cartActions.add
-}
+    addItemToCart: cartActions.add,
+};
 
 export default compose(
     connect(
-        mapStateToProps, 
-        mapStateToDispatch
+        mapStateToProps,
+        mapStateToDispatch,
     ),
     lifecycle({
-        componentDidMount(){
-            this.props.getProduct(this.props.match.params.id)
-        }
+        componentDidMount() {
+            this.props.getProduct(this.props.match.params.id);
+        },
     }),
     withStateHandlers(
         ({ initialCount = 1 }) => ({
@@ -38,20 +40,20 @@ export default compose(
                 count: count + 1,
             }),
             decrement: ({ count }) => () => {
-                if(count - 1 < 0){
+                if (count - 1 < 0) {
                     return ({
                         count: 0,
-                    })
+                    });
                 }
 
                 return ({
                     count: count - 1,
-                })
+                });
             },
-            onEnterValueCounter: ({ count }) => (value) => ({
+            onEnterValueCounter: () => value => ({
                 count: value,
             }),
-        }
+        },
     ),
     branch(
         props => props.isLoading,
@@ -68,5 +70,5 @@ export default compose(
         increment: props.increment,
         decrement: props.decrement,
         onEnterValueCounter: props.onEnterValueCounter,
-    }))
+    })),
 )(ProductPageComponent);

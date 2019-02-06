@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, branch, renderComponent, withHandlers, withState, mapProps } from 'recompose';
+import {
+    compose, branch, renderComponent, withHandlers, withState, mapProps,
+} from 'recompose';
 import UserListAdminComponent from './UserListAdminComponent';
 import * as adminOperations from '../../../modules/admin/adminOperations';
 import * as adminSelectors from '../../../modules/admin/adminSelectors';
@@ -20,35 +22,35 @@ const mapStateToProps = state => ({
 const mapStateToDispatch = {
     updateUser: adminOperations.updateUser,
     removeUser: adminOperations.removeUser,
-}
+};
 
 export default compose(
     connect(
-        mapStateToProps, 
+        mapStateToProps,
         mapStateToDispatch,
     ),
-    withState("isOpenModalForm", "openerModalForm", false),
-    withState("user", "setUser", {}),
+    withState('isOpenModalForm', 'openerModalForm', false),
+    withState('user', 'setUser', {}),
     withHandlers({
-        openModalForm: (props) => (id) => {
+        openModalForm: props => (id) => {
             props.setUser(props.users.filter(i => i.id === id)[0]);
             props.openerModalForm(true);
         },
         closeModalForm: props => () => {
             props.openerModalForm(false);
             props.setUser({});
-        }
+        },
     }),
-    withState("isOpenModalAsk", "openerModalAsk", false),
+    withState('isOpenModalAsk', 'openerModalAsk', false),
     withHandlers({
-        openModalAsk: (props) => (id) => {
+        openModalAsk: props => (id) => {
             props.setUser(props.users.filter(i => i.id === id)[0]);
             props.openerModalAsk(true);
         },
         closeModalAsk: props => () => {
             props.openerModalAsk(false);
-            props.setUser({})
-        }
+            props.setUser({});
+        },
     }),
     branch(
         props => props.isLoading,
@@ -56,7 +58,7 @@ export default compose(
         branch(
             props => props.isError,
             renderComponent(ErrorLoadign),
-        )
+        ),
     ),
     mapProps(props => ({
         ModalForm: () => (
@@ -64,7 +66,7 @@ export default compose(
                 open={props.isOpenModalForm}
                 onClose={props.closeModalForm}
             >
-                <UserForm 
+                <UserForm
                     actionAfterSucceeded={props.closeModalForm}
                     onSubmitAction={props.updateUser}
                     onSubmitButtonTitle="Update"
@@ -82,5 +84,5 @@ export default compose(
             />
         ),
         ...props,
-    }))
+    })),
 )(UserListAdminComponent);

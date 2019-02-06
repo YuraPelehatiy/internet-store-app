@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, branch, renderComponent, mapProps } from 'recompose';
+import {
+    compose, branch, renderComponent, mapProps,
+} from 'recompose';
 import * as productsSelectors from '../../../modules/products/productsSelectors';
 import * as cartActions from '../../../modules/cart/cartActions';
 import ProdutcListComponent from './ProdutcListComponent';
@@ -17,11 +19,11 @@ const mapStateToProps = state => ({
 
 const mapStateToDispatch = {
     addItemToCart: cartActions.add,
-}
+};
 
 export default compose(
     connect(
-        mapStateToProps, 
+        mapStateToProps,
         mapStateToDispatch,
     ),
     branch(
@@ -30,13 +32,13 @@ export default compose(
         branch(
             props => props.isError,
             renderComponent(ErrorLoadign),
-        )
+        ),
     ),
     mapProps(props => ({
-        renderProductLink: (item, index) => (
-            <ProductLink 
-                key={item.id} 
-                id={item.id} 
+        renderProductLink: item => (
+            <ProductLink
+                key={item.id}
+                id={item.id}
                 title={item.title}
                 image={item.image}
                 price={item.price}
@@ -45,5 +47,5 @@ export default compose(
             />
         ),
         products: props.products,
-    }))
+    })),
 )(ProdutcListComponent);

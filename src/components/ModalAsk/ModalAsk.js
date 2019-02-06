@@ -1,36 +1,38 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
-import s from './ModalAsk.module.css';
-import ActionButton from '../ActionButton/ActionButton';
 import { Form } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
+import s from './ModalAsk.module.css';
+import ActionButton from '../ActionButton/ActionButton';
 
-const ModalAsk = ({ 
+const ModalAsk = ({
     id,
     open,
     onClose,
     onSubmitAction,
 }) => {
-    const onSubmit = async () => {
+    const onSubmit = async () => { // eslint-disable-line
         try {
             await onSubmitAction(id);
 
             onClose();
         } catch (err) {
             return {
-                [FORM_ERROR]: "Something went wrong"
-            }
+                [FORM_ERROR]: 'Something went wrong',
+            };
         }
-    }
+    };
 
-    return(
+    return (
         <Modal open={open} onClose={onClose}>
             <div className={s.Form}>
                 <h3 className={s.Question}>Are you sure?</h3>
                 <div>
                     <Form
                         onSubmit={onSubmit}
-                        render={({ handleSubmit, submitError, submitting, submitSucceeded }) => (
+                        render={({
+                            handleSubmit, submitting, submitSucceeded,
+                        }) => (
                             <>
                                 <ActionButton onClick={handleSubmit}>Yes</ActionButton>
                                 <ActionButton onClick={onClose}>No</ActionButton>
@@ -42,7 +44,8 @@ const ModalAsk = ({
                 </div>
             </div>
         </Modal>
-)};
+    );
+};
 
 
 export default ModalAsk;

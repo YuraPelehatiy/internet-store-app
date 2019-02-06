@@ -1,0 +1,20 @@
+{
+    "extends": "airbnb",
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-indent": [2, 4, {"checkAttributes": false}],
+        "react/jsx-indent-props": [2, 4],
+        "react/prop-types": [0, { "ignore": ["*"] }],
+        "react/destructuring-assignment":0,
+        "react/jsx-one-expression-per-line": 0,
+        "react/button-has-type": false,
+        "import/prefer-default-export": 0,
+        "import/no-extraneous-dependencies": 0,
+        "prefer-destructuring": 0,
+        "jsx-quotes": ["error", "prefer-double"],
+        "indent": ["error", 4],
+        "eol-last": ["error", "never"],
+        "no-use-before-define": "off",
+        "no-underscore-dangle":"off"
+    }
+}

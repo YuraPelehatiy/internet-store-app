@@ -4,49 +4,49 @@ import { Form, Field } from 'react-final-form';
 import ActionButton from '../ActionButton/ActionButton'; */
 import s from './SearchForm.module.css';
 
-const validate = values => {
-    const errors = {}
+const validate = (values) => {
+    const errors = {};
 
-    if(!values.search || values.search.trim().length === 0){
-        errors.search = "Field is empty";
+    if (!values.search || values.search.trim().length === 0) {
+        errors.search = 'Field is empty';
     }
 
     return errors;
-}
+};
 
 const SearchForm = () => {
-    const onSubmit = values => {
+    const onSubmit = (values) => { // eslint-disable-line
 
-    }
+    };
 
     return (
         <div className={s.SearchContainer}>
-            <Form 
+            <Form
                 onSubmit={onSubmit}
                 validate={validate}
-                render={({ handleSubmit }) => (
+                render={({ handleSubmit }) => ( // eslint-disable-line
                     <>
                         <Field name="search">
                             {({ input }) => (
-                                <input 
+                                <input
                                     className={s.SearchField}
-                                    {...input} 
-                                    type="search" 
-                                    placeholder="What are you looking for..." 
+                                    {...input}
+                                    type="search"
+                                    placeholder="What are you looking for..."
                                 />
                             )}
                         </Field>
-                        <button 
+                        <button
                             className={s.SearchButton}
                         >
                             Search
                         </button>
                     </>
-                    
+
                 )}
             />
         </div>
-    )
-}
+    );
+};
 
 export default SearchForm;

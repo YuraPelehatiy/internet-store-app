@@ -1,5 +1,5 @@
-import * as constants from './adminConstants'
 import { handleActions } from 'redux-actions';
+import * as constants from './adminConstants';
 import { adminReducerProducts } from './adminReducerHandlers/adminReducerProducts';
 import { adminReducerUsers } from './adminReducerHandlers/adminReducerUsers';
 
@@ -13,7 +13,7 @@ const initialState = {
     offsetUsers: 0,
     pageProducts: 0,
     pageUsers: 0,
-}
+};
 
 export default handleActions(
     {
@@ -22,13 +22,13 @@ export default handleActions(
         [constants.SET_PAGE_PRODUCTS]: (state, action) => ({
             ...state,
             pageProducts: action.payload.page,
-            offsetProducts: action.payload.page * state.limit
+            offsetProducts: action.payload.page * state.limit,
         }),
         [constants.SET_PAGE_USERS]: (state, action) => ({
             ...state,
             pageUsers: action.payload.page,
-            offsetUsers: action.payload.page * state.limit
-        })
-    }, 
-    initialState
+            offsetUsers: action.payload.page * state.limit,
+        }),
+    },
+    initialState,
 );

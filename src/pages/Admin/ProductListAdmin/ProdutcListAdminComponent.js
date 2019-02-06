@@ -10,25 +10,24 @@ const ProdutcListAdminComponent = ({
     ModalAsk,
 }) => (
     <div className={s.ProductListAdmin}>
-        <button 
+        <button
             onClick={() => openModalForm()}
-            className={s.AddButton}    
+            className={s.AddButton}
         >
             Add new productc
         </button>
         {ModalForm()}
         {ModalAsk()}
-        {products.map(({id, title}) => (
-                <ProductLinkAdmin 
-                    key={id} 
-                    id={id} 
-                    title={title}
-                    showModalToUpdateProduct={openModalForm}
-                    showModalToRemoveProduct={openModalAsk}
-                />
-            )
-        )}
+        {products.map(({ id, title }) => (
+            <ProductLinkAdmin
+                key={id}
+                id={id}
+                title={title}
+                showModalToUpdateProduct={openModalForm}
+                showModalToRemoveProduct={openModalAsk}
+            />
+        ))}
     </div>
-)
+);
 
 export default ProdutcListAdminComponent;

@@ -1,14 +1,14 @@
 import React from 'react';
-import s from './ActionButton.module.css';
 import classNames from 'classnames/bind';
+import s from './ActionButton.module.css';
 
-let cx = classNames.bind(s);
+const cx = classNames.bind(s);
 
 const ActionButton = ({
     smallSize,
     mediumSize,
     children,
-    ...props,
+    ...props
 }) => (
     <button
         className={cx({
@@ -16,11 +16,11 @@ const ActionButton = ({
             ActionButtonLarge: (!smallSize && !mediumSize),
             ActionButtonMedium: mediumSize,
             ActionButtonSmall: smallSize,
-        })} 
+        })}
         {...props}
     >
         {children}
     </button>
-)
+);
 
 export default ActionButton;

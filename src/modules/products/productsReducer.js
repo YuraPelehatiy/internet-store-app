@@ -8,12 +8,12 @@ const initialState = {
     limit: 12,
     page: 0,
     offset: 0,
-}
+};
 
 export default handleActions(
     {
         // Fetch all products
-        [constants.FETCH_PRODUCTS_START]: (state) => ({
+        [constants.FETCH_PRODUCTS_START]: state => ({
             ...state,
             isLoading: true,
             error: null,
@@ -30,7 +30,7 @@ export default handleActions(
         }),
 
         // Get one product
-        [constants.GET_PRODUCT_START]: (state) => ({
+        [constants.GET_PRODUCT_START]: state => ({
             ...state,
             isLoading: true,
             error: null,
@@ -49,8 +49,8 @@ export default handleActions(
         [constants.SET_PAGE]: (state, action) => ({
             ...state,
             page: action.payload.page,
-            offset: action.payload.page * state.limit
-        })
-    }, 
-    initialState
+            offset: action.payload.page * state.limit,
+        }),
+    },
+    initialState,
 );
